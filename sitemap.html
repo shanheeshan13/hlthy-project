@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <title>Sitemap | HLTHY</title>
+
+  <!-- Linking common globle style.css -->
+  <link rel="stylesheet" href="style.css" >
+
+  <!--Embedded CSS Part-->
+  <style>
+    /* Sitemap page specific styles */
+    .sitemap-wrap {
+      overflow-x: auto;
+      padding: 1rem 0 2rem;
+    }
+
+    /* SVG node hover effect */
+    .smap-node {
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+    .smap-node:hover rect,
+    .smap-node:hover circle {
+      stroke-width: 2.5;
+      filter: brightness(1.08);
+    }
+    .smap-node:focus {
+      outline: none;
+    }
+    .smap-node:focus rect {
+      stroke: #F4A261;
+      stroke-width: 3;
+    }
+  </style>
+</head>
+
+<body>
+  <!--Header part with navigation[common]-->
+  <header>
+    <div class="header-inner">
+      <a class="site-identity" href="home.html">
+        <img src="images/logo.png" alt="HLTHY website logo - Simple black line icon showing two hands supporting a heart symbol" >
+        <div>
+          <span class="site-title">HLTHY</span>
+          <span class="site-tagline">Good Health &amp; Well-being · SDG 3</span>
+        </div>
+      </a>
+    </div>
+	
+	  <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="home.html"               >Home</a></li>
+        <li><a href="gallery.html"            >Gallery</a></li>
+        <li><a href="ais.html"                >Impact Simulator</a></li>
+        <li><a href="feedback.html"           >Feedback</a></li>
+        <li><a href="team.html"               >Team</a></li>
+        <li><a href="profile.html"            >User Profile</a></li>
+        <li><a href="sitemap.html"  class="active">Sitemap</a></li>
+      </ul>
+	  </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1 class="section-title">Website Sitemap</h1>
+      <p class="section-subtitle">A visual map of the HLTHY website structure. Click any node to visit that page. Use Tab to navigate by keyboard.</p>
+
+      <div class="sitemap-wrap">
+        <!--
+          SVG Sitemap — created using SVG (not a bitmap image).
+          All nodes are clickable links. Hover changes fill.
+          Responsive via viewBox + width="100%".
+          Accessible: each node has <title>, tabindex, and focus style.
+        -->
+        <svg width="100%" viewBox="0 0 860 540"
+             xmlns="http://www.w3.org/2000/svg"
+             role="img"
+             aria-label="HLTHY website sitemap showing all pages and their relationships">
+
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5"
+                    markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M2 1L8 5L2 9" fill="none" stroke="#2E7D6E" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </marker>
+          </defs>
+
+          <!-- ── Connector lines (drawn before nodes so nodes appear on top) ── -->
+
+          <!-- Splash → Home -->
+          <line x1="430" y1="72" x2="430" y2="110"
+                stroke="#2E7D6E" stroke-width="1.5" marker-end="url(#arr)"/>
+
+          <!-- Home → each child page -->
+          <!-- Home → Gallery -->
+          <polyline points="340,152 340,180 100,180 100,210"
+                    fill="none" stroke="#4CAF96" stroke-width="1.2" marker-end="url(#arr)"/>
+          <!-- Home → AIS -->
+          <polyline points="370,152 370,190 220,190 220,210"
+                    fill="none" stroke="#4CAF96" stroke-width="1.2" marker-end="url(#arr)"/>
+          <!-- Home → Feedback -->
+          <polyline points="420,152 420,200 370,200 370,210"
+                    fill="none" stroke="#4CAF96" stroke-width="1.2" marker-end="url(#arr)"/>
+          <!-- Home → Team -->
+          <polyline points="450,152 450,200 520,200 520,210"
+                    fill="none" stroke="#4CAF96" stroke-width="1.2" marker-end="url(#arr)"/>
+          <!-- Home → Profile -->
+          <polyline points="490,152 490,190 660,190 660,210"
+                    fill="none" stroke="#4CAF96" stroke-width="1.2" marker-end="url(#arr)"/>
+          <!-- Home → Sitemap -->
+          <polyline points="510,152 510,180 780,180 780,210"
+                    fill="none" stroke="#4CAF96" stroke-width="1.2" marker-end="url(#arr)"/>
+
+          <!-- Home → Content pages row -->
+          <polyline points="430,152 430,330 100,330 100,360"
+                    fill="none" stroke="#aaa" stroke-width="1" stroke-dasharray="5 4" marker-end="url(#arr)"/>
+          <polyline points="430,152 430,330 270,330 270,360"
+                    fill="none" stroke="#aaa" stroke-width="1" stroke-dasharray="5 4" marker-end="url(#arr)"/>
+          <polyline points="430,152 430,330 440,330 440,360"
+                    fill="none" stroke="#aaa" stroke-width="1" stroke-dasharray="5 4" marker-end="url(#arr)"/>
+          <polyline points="430,152 430,330 610,330 610,360"
+                    fill="none" stroke="#aaa" stroke-width="1" stroke-dasharray="5 4" marker-end="url(#arr)"/>
+
+          <!-- Content → Page Editor connections -->
+          <line x1="100" y1="402" x2="100" y2="432"
+                stroke="#888" stroke-width="0.8" marker-end="url(#arr)"/>
+          <line x1="270" y1="402" x2="270" y2="432"
+                stroke="#888" stroke-width="0.8" marker-end="url(#arr)"/>
+          <line x1="440" y1="402" x2="440" y2="432"
+                stroke="#888" stroke-width="0.8" marker-end="url(#arr)"/>
+          <line x1="610" y1="402" x2="610" y2="432"
+                stroke="#888" stroke-width="0.8" marker-end="url(#arr)"/>
+
+          <!-- ── Nodes ──────────────────────────────────────── -->
+
+          <!-- SPLASH (top) -->
+          <a href="splash.html" tabindex="0">
+            <g class="smap-node" role="link">
+              <title>Splash Screen — entry point to the website</title>
+              <rect x="340" y="20" width="180" height="50" rx="10"
+                    fill="#4CAF96" stroke="#2E7D6E" stroke-width="1.5"/>
+              <text x="430" y="41" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="13" font-weight="600" fill="#fff">Splash Screen</text>
+              <text x="430" y="59" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="rgba(255,255,255,0.85)">Student 2 · splash.html</text>
+            </g>
+          </a>
+
+          <!-- HOME (level 1) -->
+          <a href="home.html" tabindex="0">
+            <g class="smap-node" role="link">
+              <title>Home Page — central entry point</title>
+              <rect x="320" y="110" width="220" height="42" rx="10"
+                    fill="#2E7D6E" stroke="#1B5E50" stroke-width="1.5"/>
+              <text x="430" y="127" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="13" font-weight="700" fill="#fff">Home Page</text>
+              <text x="430" y="144" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="rgba(255,255,255,0.85)">Student 1 · home.html</text>
+            </g>
+          </a>
+
+          <!-- LEVEL 2 — Main pages -->
+          <!-- Gallery -->
+          <a href="gallery.html" tabindex="0">
+            <g class="smap-node" role="link">
+              <title>Gallery — interactive image gallery</title>
+              <rect x="30" y="210" width="140" height="50" rx="8"
+                    fill="#388E7C" stroke="#2E7D6E" stroke-width="1"/>
+              <text x="100" y="231" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600" fill="#fff">Gallery</text>
+              <text x="100" y="249" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="rgba(255,255,255,0.85)">gallery.html</text>
+            </g>
+          </a>
+
+          <!-- AIS -->
+          <a href="ais.html" tabindex="0">
+            <g class="smap-node" role="link">
+              <title>Action Impact Simulator — interactive SDG 3 simulator</title>
+              <rect x="150" y="210" width="140" height="50" rx="8"
+                    fill="#388E7C" stroke="#2E7D6E" stroke-width="1"/>
+              <text x="220" y="231" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600" fill="#fff">Impact Simulator</text>
+              <text x="220" y="249" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="rgba(255,255,255,0.85)">ais.html</text>
+            </g>
+          </a>
+
+          <!-- Feedback -->
+          <a href="feedback.html" tabindex="0">
+            <g class="smap-node" role="link">
+              <title>Feedback and Programme Directory</title>
+              <rect x="300" y="210" width="140" height="50" rx="8"
+                    fill="#388E7C" stroke="#2E7D6E" stroke-width="1"/>
+              <text x="370" y="231" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600" fill="#fff">Feedback</text>
+              <text x="370" y="249" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="rgba(255,255,255,0.85)">feedback.html</text>
+            </g>
+          </a>
+
+          <!-- Team -->
+          <a href="team.html" tabindex="0">
+            <g class="smap-node" role="link">
+              <title>Team Page — meet the development team</title>
+              <rect x="450" y="210" width="140" height="50" rx="8"
+                    fill="#388E7C" stroke="#2E7D6E" stroke-width="1"/>
+              <text x="520" y="231" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600" fill="#fff">Team</text>
+              <text x="520" y="249" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="rgba(255,255,255,0.85)">team.html</text>
+            </g>
+          </a>
+
+          <!-- Profile -->
+          <a href="profile.html" tabindex="0">
+            <g class="smap-node" role="link">
+              <title>User Profile — progressive profile building</title>
+              <rect x="600" y="210" width="140" height="50" rx="8"
+                    fill="#388E7C" stroke="#2E7D6E" stroke-width="1"/>
+              <text x="670" y="231" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="600" fill="#fff">User Profile</text>
+              <text x="670" y="249" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="rgba(255,255,255,0.85)">profile.html</text>
+            </g>
+          </a>
+
+          <!-- Sitemap -->
+          <a href="sitemap.html" tabindex="0">
+            <g class="smap-node" role="link">
+              <title>Sitemap — this page, visual site structure</title>
+              <rect x="720" y="210" width="120" height="50" rx="8"
+                    fill="#F4A261" stroke="#E0864A" stroke-width="1.5"/>
+              <text x="780" y="231" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="12" font-weight="700" fill="#fff">Sitemap</text>
+              <text x="780" y="249" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="rgba(255,255,255,0.85)">sitemap.html</text>
+            </g>
+          </a>
+
+          <!-- LEVEL 3 — Content pages -->
+          <text x="430" y="350" text-anchor="middle"
+                font-family="'Segoe UI',Arial,sans-serif" font-size="11" fill="#888">Individual Content Pages</text>
+
+          <a href="content_ST1.html" tabindex="0">
+            <g class="smap-node" role="link">
+              <title>Content Page — Student 1: Mental Health</title>
+              <rect x="30" y="360" width="140" height="42" rx="8"
+                    fill="#7B9E87" stroke="#5A7A67" stroke-width="1"/>
+              <text x="100" y="378" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="600" fill="#fff">Mental Health</text>
+              <text x="100" y="394" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="9.5" fill="rgba(255,255,255,0.85)">content_ST1.html</text>
+            </g>
+          </a>
+
+          <a href="content_ST2.html" tabindex="0">
+            <g class="smap-node" role="link">
+              <title>Content Page — Student 2: Nutrition</title>
+              <rect x="200" y="360" width="140" height="42" rx="8"
+                    fill="#7B9E87" stroke="#5A7A67" stroke-width="1"/>
+              <text x="270" y="378" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="600" fill="#fff">Nutrition</text>
+              <text x="270" y="394" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="9.5" fill="rgba(255,255,255,0.85)">content_ST2.html</text>
+            </g>
+          </a>
+
+          <a href="content_ST3.html" tabindex="0">
+            <g class="smap-node" role="link">
+              <title>Content Page — Student 3: Physical Activity</title>
+              <rect x="370" y="360" width="140" height="42" rx="8"
+                    fill="#7B9E87" stroke="#5A7A67" stroke-width="1"/>
+              <text x="440" y="378" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="600" fill="#fff">Physical Activity</text>
+              <text x="440" y="394" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="9.5" fill="rgba(255,255,255,0.85)">content_ST3.html</text>
+            </g>
+          </a>
+
+          <a href="content_ST4.html" tabindex="0">
+            <g class="smap-node" role="link">
+              <title>Content Page — Student 4: Healthcare Access</title>
+              <rect x="540" y="360" width="140" height="42" rx="8"
+                    fill="#7B9E87" stroke="#5A7A67" stroke-width="1"/>
+              <text x="610" y="378" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="11" font-weight="600" fill="#fff">Healthcare Access</text>
+              <text x="610" y="394" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="9.5" fill="rgba(255,255,255,0.85)">content_ST4.html</text>
+            </g>
+          </a>
+
+          <!-- LEVEL 4 — Page Editors (from footer) -->
+          <a href="pageEditor_ST1.html" tabindex="0">
+            <g class="smap-node" role="link">
+              <title>Page Editor — Student 1</title>
+              <rect x="30" y="432" width="140" height="38" rx="6"
+                    fill="#B0BEC5" stroke="#90A4AE" stroke-width="1"/>
+              <text x="100" y="449" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="10" font-weight="600" fill="#37474F">Page Editor ST1</text>
+              <text x="100" y="463" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#546E7A">pageEditor_ST1.html</text>
+            </g>
+          </a>
+
+          <a href="pageEditor_ST2.html" tabindex="0">
+            <g class="smap-node" role="link">
+              <title>Page Editor — Student 2</title>
+              <rect x="200" y="432" width="140" height="38" rx="6"
+                    fill="#B0BEC5" stroke="#90A4AE" stroke-width="1"/>
+              <text x="270" y="449" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="10" font-weight="600" fill="#37474F">Page Editor ST2</text>
+              <text x="270" y="463" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#546E7A">pageEditor_ST2.html</text>
+            </g>
+          </a>
+
+          <a href="pageEditor_ST3.html" tabindex="0">
+            <g class="smap-node" role="link">
+              <title>Page Editor — Student 3</title>
+              <rect x="370" y="432" width="140" height="38" rx="6"
+                    fill="#B0BEC5" stroke="#90A4AE" stroke-width="1"/>
+              <text x="440" y="449" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="10" font-weight="600" fill="#37474F">Page Editor ST3</text>
+              <text x="440" y="463" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#546E7A">pageEditor_ST3.html</text>
+            </g>
+          </a>
+
+          <a href="pageEditor_ST4.html" tabindex="0">
+            <g class="smap-node" role="link">
+              <title>Page Editor — Student 4</title>
+              <rect x="540" y="432" width="140" height="38" rx="6"
+                    fill="#B0BEC5" stroke="#90A4AE" stroke-width="1"/>
+              <text x="610" y="449" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="10" font-weight="600" fill="#37474F">Page Editor ST4</text>
+              <text x="610" y="463" text-anchor="middle"
+                    font-family="'Segoe UI',Arial,sans-serif" font-size="9" fill="#546E7A">pageEditor_ST4.html</text>
+            </g>
+          </a>
+
+          <!-- Legend -->
+          <rect x="30" y="498" width="14" height="14" rx="3" fill="#2E7D6E"/>
+          <text x="50" y="510" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#555">Core pages</text>
+          <rect x="130" y="498" width="14" height="14" rx="3" fill="#7B9E87"/>
+          <text x="150" y="510" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#555">Content pages</text>
+          <rect x="240" y="498" width="14" height="14" rx="3" fill="#B0BEC5"/>
+          <text x="260" y="510" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#555">Editor/validation pages</text>
+          <rect x="400" y="498" width="14" height="14" rx="3" fill="#F4A261"/>
+          <text x="420" y="510" font-family="'Segoe UI',Arial,sans-serif" font-size="10" fill="#555">Current page</text>
+
+        </svg>
+      </div><!-- /.sitemap-wrap -->
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Student 4</h4>
+        <p style="font-size:0.85rem; color:rgba(255,255,255,0.7);">
+          S.Shanheeshan · 20241978/w2182082<br />
+          Web Design &amp; Development · 4COSC011C
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Editor &amp; Validation:</h4>
+		<ul>
+        <li><a href="pageEditor_ST4.html"> Page Editor</a></li>
+        <li><a href="validation_ST4.html"> Validation</a></li>
+		</ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 HLTHY Team</p>
+    </div>
+  </footer>
+
+</body>
+</html>

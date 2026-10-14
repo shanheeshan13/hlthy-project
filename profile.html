@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <title>User Profile | HLTHY</title>
+
+  <!-- Linking common globle style.css -->
+  <link rel="stylesheet" href="style.css" >
+
+  <!--Embedded CSS Part-->
+  <style>
+    .profile-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+    @media(max-width:680px){ .profile-layout{ grid-template-columns:1fr; } }
+
+    /* Step buttons */
+    .steps-row {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .step-btn {
+      padding: 0.5rem 1.1rem;
+      border: 2px solid var(--clr-neutral-200);
+      border-radius: 20px;
+      background: var(--clr-white);
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--clr-neutral-700);
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .step-btn.active   { border-color: var(--clr-primary); background: var(--clr-primary); color: #fff; }
+    .step-btn.done     { border-color: var(--clr-primary-light); color: var(--clr-primary-dark); }
+    .step-btn.skipped  { border-color: #E0E0E0; color: #aaa; }
+
+    /* Progress bar */
+    .progress-wrap { margin-bottom: 1.5rem; }
+    .progress-label { font-size: 0.85rem; color: var(--clr-neutral-700); margin-bottom: 0.35rem; }
+    .progress-bar-bg {
+      background: var(--clr-neutral-200);
+      border-radius: 10px;
+      height: 10px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--clr-primary);
+      border-radius: 10px;
+      transition: width 0.4s ease;
+      width: 0%;
+    }
+
+    /* Action buttons */
+    .action-btns { display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1rem; }
+    .action-btns button {
+      padding: 0.55rem 1.2rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    #start-btn   { background: var(--clr-primary); color:#fff; border-color:var(--clr-primary); }
+    #start-btn:hover { background: var(--clr-primary-dark); border-color: var(--clr-primary-dark); }
+    #skip-step-btn { background: none; color: var(--clr-neutral-700); border-color: var(--clr-neutral-200); }
+    #skip-step-btn:hover { background: var(--clr-neutral-200); }
+    #reset-profile-btn { background: none; color: #c0392b; border-color: #c0392b; }
+    #reset-profile-btn:hover { background: #c0392b; color:#fff; }
+
+    /* Profile output */
+    .profile-output {
+      background: var(--clr-white);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--clr-neutral-200);
+      padding: 1.5rem;
+      min-height: 300px;
+    }
+    .profile-section { margin-bottom: 1.2rem; display: none; }
+    .profile-section.revealed { display: block; animation: fadeSlide 0.3s ease; }
+    @keyframes fadeSlide { from{ opacity:0; transform:translateY(8px); } to{ opacity:1; transform:translateY(0); } }
+    .profile-section h3 { font-size: 0.9rem; color: var(--clr-primary-dark); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .profile-field { font-size: 0.9rem; color: var(--clr-neutral-700); padding: 0.2rem 0; }
+    .profile-field strong { color: var(--clr-neutral-900); }
+
+    #status-msg { font-size: 0.85rem; color: var(--clr-primary); margin-top: 0.5rem; min-height: 1.2em; }
+  </style>
+</head>
+
+<body>
+  <!--Header part with navigation[common]-->
+  <header>
+    <div class="header-inner">
+      <a class="site-identity" href="home.html">
+        <img src="images/logo.png" alt="HLTHY website logo - Simple black line icon showing two hands supporting a heart symbol" >
+        <div>
+          <span class="site-title">HLTHY</span>
+          <span class="site-tagline">Good Health &amp; Well-being · SDG 3</span>
+        </div>
+      </a>
+    </div>
+	
+	  <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="home.html"               >Home</a></li>
+        <li><a href="gallery.html"            >Gallery</a></li>
+        <li><a href="ais.html"                >Impact Simulator</a></li>
+        <li><a href="feedback.html"           >Feedback</a></li>
+        <li><a href="team.html"               >Team</a></li>
+        <li><a href="profile.html" class="active">User Profile</a></li>
+        <li><a href="sitemap.html"            >Sitemap</a></li>
+      </ul>
+	  </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1 class="section-title">Build Your Health Profile</h1>
+      <p class="section-subtitle">Answer a few questions to build your personal SDG 3 health profile. You can skip questions and come back later.</p>
+
+      <div class="profile-layout">
+
+        <!-- LEFT: Controls -->
+        <div>
+          <!-- Step indicator buttons -->
+          <div class="steps-row" role="tablist" aria-label="Profile steps">
+            <button class="step-btn" id="btn-step1" role="tab" aria-selected="false">Step 1: Basics</button>
+            <button class="step-btn" id="btn-step2" role="tab" aria-selected="false">Step 2: Interests</button>
+            <button class="step-btn" id="btn-step3" role="tab" aria-selected="false">Step 3: Actions</button>
+          </div>
+
+          <!-- Progress -->
+          <div class="progress-wrap">
+            <div class="progress-label">Completion: <strong id="progress-pct">0%</strong> (<span id="progress-detail">0/9 prompts</span>)</div>
+            <div class="progress-bar-bg" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Profile completion">
+              <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+          </div>
+
+          <!-- Status message -->
+          <div id="status-msg" aria-live="polite"></div>
+
+          <!-- Action buttons -->
+          <div class="action-btns">
+            <button id="start-btn">Start / Continue Profile</button>
+            <button id="skip-step-btn">Skip This Step</button>
+            <button id="reset-profile-btn">Reset Profile</button>
+          </div>
+
+          <!-- Revisit buttons (shown after first run) -->
+          <div id="revisit-row" style="display:none; margin-top:1rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <button class="step-btn" onclick="revisitStep(1)">Revisit Step 1</button>
+            <button class="step-btn" onclick="revisitStep(2)">Revisit Step 2</button>
+            <button class="step-btn" onclick="revisitStep(3)">Revisit Step 3</button>
+          </div>
+        </div>
+
+        <!-- RIGHT: Profile output -->
+        <div class="profile-output" role="region" aria-live="polite" aria-label="Your health profile">
+          <h2 style="font-size:1.1rem; margin-bottom:1rem;">Your Profile <span style="font-size:0.8rem; font-weight:400; color:var(--clr-neutral-700);">(updates as you complete steps)</span></h2>
+
+          <!-- Section 1: Basic details -->
+          <div class="profile-section" id="profile-s1">
+            <h3>Step 1 — Basic Details</h3>
+            <div class="profile-field"><strong>Name:</strong> <span id="out-name">—</span></div>
+            <div class="profile-field"><strong>Username:</strong> <span id="out-username">—</span></div>
+            <div class="profile-field"><strong>Role / Occupation:</strong> <span id="out-role">—</span></div>
+          </div>
+
+          <!-- Section 2: Interests -->
+          <div class="profile-section" id="profile-s2">
+            <h3>Step 2 — Health Interests</h3>
+            <div class="profile-field"><strong>SDG 3 area of interest:</strong> <span id="out-interest">—</span></div>
+            <div class="profile-field"><strong>Preferred activity:</strong> <span id="out-activity">—</span></div>
+            <div class="profile-field"><strong>Weekly time available:</strong> <span id="out-time">—</span></div>
+          </div>
+
+          <!-- Section 3: Actions & commitments -->
+          <div class="profile-section" id="profile-s3">
+            <h3>Step 3 — Health Goals &amp; Actions</h3>
+            <div class="profile-field"><strong>Health goal:</strong> <span id="out-goal">—</span></div>
+            <div class="profile-field"><strong>Action I'll take this week:</strong> <span id="out-action">—</span></div>
+            <div class="profile-field"><strong>Who I'll involve:</strong> <span id="out-involve">—</span></div>
+          </div>
+
+          <div id="profile-complete-msg" style="display:none; color:var(--clr-primary-dark); font-weight:600; margin-top:1rem;">
+            🎉 Profile complete! Thank you for committing to SDG 3 actions.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Student 4</h4>
+        <p style="font-size:0.85rem; color:rgba(255,255,255,0.7);">
+          S.Shanheeshan · 20241978/w2182082<br />
+          Web Design &amp; Development · 4COSC011C
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Editor &amp; Validation:</h4>
+		<ul>
+        <li><a href="pageEditor_ST4.html"> Page Editor</a></li>
+        <li><a href="validation_ST4.html"> Validation</a></li>
+		</ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 HLTHY Team</p>
+    </div>
+  </footer>
+
+  <!-- USER PROFILE JAVASCRIPT -->
+  <script>
+    /* ── Profile data object (stores all collected values) ── */
+    const profileData = {
+      step1: { name: null, username: null, role: null },
+      step2: { interest: null, activity: null, time: null },
+      step3: { goal: null, action: null, involve: null }
+    };
+
+    /* ── Track completion per prompt (9 total: 3 steps × 3) ─ */
+    const completed = { s1: [false,false,false], s2: [false,false,false], s3: [false,false,false] };
+
+    let currentStep = 0; // 0 = not started
+
+    /* ── Step definitions ─────────────────────────────────── */
+    const steps = [
+      {
+        key: 's1', label: 'Step 1', btnId: 'btn-step1', sectionId: 'profile-s1',
+        prompts: [
+          { question: 'Step 1 of 3 — Basic Details\n\nWhat is your name?',           field: 'name',     outId: 'out-name'     },
+          { question: 'What username would you like to use on HLTHY?',               field: 'username', outId: 'out-username' },
+          { question: 'What is your role or occupation? (e.g. student, nurse, etc)', field: 'role',     outId: 'out-role'     }
+        ]
+      },
+      {
+        key: 's2', label: 'Step 2', btnId: 'btn-step2', sectionId: 'profile-s2',
+        prompts: [
+          { question: 'Step 2 of 3 — Health Interests\n\nWhich area of SDG 3 interests you most?\n(e.g. Mental health, Nutrition, Physical activity, Healthcare access)', field: 'interest', outId: 'out-interest' },
+          { question: 'What health-related activity do you most enjoy or want to try?',                                                                                       field: 'activity', outId: 'out-activity' },
+          { question: 'How many hours per week can you commit to health-focused activities?',                                                                                  field: 'time',     outId: 'out-time'     }
+        ]
+      },
+      {
+        key: 's3', label: 'Step 3', btnId: 'btn-step3', sectionId: 'profile-s3',
+        prompts: [
+          { question: 'Step 3 of 3 — Actions & Goals\n\nWhat is one specific health goal you want to achieve this month?', field: 'goal',    outId: 'out-goal'    },
+          { question: 'What one concrete action will you take THIS WEEK to improve your well-being?',                       field: 'action',  outId: 'out-action'  },
+          { question: 'Who will you involve or encourage in your health journey? (e.g. a friend, classmate, family member)', field: 'involve', outId: 'out-involve' }
+        ]
+      }
+    ];
+
+    /* ── Update progress bar & indicators ─────────────────── */
+    function updateProgress() {
+      const total    = 9;
+      const done     = [...completed.s1, ...completed.s2, ...completed.s3].filter(Boolean).length;
+      const pct      = Math.round((done / total) * 100);
+
+      document.getElementById('progress-fill').style.width = pct + '%';
+      document.getElementById('progress-pct').textContent  = pct + '%';
+      document.getElementById('progress-detail').textContent = `${done}/${total} prompts`;
+
+      // Update progress bar ARIA
+      document.querySelector('[role="progressbar"]').setAttribute('aria-valuenow', pct);
+
+      // Update step button states
+      steps.forEach((step, i) => {
+        const btn   = document.getElementById(step.btnId);
+        const allDone   = completed[step.key].every(Boolean);
+        const anyDone   = completed[step.key].some(Boolean);
+        btn.classList.remove('active','done','skipped');
+        if (currentStep === i + 1) btn.classList.add('active');
+        else if (allDone) btn.classList.add('done');
+        else if (anyDone) btn.classList.add('skipped');
+      });
+
+      if (pct === 100) {
+        document.getElementById('profile-complete-msg').style.display = 'block';
+        setStatus('Profile complete! All steps finished.');
+        document.getElementById('revisit-row').style.display = 'flex';
+      }
+    }
+
+    /* ── Run prompts for a given step ─────────────────────── */
+    function runStep(stepIndex) {
+      const step = steps[stepIndex];
+      const dataKey = step.key === 's1' ? 'step1' : step.key === 's2' ? 'step2' : 'step3';
+      currentStep = stepIndex + 1;
+
+      step.prompts.forEach((p, pi) => {
+        const answer = prompt(p.question + '\n\n(Press Cancel to skip this question)');
+
+        if (answer !== null && answer.trim() !== '') {
+          // Store in data object
+          profileData[dataKey][p.field] = answer.trim();
+          completed[step.key][pi] = true;
+          // Update DOM
+          document.getElementById(p.outId).textContent = answer.trim();
+        }
+        // If null (Cancel) or empty, field stays as "—" and marked not completed
+      });
+
+      // Reveal profile section if at least one answer given
+      if (completed[step.key].some(Boolean)) {
+        document.getElementById(step.sectionId).classList.add('revealed');
+      }
+
+      // Move to next step or finish
+      currentStep = stepIndex + 1 < steps.length ? stepIndex + 2 : 0;
+      updateProgress();
+      setStatus(`${step.label} saved. Completion is now ${document.getElementById('progress-pct').textContent}. You may continue or revisit any step.`);
+    }
+
+    /* ── Start / continue button ─────────────────────────── */
+    document.getElementById('start-btn').addEventListener('click', () => {
+      // Find first incomplete step
+      let nextStep = steps.findIndex((s) => !completed[s.key].every(Boolean));
+      if (nextStep === -1) {
+        setStatus('All steps already completed! Use the Revisit buttons to update any step.');
+        return;
+      }
+      runStep(nextStep);
+    });
+
+    /* ── Skip entire current step ────────────────────────── */
+    document.getElementById('skip-step-btn').addEventListener('click', () => {
+      const nextIncomplete = steps.findIndex((s) => !completed[s.key].every(Boolean));
+      if (nextIncomplete === -1) {
+        setStatus('All steps are already complete.');
+        return;
+      }
+      setStatus(`${steps[nextIncomplete].label} skipped. Completion reduced accordingly.`);
+      currentStep = nextIncomplete + 2 <= steps.length ? nextIncomplete + 2 : 0;
+      updateProgress();
+    });
+
+    /* ── Revisit a specific step ─────────────────────────── */
+    function revisitStep(stepNumber) {
+      runStep(stepNumber - 1);
+    }
+
+    /* ── Reset profile ────────────────────────────────────── */
+    document.getElementById('reset-profile-btn').addEventListener('click', () => {
+      // Clear completed flags
+      completed.s1.fill(false);
+      completed.s2.fill(false);
+      completed.s3.fill(false);
+      currentStep = 0;
+
+      // Clear output spans
+      ['out-name','out-username','out-role','out-interest','out-activity','out-time','out-goal','out-action','out-involve']
+        .forEach(id => document.getElementById(id).textContent = '—');
+
+      // Hide profile sections
+      document.querySelectorAll('.profile-section').forEach(s => s.classList.remove('revealed'));
+      document.getElementById('profile-complete-msg').style.display = 'none';
+      document.getElementById('revisit-row').style.display = 'none';
+
+      updateProgress();
+      setStatus('Profile reset. Click "Start / Continue Profile" to begin again.');
+    });
+
+    /* ── Utility: status message ─────────────────────────── */
+    function setStatus(msg) {
+      document.getElementById('status-msg').textContent = msg;
+    }
+
+    // Initial render
+    updateProgress();
+  </script>
+
+</body>
+</html>

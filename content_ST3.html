@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nutrition and Healthy Eating | HLTHY</title>
+
+  <!-- Linking common globle style.css -->
+  <link rel="stylesheet" href="style.css">
+
+  <!--Embedded CSS Part-->
+  <style>
+
+    /* Rule 1: Two-column layout — side nav (220px) + article content */
+    .content-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* Rule 2: Single column on small/mobile screens */
+    @media (max-width: 680px) {
+      .content-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Rule 3: Sticky side navigation */
+    .side-nav {
+      position: sticky;
+      top: 90px;
+      background: var(--clr-white);
+      border: 1px solid var(--clr-neutral-200);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+    }
+
+    /* Rule 4: Side nav heading */
+    .side-nav h3 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--clr-neutral-700);
+      margin-bottom: 0.75rem;
+    }
+
+    /* Rule 5: Side nav links */
+    .side-nav a {
+      display: block;
+      padding: 0.3rem 0.5rem;
+      font-size: 0.9rem;
+      color: var(--clr-neutral-900);
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+    }
+
+    /* Rule 6: Hover effect on side nav links */
+    .side-nav a:hover {
+      background-color: var(--clr-primary-light);
+      color: var(--clr-primary-dark);
+    }
+
+    /* Rule 7: Section spacing and scroll offset (stops heading hiding behind fixed navbar) */
+    .content-section {
+      margin-bottom: 2.5rem;
+      scroll-margin-top: 100px;
+    }
+
+    /* Rule 8: Images inside content sections */
+    .content-section img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      margin: 1rem 0;
+      border: 1px solid var(--clr-neutral-200);
+    }
+
+    /* Rule 9: Fixed Go to Top button */
+    #go-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 1.5rem;
+      background-color: var(--clr-primary);
+      color: #fff;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      z-index: 100;
+    }
+
+    /* Rule 10: Go to Top hover */
+    #go-top:hover {
+      background-color: var(--clr-primary-dark);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    /* Rule 11: List item spacing within content sections */
+    .content-section ul li {
+      margin-bottom: 0.4rem;
+    }
+
+    /* Rule 12: Stat row — four coloured data boxes */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    /* Rule 13: Individual stat box styling */
+    .stat-box {
+      background: var(--clr-primary);
+      color: #fff;
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      text-align: center;
+    }
+    .stat-box .stat-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      display: block;
+    }
+    .stat-box .stat-desc {
+      font-size: 0.78rem;
+      opacity: 0.9;
+      margin-top: 0.25rem;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Anchor for Go to Top -->
+  <span id="top"></span>
+
+  <!--Header part with navigation[common]-->
+  <header>
+    <div class="header-inner">
+      <a class="site-identity" href="home.html">
+        <img src="images/logo.png" alt="HLTHY website logo - Simple black line icon showing two hands supporting a heart symbol" >
+        <div>
+          <span class="site-title">HLTHY</span>
+          <span class="site-tagline">Good Health &amp; Well-being · SDG 3</span>
+        </div>
+      </a>
+    </div>
+	
+	  <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="home.html"               >Home</a></li>
+        <li><a href="gallery.html"            >Gallery</a></li>
+        <li><a href="ais.html"                >Impact Simulator</a></li>
+        <li><a href="feedback.html"           >Feedback</a></li>
+        <li><a href="team.html"               >Team</a></li>
+        <li><a href="profile.html"            >User Profile</a></li>
+        <li><a href="sitemap.html"            >Sitemap</a></li>
+        <li><a href="content.html" class="active">Content</a></li>
+
+      </ul>
+	  </nav>
+  </header>
+
+  <!-- ================================================
+       MAIN CONTENT
+  ================================================ -->
+  <main>
+    <div class="container">
+
+      <h1 id="top-heading">Nutrition and Healthy Eating</h1>
+
+      <!-- Two-column layout -->
+      <div class="content-layout">
+
+        <!-- LEFT: Sticky side navigation -->
+        <aside aria-label="Page contents">
+          <nav class="side-nav">
+            <h2>Contents</h2>
+            <ul style="list-style:none; padding:0; margin:0;">
+              <li><a href="#intro">Introduction</a></li>
+              <li><a href="#why-nutrition">Why Nutrition Matters</a></li>
+              <li><a href="#balanced-plate">The Balanced Plate</a></li>
+              <li><a href="#barriers">Barriers to Healthy Eating</a></li>
+              <li><a href="#actions">Actions You Can Take</a></li>
+              <li><a href="#resources">Further Resources</a></li>
+            </ul>
+          </nav>
+        </aside>
+
+        <!-- RIGHT: Main article -->
+        <div>
+
+          <!-- SECTION 1 — Introduction -->
+          <section class="content-section" id="intro">
+            <h2>Introduction</h2>
+
+            <!-- Image 1 of 4 -->
+            <img
+              src="images/abcd.WEBP"
+              alt="A colourful spread of fresh fruit and vegetables on a wooden table"
+            />
+
+            <p>
+              Food is one of the most powerful influences on our health. SDG 3 — Good Health
+              and Well-being — recognises nutrition as a cornerstone of human health. Poor diet
+              is now the leading risk factor for disease globally, linked to heart disease, type
+              2 diabetes, certain cancers, and poor mental health.
+            </p>
+            <p>
+              For university students managing busy schedules and limited budgets, healthy eating
+              can feel difficult. This page explores what good nutrition looks like, the barriers
+              people face, and practical actions we can all take to eat better and support SDG 3.
+            </p>
+          </section>
+
+          <!-- SECTION 2 — Why Nutrition Matters -->
+          <section class="content-section" id="why-nutrition">
+            <h2>Why Nutrition Matters for SDG 3</h2>
+
+            <!-- Image 2 of 4 -->
+            <img
+              src="images/foodbrain.jpeg"
+              alt="Illustration showing how a healthy diet supports the heart, brain and immune system"
+            />
+
+            <p>
+              What we eat shapes our physical and mental health every single day. Poor nutrition
+              is not just a personal health issue — it is a public health crisis that disproportionately
+              affects low-income communities and developing nations.
+            </p>
+
+            <ul>
+              <li>11 million deaths per year are linked to poor diet globally (WHO, 2024)</li>
+              <li>1 in 3 adults worldwide are overweight or obese</li>
+              <li>45% of child deaths under 5 are linked to undernutrition</li>
+              <li>A healthy diet is associated with a 30% lower risk of depression</li>
+            </ul>
+
+            <p>
+              Poor nutrition is also an equality issue — people in lower-income communities
+              often have less access to affordable fresh food. Addressing this under SDG 3
+              requires both individual action and wider societal change.
+            </p>
+          </section>
+
+          <!-- SECTION 3 — The Balanced Plate -->
+          <section class="content-section" id="balanced-plate">
+            <h2>The Balanced Plate</h2>
+
+            <!-- Image 3 of 4 -->
+            <img
+              src="images/food2.png"
+              alt="A balanced meal on a plate with vegetables, whole grains, protein and a glass of water">
+
+            <p>
+              The NHS Eatwell Guide recommends drawing from all food groups every day.
+              Here is a simple breakdown:
+            </p>
+
+            <ul>
+              <li><strong>Fruit and vegetables</strong> — at least 5 portions a day; fresh, frozen, or tinned all count</li>
+              <li><strong>Starchy carbohydrates</strong> — choose wholegrain options like brown rice, oats, and wholemeal bread</li>
+              <li><strong>Proteins</strong> — beans, lentils, eggs, fish, or lean meat; beans and lentils are the cheapest and most sustainable</li>
+              <li><strong>Dairy or alternatives</strong> — lower-fat milk, yoghurt, or fortified plant-based drinks</li>
+              <li><strong>Hydration</strong> — aim for 6 to 8 glasses of water per day; avoid sugary drinks</li>
+            </ul>
+          </section>
+
+          <!-- SECTION 4 — Barriers to Healthy Eating -->
+          <section class="content-section" id="barriers">
+            <h2>Barriers to Healthy Eating</h2>
+
+            <!-- Image 4 of 4 -->
+            <img
+              src="images/food3.jpg"
+              alt="A student looking at processed food options on a supermarket shelf">
+
+            <p>
+              Healthy eating is not always easy, especially for students. The most common
+              barriers include:
+            </p>
+
+            <ul>
+              <li><strong>Cost:</strong> Fresh produce can seem expensive, but staples like lentils, oats, eggs, and frozen vegetables are nutritious and affordable.</li>
+              <li><strong>Time:</strong> Busy schedules make cooking from scratch hard. Batch cooking at the weekend is a practical solution.</li>
+              <li><strong>Cooking skills:</strong> Many students have cooked very little before university and rely on takeaways or ready meals as a result.</li>
+              <li><strong>Food environment:</strong> Campuses and high streets are often dominated by fast food, making healthy choices harder by default.</li>
+              <li><strong>Mental health:</strong> Stress and anxiety are linked to disordered eating patterns, including comfort eating and food restriction.</li>
+            </ul>
+          </section>
+
+          <!-- SECTION 5 — Actions You Can Take -->
+          <section class="content-section" id="actions">
+            <h2>Actions You Can Take for SDG 3</h2>
+
+            <h3>1. Plan your meals each week</h3>
+            <p>
+              A simple weekly meal plan reduces food waste, saves money, and makes it
+              much easier to eat balanced meals consistently throughout the week.
+            </p>
+
+            <h3>2. Try one plant-based meal per day</h3>
+            <p>
+              Swapping one meal a day to a plant-based option — such as a lentil dahl or
+              bean stir-fry — lowers saturated fat intake, increases fibre, and reduces
+              your carbon footprint at the same time.
+            </p>
+
+            <h3>3. Share cooking skills with others</h3>
+            <p>
+              Organise a cooking session with flatmates or volunteer at a community kitchen.
+              Teaching someone to cook has a lasting positive impact on their health habits.
+            </p>
+
+            <h3>4. Advocate for better food on campus</h3>
+            <p>
+              Engage with your students' union to push for affordable healthy food options,
+              food banks, and free breakfast schemes on campus.
+            </p>
+          </section>
+
+          <!-- SECTION 6 — Further Resources -->
+          <section class="content-section" id="resources">
+            <h2>Further Resources</h2>
+
+            <ul>
+              <li>
+                <strong>NHS Eatwell Guide:</strong>
+                <a href="https://www.nhs.uk/live-well/eat-well/" target="_blank" rel="noopener">nhs.uk/live-well/eat-well</a>
+              </li>
+              <li>
+                <strong>WHO — Healthy Diet Factsheet:</strong>
+                <a href="https://www.who.int/news-room/fact-sheets/detail/healthy-diet" target="_blank" rel="noopener">who.int — healthy diet</a>
+              </li>
+              <li>
+                <strong>British Nutrition Foundation:</strong>
+                <a href="https://www.nutrition.org.uk" target="_blank" rel="noopener">nutrition.org.uk</a>
+              </li>
+            </ul>
+
+            <p>
+              Return to the <a href="home.html">Home Page</a> to explore the other
+              SDG 3 topics our team has covered.
+            </p>
+          </section>
+
+        </div>
+      </div><!-- end .content-layout -->
+
+    </div><!-- end .container -->
+  </main>
+
+  <!-- Go to Top button -->
+  <a href="#top" id="go-top" aria-label="Go back to the top of the page" title="Back to top">&#8593;</a>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h3>Student 3</h3>
+        <p style="font-size:0.85rem; color:rgba(255,255,255,0.7);">
+          M.Thrishan · 20242186/w2181970<br />
+          Web Design &amp; Development · 4COSC011C
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Editor &amp; Validation:</h4>
+		<ul>
+        <li><a href="pageEditor_ST3.html"> Page Editor</a></li>
+        <li><a href="validation_ST3.html"> Validation</a></li>
+		</ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 HLTHY Team</p>
+    </div>
+  </footer>
+
+</body>
+</html>

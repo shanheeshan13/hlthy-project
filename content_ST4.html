@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <title>Sleep & Daily Lifestyle | HLTHY</title>
+
+  <!-- Linking common globle style.css -->
+  <link rel="stylesheet" href="style.css" >
+
+  <!--Embedded CSS Part-->
+  <style>
+    .content-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media(max-width:680px){ .content-layout{ grid-template-columns:1fr; } }
+
+    .side-nav {
+      position: sticky;
+      top: 80px;
+      background: var(--clr-white);
+      border: 1px solid var(--clr-neutral-200);
+      border-radius: var(--radius-md);
+      padding: 1.1rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .side-nav h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.75rem; color: var(--clr-neutral-700); }
+    .side-nav ul { list-style: none; padding: 0; }
+    .side-nav ul li { margin-bottom: 0.4rem; }
+    .side-nav ul li a {
+      font-size: 0.88rem;
+      color: var(--clr-neutral-700);
+      display: block;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .side-nav ul li a:hover { background: var(--clr-neutral-200); color: var(--clr-primary-dark); text-decoration: none; }
+
+    .content-section { margin-bottom: 3rem; scroll-margin-top: 100px; }
+    .content-section img {
+      width: 100%;
+      max-height: 360px;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      margin: 1.2rem 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Quote pull block */
+    .pull-quote {
+      border-left: 4px solid var(--clr-secondary);
+      padding: 0.8rem 1.2rem;
+      margin: 1.5rem 0;
+      background: #FFF8F3;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+    .pull-quote p { font-size: 1.05rem; font-style: italic; color: var(--clr-neutral-900); margin: 0; }
+    .pull-quote cite { font-size: 0.82rem; color: var(--clr-neutral-700); display: block; margin-top: 0.4rem; }
+
+    /* Two-column comparison */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.2rem 0;
+    }
+    @media(max-width:500px){ .compare-grid{ grid-template-columns:1fr; } }
+    .compare-box {
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--clr-neutral-200);
+    }
+    .compare-box h4 { font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .compare-box ul { font-size: 0.85rem; color: var(--clr-neutral-700); padding-left: 1.2rem; }
+    .compare-box.green { background: #E8F5F0; border-color: #A5D6C5; }
+    .compare-box.orange { background: #FFF3E0; border-color: #FFCC80; }
+
+    #go-top {
+      position: fixed;
+      bottom: 2rem; right: 1.5rem;
+      background: var(--clr-primary);
+      color: #fff;
+      border-radius: 50%;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      text-decoration: none;
+      box-shadow: var(--shadow-md);
+      z-index: 50;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    #go-top:hover { background: var(--clr-primary-dark); transform: translateY(-3px); color:#fff; text-decoration:none; }
+  </style>
+</head>
+
+<body>
+
+  <!-- Anchor for Go to Top -->
+  <span id="top"></span>
+
+  <!--Header part with navigation[common]-->
+  <header>
+    <div class="header-inner">
+      <a class="site-identity" href="home.html">
+        <img src="images/logo.png" alt="HLTHY website logo - Simple black line icon showing two hands supporting a heart symbol" >
+        <div>
+          <span class="site-title">HLTHY</span>
+          <span class="site-tagline">Good Health &amp; Well-being · SDG 3</span>
+        </div>
+      </a>
+    </div>
+	
+	  <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="home.html"               >Home</a></li>
+        <li><a href="gallery.html"            >Gallery</a></li>
+        <li><a href="ais.html"                >Impact Simulator</a></li>
+        <li><a href="feedback.html"           >Feedback</a></li>
+        <li><a href="team.html"               >Team</a></li>
+        <li><a href="profile.html"            >User Profile</a></li>
+        <li><a href="sitemap.html"            >Sitemap</a></li>
+        <li><a href="content.html" class="active">Content</a></li>
+
+      </ul>
+	  </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1 id="top-heading">Sleep &amp; Daily Lifestyle</h1>
+
+      <div class="content-layout">
+
+        <aside aria-label="Page contents">
+          <nav class="side-nav">
+            <h2>Contents</h2>
+            <ul>
+              <li><a href="#intro">Overview</a></li>
+              <li><a href="#the-science-of-sleep">The Science of Sleep</a></li>
+              <li><a href="#health-benefits">Health benefits of sleep</a></li>
+              <li><a href="#sleepingtime">How much sleep you need</a></li>
+              <li><a href="#tips-for-sleep">Tips for getting better sleep</a></li>
+              <li><a href="#references">References</a></li>
+              
+            </ul>
+          </nav>
+        </aside>
+
+        <article>
+             <h2>Sleep Health Guide</h2>
+          <section class="content-section" id="intro">
+            <h2>Overview</h2>
+            <img src="images/ct4_intro.png"
+                 alt="A person sleeping peacefully in a comfortable bedroom representing healthy sleep habits" >
+            <p>Sleep is not simply a time when your body shuts down. It is one of the most important biological processes that supports every aspect of your physical and mental health.The United Nations Sustainable Development Goal 3 calls for good health and well-being for all people and sleep is a foundational pillar of that vision.</p>
+            <p>Despite this, millions of people worldwide especially young adults and students are chronically sleep deprived. Busy schedules, screen time, stress, and poor habits mean that many of us are living on far less sleep than our bodies need. The consequences are serious, wide-ranging, and deeply connected to our daily quality of life.</p>
+          </section>
+
+          <section class="content-section" id="the-science-of-sleep">
+            <h2>The Science of Sleep</h2>
+            <img src="images/ct4_uhc.png"
+                 alt="how circadian rhythm and sleep pressure regulate the body's sleep cycle." >
+              <p>Sleep is regulated by two main biological systems: the circadian rhythm and sleep pressure (also known as homeostatic sleep drive). Understanding these systems can help you design a lifestyle that works with your body, not against it.</p>
+            <h3>Circadian Rhythm</h3>
+              <p>Your circadian rhythm is your body's internal 24-hour clock. It is primarily controlled by light exposure and regulates when you feel awake or sleepy. When you expose yourself to bright light in the morning, your brain suppresses melatonin (the sleep hormone) and signals wakefulness. As evening approaches and light dims, melatonin production rises, preparing your body for sleep.</p>
+              <p>Disrupting your circadian rhythm through late-night screen use, irregular sleep times, or shift work has serious consequences for both mental and physical health.</p>
+
+            <h3>Sleep Pressure</h3>
+              <p>The longer you are awake, the more a chemical called <strong>adenosine</strong> builds up in your brain. This build-up creates "sleep pressure" the feeling of tiredness that grows throughout the day. When you sleep, your brain clears adenosine, leaving you refreshed. Caffeine works by temporarily blocking adenosine receptors, which is why it keeps you awake but it does not clear the adenosine, so the tiredness returns once the caffeine wears off.</p>
+          </section>
+
+          <section class="content-section" id="health-benefits">
+            <h2>Health benefits of sleep</h2>
+            <img src="images/ct4_inequalities.jpg"
+                 alt="A tired young student with dark circles under the eyes struggling to stay awake at a desk" >
+            <p>Over time, consistently good sleep can strengthen your immune system, improve emotional resilience, and support long-term well-being.</p>
+            <ul>
+             <li>Boosts Energy and Alertness</li>
+             <li>Better Mood and Mental Health</li>
+             <li>Facilitates Muscle Repair and Recovery</li>
+             <li>Supports Heart Health</li>
+             <li>Promotes Blood Sugar Control</li>
+             <li>Enhances Cognitive Function</li>
+             <li>Bolsters the Immune System</li>
+             <li>Supports Stress Relief</li>
+             <li>Enables Athletic Performance</li>
+             <li>Aids in Healthy Weight Management</li>
+            </ul>
+            
+          
+          </section>
+
+          <section class="content-section" id="sleepingtime">
+            <h2>How much sleep you need</h2>
+            <img src="images/ct4_nhs.png"
+                 alt="the recommended hours of sleep per night according to health guidelines for different life stages" />
+            <p>Most adults need between seven and nine hours of sleep every night to feel alert and gain all the benefits of good sleep</p>
+            <p>Sleep needs vary by age, and babies, young children, and teenagers all need more sleep than adults There is also some individual variation, as some adults may need more or less than seven hours to feel at their best. </p>
+          </section>
+
+          <section class="content-section" id="tips-for-sleep">
+            <h2>Tips for getting better sleep</h2>
+            <img src="images/ct4_digital.png"
+                 alt="A person using a smartphone in a dark bedroom, with blue light illuminating their face" >
+            <p>To get better sleep, start by improving daily habits and nightly routines. Adjustments to your sleep hygiene can be an important step toward getting all the benefits of sleeping well.</p>
+            <ul>
+              <li>Create a Consistent Sleep Schedule</li>
+              <li>Nap Wisely</li>
+              <li>Create a Sleep-Friendly Bedroom</li>
+              <li>Avoid Caffeine, Nicotine, and Alcohol Before Bedtime</li>
+              <li>Exercise During the Day</li>
+              <li>Avoid Screens Before Bedtime</li>
+              <li>Use Sleep Tracking to Spot Patterns</li>            
+            </ul>
+           
+
+          </section>
+
+          
+          <section class="content-section" id="references">
+            <h2>Further Resources</h2>
+            <img src="images/ct4_resources.png"
+                 alt="Stack of health-related books and a board certified in Sleep medical education and research" >
+            <ul>
+              <li><strong>Kirsch, D. (2023, July 25). Stages and architecture of normal sleep. UpToDate.</strong>: <a href="https://www.uptodate.com/contents/stages-and-architecture-of-normal-sleep" target="_blank"  rel="noopener">nhs.uk/nhs-services</a></li>
+              <li><strong>Cirelli, C. (2024, May). Insufficient sleep: Definition, epidemiology, and adverse outcomes. In R. Benca & A. Eichler (Ed.). UpToDate.</strong>: <a href="https://www.uptodate.com/contents/insufficient-sleep-definition-epidemiology-and-adverse-outcomes" target="_blank" rel="noopener">msf.org.uk</a></li>
+              <li><strong>Blackwelder, A., Hoskins, M., & Huber, L. (2021). Effect of inadequate sleep on frequent mental distress. Preventing Chronic Disease, 18.</strong>: <a href="https://www.cdc.gov/pcd/issues/2021/20_0573.htm" target="_blank" rel="noopener">who.int/health-topics/uhc</a></li>
+              <li><strong>Patel, A. K., Reddy, V., Shumway, K. R., Araujo, J. F. (2024, January 26). Physiology, sleep stages. StatPearls.</strong>: <a href="https://www.ncbi.nlm.nih.gov/books/NBK526132/" target="_blank" rel="noopener">kingsfund.org.uk</a></li>
+              <li><strong>National Center for Chronic Disease Prevention and Health Promotion, Division for Heart Disease and Stroke Prevention. (2021, January 4). How does sleep affect your heart health? Centers for Disease Control and Prevention.</strong>: <a href="https://www.cdc.gov/heart-disease/about/sleep-and-heart-health.html" target="_blank" rel="noopener">kingsfund.org.uk</a></li>
+              <li><strong>Watson, A. M. (2017). Sleep and athletic performance. Current Sports Medicine Reports, 16(6), 413-418.</strong>: <a href="https://pubmed.ncbi.nlm.nih.gov/29135639/" target="_blank" rel="noopener">kingsfund.org.uk</a></li>
+              
+            </ul>
+            <p>Return to the <a href="home.html">Home Page</a> to explore the other SDG 3 topics our team has covered.</p>
+          </section>
+
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <a href="#top" id="go-top" aria-label="Go back to the top of the page" title="Back to top">↑</a>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h3>Student 4</h3>
+        <p style="font-size:0.85rem; color:rgba(255,255,255,0.7);">
+          S.Shanheeshan · 20241978/w2182082<br />
+          Web Design &amp; Development · 4COSC011C
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Editor &amp; Validation:</h4>
+		<ul>
+        <li><a href="pageEditor_ST4.html"> Page Editor</a></li>
+        <li><a href="validation_ST4.html"> Validation</a></li>
+		<ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 HLTHY Team</p>
+    </div>
+  </footer>
+</body>
+</html>

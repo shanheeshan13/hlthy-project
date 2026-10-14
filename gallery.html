@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <title>Gallery | HLTHY</title>
+
+  <!-- Linking common globle style.css -->
+  <link rel="stylesheet" href="style.css" >
+
+  <!--Embedded CSS Part-->
+  <style>
+    /* Gallery grid layout */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    /* Each thumbnail container */
+    .gallery-thumb {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 1;
+      background: var(--clr-neutral-200);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .gallery-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    /* Caption bar at bottom of each thumb */
+    .gallery-thumb-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      font-size: 0.82rem;
+      padding: 0.5rem 0.75rem;
+      transform: translateY(100%);
+      transition: transform 0.25s ease;
+    }
+
+    /* Modal overlay */
+    #gallery-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    #gallery-modal.open { display: flex; }
+
+    .modal-box {
+      background: var(--clr-white);
+      border-radius: var(--radius-lg);
+      max-width: 680px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.35);
+      position: relative;
+      animation: fadeIn 0.2s ease;
+    }
+    @keyframes fadeIn { from { opacity:0; transform:scale(0.96); } to { opacity:1; transform:scale(1); } }
+
+    #modal-img { width: 100%; max-height: 360px; object-fit: cover; }
+
+    .modal-content { padding: 1.25rem 1.5rem 1.5rem; }
+    .modal-content h2 { margin-bottom: 0.5rem; }
+    .modal-content p  { color: var(--clr-neutral-700); font-size: 0.92rem; }
+
+    /* Close button */
+    #modal-close {
+      position: absolute;
+      top: 0.75rem; right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: #fff;
+      cursor: pointer;
+      line-height: 1;
+      text-shadow: 0 0 4px rgba(0,0,0,0.5);
+      transition: transform 0.2s ease;
+    }
+    #modal-close:hover { transform: scale(1.15); }
+
+    /* User customisation controls inside the modal */
+    .modal-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      padding: 0.75rem 1.5rem;
+      border-top: 1px solid var(--clr-neutral-200);
+      align-items: center;
+    }
+    .modal-controls label { font-size: 0.82rem; font-weight: 600; color: var(--clr-neutral-700); }
+    .modal-controls select {
+      padding: 0.3rem 0.6rem;
+      border: 1px solid var(--clr-neutral-200);
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      cursor: pointer;
+    }
+
+    /* Placeholder colours for thumbnails without real images */
+    .gallery-thumb:nth-child(1) { background: #2E7D6E; }
+    .gallery-thumb:nth-child(2) { background: #F4A261; }
+    .gallery-thumb:nth-child(3) { background: #388E7C; }
+    .gallery-thumb:nth-child(4) { background: #1B5E50; }
+    .gallery-thumb:nth-child(5) { background: #4CAF96; }
+    .gallery-thumb:nth-child(6) { background: #E76F51; }
+  </style>
+</head>
+
+<body>
+  <!--Header part with navigation[common]-->
+  <header>
+    <div class="header-inner">
+      <a class="site-identity" href="home.html">
+        <img src="images/logo.png" alt="HLTHY website logo - Simple black line icon showing two hands supporting a heart symbol" >
+        <div>
+          <span class="site-title">HLTHY</span>
+          <span class="site-tagline">Good Health &amp; Well-being · SDG 3</span>
+        </div>
+      </a>
+    </div>
+	
+	  <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="home.html"               >Home</a></li>
+        <li><a href="gallery.html"  class="active">Gallery</a></li>
+        <li><a href="ais.html"                >Impact Simulator</a></li>
+        <li><a href="feedback.html"           >Feedback</a></li>
+        <li><a href="team.html"               >Team</a></li>
+        <li><a href="profile.html"            >User Profile</a></li>
+        <li><a href="sitemap.html"            >Sitemap</a></li>
+      </ul>
+	  </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <div class="container">
+      <h1 class="section-title">Health &amp; Well-being Gallery</h1>
+
+      <div class="gallery-grid" id="gallery-grid" role="list">
+
+        <div class="gallery-thumb" role="listitem" tabindex="0"
+             data-index="0"
+             aria-label="Open gallery item: Mindfulness in Nature">
+          <img src="images/gal_mindfulness.png"
+               alt="Person sitting cross-legged in a forest practising mindfulness meditation" >
+          <div class="gallery-thumb-caption">Mindfulness in Nature</div>
+        </div>
+
+        <div class="gallery-thumb" role="listitem" tabindex="0"
+             data-index="1"
+             aria-label="Open gallery item: Balanced Nutrition">
+          <img src="images/gal_nutrition.png"
+               alt="Colourful bowl of fresh fruit, vegetables, grains and protein for a balanced meal" >
+          <div class="gallery-thumb-caption">Balanced Nutrition</div>
+        </div>
+
+        <div class="gallery-thumb" role="listitem" tabindex="0"
+             data-index="2"
+             aria-label="Open gallery item: Community Fitness">
+          <img src="images/gal_fitness.png"
+               alt="Group of people of different ages exercising together in a community park" >
+          <div class="gallery-thumb-caption">Community Fitness</div>
+        </div>
+
+        <div class="gallery-thumb" role="listitem" tabindex="0"
+             data-index="3"
+             aria-label="Open gallery item: Clean Water Access">
+          <img src="images/gal_water.png"
+               alt="Child drinking clean water from a tap" >
+          <div class="gallery-thumb-caption">Clean Water Access</div>
+        </div>
+
+        <div class="gallery-thumb" role="listitem" tabindex="0"
+             data-index="4"
+             aria-label="Open gallery item: Vaccination Programmes">
+          <img src="images/gal_vaccine.png"
+               alt="Healthcare worker administering a vaccine to a child at a rural clinic" >
+          <div class="gallery-thumb-caption">Vaccination Programmes</div>
+        </div>
+
+        <div class="gallery-thumb" role="listitem" tabindex="0"
+             data-index="5"
+             aria-label="Open gallery item: Sleep &amp; Recovery">
+          <img src="images/gal_sleep.png"
+               alt="Peaceful bedroom with soft lighting promoting restful sleep and recovery" >
+          <div class="gallery-thumb-caption">Sleep &amp; Recovery</div>
+        </div>
+
+      </div><!-- /.gallery-grid -->
+    </div>
+  </main>
+
+  <div id="gallery-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+      <button id="modal-close" aria-label="Close gallery detail view">×</button>
+      <img id="modal-img" src="images/placeholder.png" alt="Expanded gallery image" >
+      <div class="modal-content">
+        <h2 id="modal-title"></h2>
+        <p id="modal-desc"></p>
+      </div>
+      <!-- User customisation controls-->
+      <div class="modal-controls">
+        <label for="modal-theme">Colour scheme:</label>
+        <select id="modal-theme">
+          <option value="default">Default</option>
+          <option value="warm">Warm</option>
+          <option value="cool">Cool</option>
+          <option value="high-contrast">High Contrast</option>
+        </select>
+
+        <label for="modal-font">Font style:</label>
+        <select id="modal-font">
+          <option value="sans">Sans-serif</option>
+          <option value="serif">Serif</option>
+          <option value="mono">Monospace</option>
+          <option value="large">Large text</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Student 1</h4>
+        <p style="font-size:0.85rem; color:rgba(255,255,255,0.7);">
+          Mohamed Anshaf · 20242133/w2181969<br >
+          Web Design &amp; Development · 4COSC011C
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Editor &amp; Validation:</h4>
+		<ul>
+        <li><a href="pageEditor_ST1.html"> Page Editor</a></li>
+        <li><a href="validation_ST1.html"> Validation</a></li>
+		</ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 HLTHY Team</p>
+    </div>
+  </footer>
+
+  <!--Java script-->
+  <script>
+    /* Gallery data*/
+    const galleryData = [
+      {
+        src:   'images/gal_mindfulness.png',
+        alt:   'Person sitting cross-legged in a forest practising mindfulness meditation',
+        title: 'Mindfulness in Nature',
+        desc:  'Practising mindfulness — even for 10 minutes a day — has been shown to reduce anxiety, improve focus, and lower stress hormones. Being in natural environments amplifies these benefits, making outdoor mindfulness a powerful, free tool for student well-being.'
+      },
+      {
+        src:   'images/gal_nutrition.png',
+        alt:   'Colourful bowl of fresh fruit, vegetables, grains and protein',
+        title: 'Balanced Nutrition',
+        desc:  'A balanced diet rich in vegetables, whole grains, and lean proteins supports immune function, mental clarity, and sustained energy. Small changes — like adding one more portion of vegetables per day — can make a measurable difference to long-term health.'
+      },
+      {
+        src:   'images/gal_fitness.png',
+        alt:   'Group of people exercising together in a community park',
+        title: 'Community Fitness',
+        desc:  'Physical activity is most sustainable when done socially. Community fitness groups reduce isolation, improve motivation, and create shared accountability. They also break down socioeconomic barriers — many parks and community events are free to join.'
+      },
+      {
+        src:   'images/gal_water.png',
+        alt:   'Child drinking clean water from a tap',
+        title: 'Clean Water Access',
+        desc:  'Access to clean water is fundamental to health. Globally, 2 billion people still lack safely managed drinking water. Understanding and advocating for water access — locally and globally — is a meaningful act of health citizenship.'
+      },
+      {
+        src:   'images/gal_vaccine.png',
+        alt:   'Healthcare worker administering a vaccine at a rural clinic',
+        title: 'Vaccination Programmes',
+        desc:  'Vaccines are one of the most cost-effective health interventions ever created. They protect individuals and communities through herd immunity. Supporting vaccination programmes — by getting vaccinated and sharing accurate information — saves lives.'
+      },
+      {
+        src:   'images/gal_sleep.png',
+        alt:   'Peaceful bedroom with soft lighting',
+        title: 'Sleep & Recovery',
+        desc:  'Sleep is when the body repairs itself — from the immune system to memory consolidation. Students who get 7–9 hours of sleep perform better academically and are less prone to anxiety. Simple habits like consistent bedtimes and reducing screen time before sleep make a big difference.'
+      }
+    ];
+
+    /* ── DOM references ────────────────────────────────────── */
+    const modal      = document.getElementById('gallery-modal');
+    const modalImg   = document.getElementById('modal-img');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDesc  = document.getElementById('modal-desc');
+    const modalClose = document.getElementById('modal-close');
+    const themeSelect= document.getElementById('modal-theme');
+    const fontSelect = document.getElementById('modal-font');
+    const thumbs     = document.querySelectorAll('.gallery-thumb');
+
+    /* ── Hover: show caption via JS event listeners ────────── */
+    thumbs.forEach(thumb => {
+      const caption = thumb.querySelector('.gallery-thumb-caption');
+
+      thumb.addEventListener('mouseenter', () => {
+        // JS controls the visual indication that thumb is interactive
+        caption.style.transform = 'translateY(0)';
+        thumb.style.outline = '3px solid var(--clr-secondary)';
+      });
+
+      thumb.addEventListener('mouseleave', () => {
+        caption.style.transform = 'translateY(100%)';
+        thumb.style.outline = 'none';
+      });
+
+      /* Click: populate and open modal */
+      thumb.addEventListener('click', () => openModal(parseInt(thumb.dataset.index)));
+
+      /* Keyboard accessibility: Enter or Space opens modal */
+      thumb.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openModal(parseInt(thumb.dataset.index));
+        }
+      });
+    });
+
+    /* ── Open modal with correct data */
+    function openModal(index) {
+      const item = galleryData[index];
+      modalImg.src        = item.src;
+      modalImg.alt        = item.alt;
+      modalTitle.textContent = item.title;
+      modalDesc.textContent  = item.desc;
+
+      // Reset customisations when opening a new item
+      themeSelect.value = 'default';
+      fontSelect.value  = 'sans';
+      applyTheme('default');
+      applyFont('sans');
+
+      modal.classList.add('open');
+      modal.focus();
+    }
+
+    /* Close modal */
+    function closeModal() {
+      modal.classList.remove('open');
+    }
+
+    modalClose.addEventListener('click', closeModal);
+
+    // Click outside the modal box to close
+    modal.addEventListener('click', e => {
+      if (e.target === modal) closeModal();
+    });
+
+    // Escape key closes modal
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    /*  User customisation: colour scheme  */
+    themeSelect.addEventListener('change', () => applyTheme(themeSelect.value));
+
+    function applyTheme(theme) {
+      const box = document.querySelector('.modal-box');
+      // Remove all theme classes
+      box.classList.remove('theme-warm', 'theme-cool', 'theme-hc');
+
+      const content = document.querySelector('.modal-content');
+      // Apply chosen theme
+      switch (theme) {
+        case 'warm':
+          content.style.background  = '#FFF3E0';
+          content.style.color       = '#4E2800';
+          break;
+        case 'cool':
+          content.style.background  = '#E3F2FD';
+          content.style.color       = '#0D2B4E';
+          break;
+        case 'high-contrast':
+          content.style.background  = '#000000';
+          content.style.color       = '#FFFFFF';
+          break;
+        default:
+          content.style.background  = '';
+          content.style.color       = '';
+      }
+    }
+
+    /*  User customisation: font style  */
+    fontSelect.addEventListener('change', () => applyFont(fontSelect.value));
+
+    function applyFont(font) {
+      const content = document.querySelector('.modal-content');
+      switch (font) {
+        case 'serif':   content.style.fontFamily = 'Georgia, serif'; content.style.fontSize = ''; break;
+        case 'mono':    content.style.fontFamily = 'Courier New, monospace'; content.style.fontSize = ''; break;
+        case 'large':   content.style.fontFamily = ''; content.style.fontSize = '1.1rem'; break;
+        default:        content.style.fontFamily = ''; content.style.fontSize = ''; break;
+      }
+    }
+  </script>
+
+</body>
+</html>

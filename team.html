@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <title>Our Team | HLTHY</title>
+
+  <!-- Linking common globle style.css -->
+  <link rel="stylesheet" href="style.css" >
+
+  <!--Embedded CSS Part-->
+  <style>
+    /* Team page specific styles */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin: 2.5rem 0;
+    }
+
+    /* Each team member block — must be keyboard accessible */
+    .member-block {
+      position: relative;
+      cursor: pointer;
+      border-radius: var(--radius-md);
+      outline: none;
+    }
+
+    /* Focus style for keyboard navigation */
+    .member-block:focus {
+      box-shadow: 0 0 0 3px var(--clr-secondary);
+    }
+
+    /* Thumbnail image */
+    .member-thumb {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      display: block;
+      transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    /* Hover effects on thumbnail (CSS-driven) */
+    .member-block:hover .member-thumb,
+    .member-block:focus .member-thumb {
+      opacity: 0.88;
+      transform: scale(1.02);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    }
+
+    /* Name label below image */
+    .member-name {
+      text-align: center;
+      margin-top: 0.6rem;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--clr-primary-dark);
+    }
+    .member-role {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--clr-neutral-700);
+    }
+
+    /* Expandable details panel — revealed on hover/focus */
+    .member-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+      background: var(--clr-white);
+      border: 1px solid var(--clr-neutral-200);
+      border-radius: var(--radius-md);
+      margin-top: 0.5rem;
+    }
+
+    /* Expand panel on hover or focus */
+    .member-block:hover .member-details,
+    .member-block:focus .member-details {
+      max-height: 300px;
+      opacity: 1;
+      padding: 1rem;
+    }
+
+    .member-details h3 { font-size: 0.95rem; margin-bottom: 0.3rem; }
+    .member-details p  { font-size: 0.82rem; color: var(--clr-neutral-700); margin: 0; }
+
+    .member-details ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.4rem 0 0;
+    }
+    .member-details ul li {
+      font-size: 0.82rem;
+      color: var(--clr-neutral-700);
+      padding: 0.15rem 0 0.15rem 1.2rem;
+      position: relative;
+    }
+    .member-details ul li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--clr-primary);
+    }
+  </style>
+</head>
+
+<body>
+  <!--Header part with navigation[common]-->
+  <header>
+    <div class="header-inner">
+      <a class="site-identity" href="home.html">
+        <img src="images/logo.png" alt="HLTHY website logo - Simple black line icon showing two hands supporting a heart symbol" >
+        <div>
+          <span class="site-title">HLTHY</span>
+          <span class="site-tagline">Good Health &amp; Well-being · SDG 3</span>
+        </div>
+      </a>
+    </div>
+	
+	  <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="home.html"               >Home</a></li>
+        <li><a href="gallery.html"            >Gallery</a></li>
+        <li><a href="ais.html"                >Impact Simulator</a></li>
+        <li><a href="feedback.html"           >Feedback</a></li>
+        <li><a href="team.html"    class="active">Team</a></li>
+        <li><a href="profile.html"            >User Profile</a></li>
+        <li><a href="sitemap.html"            >Sitemap</a></li>
+      </ul>
+	  </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1 class="section-title">Meet Our Team</h1>
+      <p class="section-subtitle">Hover over (or focus) a team member to learn about their role and contributions.</p>
+
+      <div class="team-grid">
+
+        <!-- Member 1 — tabindex="0" for keyboard accessibility -->
+        <div class="member-block" tabindex="0" role="button" aria-label="Team member 1 — hover for details">
+          <img class="member-thumb"
+               src="images/team_st1.jpeg"
+               alt="Photo of Student One, role: Template and Home Page developer" >
+          <p class="member-name">Student One</p>
+          <p class="member-role">Template, Home &amp; Gallary Lead</p>
+          <div class="member-details">
+            <h2>Student One</h2>
+            <p><strong>Role:</strong> Student 1 — Template, Home &amp; Gallary Lead</p>
+            <p style="margin-top:0.4rem;"><strong>Pages implemented:</strong></p>
+            <ul>
+              <li>Shared HTML template &amp; Global CSS</li>
+              <li>Navigation bar</li>
+              <li>Home Page</li>
+              <li>Gallery Page</li>
+              <li>Content Page (ST1)</li>
+            </ul>
+            <p style="margin-top:0.5rem;">Responsible for establishing the visual identity and technical foundation of the entire website.</p>
+          </div>
+        </div>
+
+        <!-- Member 2 -->
+        <div class="member-block" tabindex="0" role="button" aria-label="Team member 2 — hover for details">
+          <img class="member-thumb"
+               src="images/team_st2.jpeg"
+               alt="Photo of Student Two, role: Splash Screen and Impact Simulator developer" >
+          <p class="member-name">Student Two</p>
+          <p class="member-role">Interaction &amp; Simulation</p>
+          <div class="member-details">
+            <h2>Student Two</h2>
+            <p><strong>Role:</strong> Student 2 — Splash &amp; AIS Lead</p>
+            <p style="margin-top:0.4rem;"><strong>Pages implemented:</strong></p>
+            <ul>
+              <li>Splash Screen</li>
+              <li>Action Impact Simulator (AIS)</li>
+              <li>Content Page (ST2)</li>
+            </ul>
+            <p style="margin-top:0.5rem;">Focused on user engagement through animated transitions and JavaScript-driven impact tracking.</p>
+          </div>
+        </div>
+
+        <!-- Member 3 -->
+        <div class="member-block" tabindex="0" role="button" aria-label="Team member 3 — hover for details">
+          <img class="member-thumb"
+               src="images/team_st3.jpeg"
+               alt="Photo of Student Three, role: Feedback, Programme Directory and Team Page developer" >
+          <p class="member-name">Student Three</p>
+          <p class="member-role">Community &amp; Feedback</p>
+          <div class="member-details">
+            <h2>Student Three</h2>
+            <p><strong>Role:</strong> Student 3 — Feedback &amp; Team Lead</p>
+            <p style="margin-top:0.4rem;"><strong>Pages implemented:</strong></p>
+            <ul>
+              <li>Feedback &amp; Programme Directory</li>
+              <li>Team Page</li>
+              <li>Content Page (ST3)</li>
+            </ul>
+            <p style="margin-top:0.5rem;">Designed the community-facing components of the site, including the validated feedback form and programme listings.</p>
+          </div>
+        </div>
+
+        <!-- Member 4 -->
+        <div class="member-block" tabindex="0" role="button" aria-label="Team member 4 — hover for details">
+          <img class="member-thumb"
+               src="images/team_st4.jpeg"
+               alt="Photo of Student Four, role: User Profile and Sitemap developer" >
+          <p class="member-name">Student Four</p>
+          <p class="member-role">Profile &amp; Navigation</p>
+          <div class="member-details">
+            <h2>Student Four</h2>
+            <p><strong>Role:</strong> Student 4 — Profile &amp; Sitemap Lead</p>
+            <p style="margin-top:0.4rem;"><strong>Pages implemented:</strong></p>
+            <ul>
+              <li>User Profile (JS prompts)</li>
+              <li>SVG Sitemap</li>
+              <li>Content Page (ST4)</li>
+            </ul>
+            <p style="margin-top:0.5rem;">Built the progressive profile-building experience and the interactive SVG sitemap that maps the full site structure.</p>
+          </div>
+        </div>
+
+      </div><!-- /.team-grid -->
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Student 3</h4>
+        <p style="font-size:0.85rem; color:rgba(255,255,255,0.7);">
+          M.Thrishan · 20242186/w2181970<br />
+          Web Design &amp; Development · 4COSC011C
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Editor &amp; Validation:</h4>
+		<ul>
+        <li><a href="pageEditor_ST3.html"> Page Editor</a></li>
+        <li><a href="validation_ST3.html"> Validation</a></li>
+		</ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 HLTHY Team</p>
+    </div>
+  </footer>
+
+</body>
+</html>

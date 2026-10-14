@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>M.Thrishan | Page Editor</title>
+
+  <!-- Shared team CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!--
+    PAGE-SPECIFIC EMBEDDED CSS for pageEditor_ST3.html
+    Does not override shared style.css.
+    Contains more than 5 CSS rules as required by the brief.
+  -->
+  <style>
+
+    /* Rule 1: Table of contents box */
+    .toc {
+      background: var(--clr-white);
+      border: 1px solid var(--clr-neutral-200);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Rule 2: TOC label heading */
+    .toc h2 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--clr-neutral-700);
+      margin-bottom: 0.75rem;
+    }
+
+    /* Rule 3: TOC anchor links */
+    .toc a { color: var(--clr-primary); font-size: 0.92rem; }
+
+    /* Rule 4: Page editor section scroll offset */
+    .pe-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 100px;
+    }
+
+    /* Rule 5: Section heading with left border accent */
+    .pe-section h2 {
+      font-size: 1.3rem;
+      border-left: 4px solid var(--clr-primary);
+      padding-left: 0.75rem;
+      margin-bottom: 1rem;
+      color: var(--clr-primary-dark);
+    }
+
+    /* Rule 6: Sub-headings */
+    .pe-section h3 {
+      font-size: 1.05rem;
+      margin: 1.2rem 0 0.5rem;
+      color: var(--clr-primary-dark);
+    }
+
+    /* Rule 7: Body text sizing for sections */
+    .pe-section p, .pe-section li { font-size: 0.93rem; }
+
+    /* Rule 8: Green page-link button */
+    .page-link {
+      display: inline-block;
+      background: var(--clr-primary);
+      color: #fff;
+      padding: 0.4rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      margin: 0.25rem 0.25rem 1rem 0;
+      transition: background 0.2s;
+    }
+    .page-link:hover { background: var(--clr-primary-dark); color: #fff; text-decoration: none; }
+
+    /* Rule 9: Darker variant for validation links */
+    .page-link.val { background: #5A7A67; }
+    .page-link.val:hover { background: #3D5C4A; }
+
+    /* Rule 10: Meeting log table */
+    .meeting-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-top: 0.75rem;
+    }
+    .meeting-table th {
+      background: var(--clr-primary-dark);
+      color: #fff;
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-weight: 600;
+    }
+    .meeting-table td {
+      padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid var(--clr-neutral-200);
+      vertical-align: top;
+    }
+    .meeting-table tr:nth-child(even) td { background: var(--clr-neutral-100); }
+
+    /* Rule 11: References numbered list */
+    .ref-list { list-style: decimal; padding-left: 1.4rem; }
+    .ref-list li { font-size: 0.88rem; margin-bottom: 0.5rem; }
+
+    /* Rule 12: Student info card */
+    .student-card {
+      background: var(--clr-white);
+      border: 1px solid var(--clr-neutral-200);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin-bottom: 2rem;
+      font-size: 0.93rem;
+    }
+    .student-card p { margin-bottom: 0.4rem; }
+
+    /* Rule 13: Fixed Go to Top button */
+    #go-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 1.5rem;
+      background-color: var(--clr-primary);
+      color: #fff;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      z-index: 100;
+    }
+    #go-top:hover { background-color: var(--clr-primary-dark); color: #fff; text-decoration: none; }
+
+  </style>
+</head>
+
+<body>
+
+  <span id="top"></span>
+
+  <!-- ================================================
+       HEADER — shared team template (do not modify)
+  ================================================ -->
+  <!--Header part with navigation[common]-->
+  <header>
+    <div class="header-inner">
+      <a class="site-identity" href="home.html">
+        <img src="images/logo.png" alt="HLTHY website logo - Simple black line icon showing two hands supporting a heart symbol" />
+        <div>
+          <span class="site-title">HLTHY</span>
+          <span class="site-tagline">Good Health &amp; Well-being · SDG 3</span>
+        </div>
+      </a>
+    </div>
+	
+	  <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="home.html"               >Home</a></li>
+        <li><a href="gallery.html"            >Gallery</a></li>
+        <li><a href="ais.html"                >Impact Simulator</a></li>
+        <li><a href="feedback.html"           >Feedback</a></li>
+        <li><a href="team.html"               >Team</a></li>
+        <li><a href="profile.html"            >User Profile</a></li>
+        <li><a href="sitemap.html"            >Sitemap</a></li>
+      </ul>
+	  </nav>
+  </header>
+
+  <!-- ================================================
+       MAIN CONTENT
+  ================================================ -->
+  <main>
+    <div class="container">
+
+      <h1 class="section-title">Page Editor — Student 3</h1>
+      <p class="section-subtitle">HLTHY Website · Good Health &amp; Well-being (SDG 3) · Web Design &amp; Development 4COSC011W · 2025/26</p>
+
+      <!-- Student info card -->
+      <div class="student-card">
+        <p><strong>Student Name:</strong> Mohan Thrishan</p>
+        <p><strong>Student ID:</strong> 20242186 / w2181970</p>
+        <p><strong>Role:</strong> Student 3 — Feedback &amp; Programme Directory and Team Page Lead</p>
+        <p><strong>Pages implemented:</strong> Feedback &amp; Programme Directory (feedback.html), Team Page (team.html), Content Page — Nutrition &amp; Healthy Eating (content_ST3.html)</p>
+      </div>
+
+      <!-- Table of Contents -->
+      <div class="toc">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#feedback">Feedback &amp; Programme Directory</a></li>
+          <li><a href="#team">Team Page</a></li>
+          <li><a href="#content-page">Content Page — Nutrition &amp; Healthy Eating</a></li>
+          <li><a href="#challenges">Challenges &amp; Lessons Learned</a></li>
+          <li><a href="#accessibility">Accessibility Considerations</a></li>
+          <li><a href="#janet">JANET Compliance</a></li>
+          <li><a href="#meetings">Group Meetings Log</a></li>
+          <li><a href="#references">References</a></li>
+        </ol>
+      </div>
+
+      <!-- ── Section 1: Feedback Page ── -->
+      <section class="pe-section" id="feedback">
+        <h2>1. Feedback &amp; Programme Directory</h2>
+        <a href="feedback.html" class="page-link" target="_blank">↗ View Feedback Page</a>
+        <a href="validation_ST3.html#val-feedback" class="page-link val" target="_blank">✅ Validation Evidence</a>
+
+        <h3>HTML Structure</h3>
+        <p>The feedback page (<code>feedback.html</code>) is divided into three distinct sections within <code>&lt;main&gt;</code>:</p>
+        <ul>
+          <li><strong>Programme Directory:</strong> A <code>&lt;div class="programmes-scroll"&gt;</code> with <code>max-height</code> and <code>overflow-y: auto</code> creates the scrollable region. Four <code>.prog-card</code> elements use a horizontal Flexbox layout — image on the left, text on the right — for an efficient use of space. Cards represent nutrition-focused initiatives including a campus cook-along, community food bank, healthy eating awareness campaign, and a batch cook workshop.</li>
+          <li><strong>Ratings &amp; Reviews:</strong> A summary strip and three review cards arranged in a CSS Grid. The numeric rating is displayed using large font sizing within a coloured banner strip for visual impact.</li>
+          <li><strong>Feedback Form:</strong> Two <code>&lt;fieldset&gt;</code> elements with <code>&lt;legend&gt;</code> group the form fields semantically. Field types include <code>text</code>, <code>email</code>, <code>tel</code>, <code>textarea</code>, <code>date</code>, <code>datetime-local</code>, <code>select</code>, and <code>datalist</code> — covering all required input types from the brief.</li>
+        </ul>
+
+        <h3>CSS Techniques</h3>
+        <ul>
+          <li>The scrollable section uses <code>overflow-y: auto; max-height: 520px</code> — a simple and effective approach that keeps the section contained without affecting the rest of the page layout.</li>
+          <li>Custom scrollbar styling with <code>::-webkit-scrollbar</code> applies the brand colour to the scrollbar thumb for visual consistency with the site palette.</li>
+          <li>Form focus states use <code>border-color + box-shadow</code> on <code>:focus</code> to provide a clear visual indication of the active field, benefiting both sighted and keyboard users.</li>
+        </ul>
+
+        <h3>JavaScript Implementation</h3>
+        <ul>
+          <li><strong>Live character counter:</strong> An <code>input</code> event listener on the <code>#message</code> textarea calculates remaining characters from <code>maxlength - value.length</code> and updates the counter text. The counter turns red below 50 characters remaining.</li>
+          <li><strong>Form validation:</strong> The <code>submit</code> event listener uses a reusable <code>validate(inputId, errorId, condition)</code> helper function that adds/removes error classes based on JavaScript conditions — supplementing (not replacing) HTML5 native validation. Custom messages appear near each invalid field.</li>
+          <li><strong>Submission confirmation:</strong> On successful validation, the form element is hidden (<code>style.display = 'none'</code>) and the confirmation message is revealed, providing clear feedback without a page reload.</li>
+        </ul>
+      </section>
+
+      <!-- ── Section 2: Team Page ── -->
+      <section class="pe-section" id="team">
+        <h2>2. Team Page</h2>
+        <a href="team.html" class="page-link" target="_blank">↗ View Team Page</a>
+        <a href="validation_ST3.html#val-team" class="page-link val" target="_blank">✅ Validation Evidence</a>
+
+        <h3>HTML Structure</h3>
+        <p>The team page (<code>team.html</code>) uses a four-column CSS Grid (<code>repeat(auto-fit, minmax(220px, 1fr))</code>) for the team member blocks. Each <code>.member-block</code> element uses <code>tabindex="0"</code> and <code>role="button"</code> for keyboard accessibility. The expandable <code>.member-details</code> panel sits below the thumbnail within the same block and is hidden by default using <code>max-height: 0; overflow: hidden; opacity: 0</code>.</p>
+
+        <h3>CSS Techniques</h3>
+        <ul>
+          <li><strong>Hover-expand pattern:</strong> <code>.member-block:hover .member-details</code> and <code>.member-block:focus .member-details</code> apply <code>max-height: 300px; opacity: 1; padding: 1rem</code> — animating via <code>transition</code> on these properties creates a smooth expand/collapse without JavaScript.</li>
+          <li><strong>Thumbnail hover effects:</strong> <code>opacity</code>, <code>transform: scale()</code>, and <code>box-shadow</code> transitions on <code>.member-thumb</code> provide clear visual feedback that the element is interactive.</li>
+          <li><strong>Focus styling:</strong> <code>.member-block:focus</code> applies a visible box-shadow outline using the secondary colour, ensuring keyboard users can clearly see which element is active.</li>
+        </ul>
+      </section>
+
+      <!-- ── Section 3: Content Page ── -->
+      <section class="pe-section" id="content-page">
+        <h2>3. Content Page — Nutrition &amp; Healthy Eating</h2>
+        <a href="content_ST3.html" class="page-link" target="_blank">↗ View Content Page</a>
+        <a href="validation_ST3.html#val-content" class="page-link val" target="_blank">✅ Validation Evidence</a>
+
+        <h3>HTML Structure &amp; Design Choices</h3>
+        <p>The content page covers nutrition and healthy eating in the context of SDG 3. It uses a two-column layout — a sticky internal navigation sidebar on the left and the main article content on the right — consistent with the rest of the website. A <code>.stat-row</code> grid of four colour-coded statistic boxes near the top presents key nutritional health facts visually, improving scannability and breaking up long prose sections.</p>
+        <p>The page is divided into six clearly labelled sections using semantic heading hierarchy: Introduction, Why Nutrition Matters, The Balanced Plate, Barriers to Healthy Eating, Actions You Can Take, and Further Resources. Each section has a unique <code>id</code> attribute linked to by the sticky side navigation using anchor links (<code>href="#section-id"</code>).</p>
+        <p>Four relevant images are included throughout, each with descriptive <code>alt</code> text. A fixed "Go to Top" button using <code>position: fixed</code> ensures the page remains accessible on longer scrolls.</p>
+
+        <h3>CSS Techniques</h3>
+        <ul>
+          <li><strong>Two-column sticky layout:</strong> CSS Grid (<code>grid-template-columns: 220px 1fr</code>) positions the sidebar alongside the content. The sidebar uses <code>position: sticky; top: 90px</code> so it remains visible as the user scrolls through long sections.</li>
+          <li><strong>Statistic boxes:</strong> The <code>.stat-row</code> uses <code>display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))</code> with each box styled using the brand colour palette and a bold numeric display for visual emphasis.</li>
+          <li><strong>Image styling:</strong> All images use <code>border-radius</code>, a subtle <code>border</code>, and <code>max-height: 320px; object-fit: cover</code> to ensure they are responsive and visually consistent across screen sizes.</li>
+          <li><strong>Go to Top button:</strong> Implemented using <code>position: fixed; bottom: 2rem; right: 1.5rem</code> with CSS only — no JavaScript required, keeping the implementation simple and robust.</li>
+        </ul>
+
+        <h3>Content Approach</h3>
+        <p>All written content is original and student-focused. Rather than reproducing NHS or UN SDG text, the page addresses practical topics relevant to university students — eating on a budget, understanding the balanced plate, and common barriers like time and cooking confidence — directly connecting everyday choices to SDG 3 outcomes.</p>
+      </section>
+
+      <!-- ── Section 4: Challenges ── -->
+      <section class="pe-section" id="challenges">
+        <h2>4. Challenges &amp; Lessons Learned</h2>
+        <p><strong>Challenge 1 — Form validation UX:</strong> The initial form validation showed all error messages at once even if the user had only touched one field, which was confusing. The solution was to validate all fields only on submit, while also adding a <code>blur</code> event listener to each required field so individual errors appear as users leave a field they have not filled correctly.</p>
+        <p><strong>Challenge 2 — Scrollable section height:</strong> Setting <code>max-height</code> on the programme directory required careful calibration — too small felt cramped, too large made the scrolling feel unnecessary. After testing with multiple content lengths I settled on 520px, which shows approximately two cards and hints at the scrollable content below.</p>
+        <p><strong>Challenge 3 — Writing original nutrition content:</strong> Writing genuinely student-focused content without reproducing NHS or UN SDG material took more care than expected. Writing from personal experience as a student helped keep the tone authentic and practical.</p>
+        <p><strong>Lesson learned:</strong> CSS hover-based expand/collapse (used on the team page) is simpler and more accessible than JavaScript show/hide for this type of interaction — but requires careful use of <code>:focus</code> states to also work for keyboard users.</p>
+      </section>
+
+      <!-- ── Section 5: Accessibility ── -->
+      <section class="pe-section" id="accessibility">
+        <h2>5. Accessibility Considerations</h2>
+        <ul>
+          <li><strong>Form labels:</strong> Every form field has an explicit <code>&lt;label for="..."&gt;</code> pointing to the field's <code>id</code> — not just placeholder text, which disappears on input and is not readable by screen readers.</li>
+          <li><strong>Fieldset and legend:</strong> Form fields are grouped into logical sections using <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code>, which screen readers announce as group context before reading individual fields.</li>
+          <li><strong>Error messages:</strong> Validation error messages are positioned immediately after the relevant field so screen readers announce them in context.</li>
+          <li><strong>Team page keyboard access:</strong> Each team member block has <code>tabindex="0"</code> and responds to both <code>:hover</code> and <code>:focus</code> CSS states, ensuring hover effects also work for keyboard users without any JavaScript.</li>
+          <li><strong>Alt text:</strong> All images across all three pages include descriptive alt text that explains the image content meaningfully rather than using generic labels such as "image".</li>
+          <li><strong>Scrollable region:</strong> The programme directory scroll container does not trap keyboard focus — users can tab out of it normally.</li>
+          <li><strong>Semantic HTML:</strong> Pages use <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, and <code>&lt;footer&gt;</code> to provide a clear document structure for assistive technologies.</li>
+        </ul>
+      </section>
+
+      <!-- ── Section 6: JANET Compliance ── -->
+      <section class="pe-section" id="janet">
+        <h2>6. JANET Compliance</h2>
+        <ul>
+          <li>All content is original and written by Student 3; no programme descriptions, review text, or nutrition content is copied from external sources.</li>
+          <li>Programme cards reference real types of nutrition initiatives (campus cook-alongs, food bank volunteering, campus awareness campaigns, meal prep workshops) but do not impersonate specific real-world organisations or reproduce their copyrighted materials.</li>
+          <li>The feedback form is a UI demonstration only — no data is submitted to any server, and no personal data is stored or transmitted.</li>
+          <li>Review card content is fictional and created for demonstration purposes within a clearly labelled student coursework project.</li>
+          <li>All external images are royalty-free and referenced in the References section below.</li>
+          <li>External links open in a new tab with <code>rel="noopener"</code> to prevent tab-napping security vulnerabilities.</li>
+        </ul>
+      </section>
+
+      <!-- ── Section 7: Meetings Log ── -->
+      <section class="pe-section" id="meetings">
+        <h2>7. Group Meetings Log</h2>
+        <table class="meeting-table">
+          <thead>
+            <tr>
+              <th>#</th><th>Date &amp; Time</th><th>Format</th><th>Objective</th><th>Attended</th><th>My Individual Contribution</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td><td>20 Feb 2026, 14:00</td><td>Face-to-face</td><td>Choose SDG, assign roles</td><td>Yes</td>
+              <td>Agreed to take the Feedback and Team pages..</td>
+            </tr>
+            <tr>
+              <td>2</td><td>23 Feb 2026, 15:00</td><td>Online (Teams)</td><td>Agree visual design and layout</td><td>Yes</td>
+              <td>Reviewed wireframes and agreed on the card-based layout for the programme directory. Raised the question of how form validation would be handled across the site.</td>
+            </tr>
+            <tr>
+              <td>3</td><td>29 Feb 2026, 14:00</td><td>Face-to-face</td><td>Receive shared template &amp; CSS</td><td>Yes</td>
+              <td>Received the global CSS and template from Student 1. Began planning the feedback form field structure based on the brief requirements.</td>
+            </tr>
+            <tr>
+              <td>4</td><td>13 Mar 2026, 15:30</td><td>Online (Teams)</td><td>Progress check</td><td>Yes</td>
+              <td>Demonstrated the scrollable programme cards and the partially complete feedback form. Discussed the JavaScript validation approach with the group.</td>
+            </tr>
+            <tr>
+              <td>5</td><td>20 Mar 2026, 14:00</td><td>Face-to-face</td><td>Peer review and cross-page testing</td><td>Yes</td>
+              <td>Tested the feedback form. Making adjustments on errors after the meeting.</td>
+            </tr>
+            <tr>
+              <td>6</td><td>29 Mar 2026, 16:00</td><td>Online (Teams)</td><td>Final review and submission prep</td><td>Yes</td>
+              <td>Verified all navigation links work correctly from my pages. Completed alt text for team page images and ran W3C validation on all my pages.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ── Section 8: References ── -->
+      <section class="pe-section" id="references">
+        <h2>8. References</h2>
+        <ul class="ref-list">
+          <li>Economou, D. (2026) <em>4COSC011W Web Design and Development — Lecture Notes</em>. University of Westminster. [Accessed via Blackboard, February–March 2026].</li>
+          <li>MDN Web Docs (2024) <em>HTML Forms</em>. Mozilla. Available at: <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms" target="_blank" rel="noopener">developer.mozilla.org</a> [Accessed: March 2026].</li>
+          <li>MDN Web Docs (2024) <em>CSS Transitions</em>. Mozilla. Available at: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transitions" target="_blank" rel="noopener">developer.mozilla.org</a> [Accessed: February 2026].</li>
+          <li>NHS (2024) <em>The Eatwell Guide</em>. Available at: <a href="https://www.nhs.uk/live-well/eat-well/food-guidelines-and-food-labels/the-eatwell-guide/" target="_blank" rel="noopener">nhs.uk</a> [Accessed: February 2026].</li>
+          <li>British Nutrition Foundation (2024) <em>Healthy Eating for Students</em>. Available at: <a href="https://www.nutrition.org.uk" target="_blank" rel="noopener">nutrition.org.uk</a> [Accessed: February 2026].</li>
+          <li>World Health Organization (2024) <em>Healthy Diet</em>. Available at: <a href="https://www.who.int/news-room/fact-sheets/detail/healthy-diet" target="_blank" rel="noopener">who.int</a> [Accessed: March 2026].</li>
+          <li>iStockPhoto (2026) <em>Royalty-free images used on feedback.html, team.html, content_ST3.html</em>. Available at: <a href="https://www.istockphoto.com" target="_blank" rel="noopener">istockphoto.com</a> [Accessed: February–March 2026].</li>
+        </ul>
+      </section>
+
+    </div><!-- end .container -->
+  </main>
+
+  <a href="#top" id="go-top" aria-label="Go back to the top of the page" title="Back to top">&#8593;</a>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Student 3</h4>
+        <p style="font-size:0.85rem; color:rgba(255,255,255,0.7);">
+          M.Thrishan · 20242186/w2181970<br />
+          Web Design &amp; Development · 4COSC011C
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Editor &amp; Validation:</h4>
+        <li><a href="home.html">Back to Website</a></li>
+        <li><a href="validation_ST3.html"> Validation</a></li>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 HLTHY Team</p>
+    </div>
+  </footer>
+
+</body>
+</html>

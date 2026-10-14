@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <title>Validation Page — Student 2 | HLTHY</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --c-primary: #2E7D6E; --c-dark: #1B5E50; --c-bg: #F8F9FA; --c-white: #fff; --c-text: #212529; --c-muted: #6C757D; --c-border: #DEE2E6; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--c-bg); color: var(--c-text); line-height: 1.7; }
+    .val-header { background: var(--c-dark); color: #fff; padding: 1.5rem 2rem; }
+    .val-header h1 { font-size: 1.6rem; margin-bottom: 0.2rem; }
+    .val-header p  { font-size: 0.9rem; opacity: 0.8; }
+    .val-wrap { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+    .toc { background: var(--c-white); border: 1px solid var(--c-border); border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem; }
+    .toc h2 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--c-muted); margin-bottom: 0.75rem; }
+    .toc ol { padding-left: 1.4rem; } .toc ol li { margin-bottom: 0.3rem; } .toc a { color: var(--c-primary); font-size: 0.9rem; }
+    .val-section { margin-bottom: 3rem; scroll-margin-top: 80px; border: 1px solid var(--c-border); border-radius: 10px; overflow: hidden; }
+    .val-section-head { background: var(--c-dark); color: #fff; padding: 0.9rem 1.25rem; display: flex; justify-content: space-between; align-items: center; }
+    .val-section-head h2 { font-size: 1.1rem; margin: 0; }
+    .status-badge { font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 20px; white-space: nowrap; }
+    .status-pass { background: #C8E6C9; color: #1B5E20; }
+    .val-section-body { padding: 1.25rem 1.5rem; background: var(--c-white); }
+    .val-section-body p { font-size: 0.92rem; margin-bottom: 0.75rem; }
+    .val-section-body ul { padding-left: 1.3rem; font-size: 0.9rem; margin-bottom: 0.75rem; }
+    .val-section-body li { margin-bottom: 0.3rem; }
+    .screenshot-box { border: 2px dashed var(--c-border); border-radius: 8px; padding: 2rem; text-align: center; color: var(--c-muted); font-size: 0.88rem; margin: 1rem 0; background: #FAFAFA; }
+    .screenshot-box strong { display: block; font-size: 1rem; margin-bottom: 0.4rem; color: var(--c-text); }
+    .screenshot-box img { max-width: 100%; border-radius: 6px; }
+    .page-link { display: inline-block; background: var(--c-primary); color: #fff; padding: 0.35rem 0.9rem; border-radius: 6px; font-size: 0.83rem; font-weight: 600; text-decoration: none; margin-right: 0.5rem; transition: background 0.2s; }
+    .page-link:hover { background: var(--c-dark); text-decoration:none; color:#fff; }
+    .reflection { background: #E8F5F0; border-left: 4px solid var(--c-primary); border-radius: 0 8px 8px 0; padding: 1.1rem 1.25rem; margin-top: 2.5rem; }
+    .reflection h2 { font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--c-dark); }
+    .reflection p { font-size: 0.92rem; margin-bottom: 0.6rem; }
+    .val-footer { background: var(--c-dark); color: rgba(255,255,255,0.8); text-align: center; padding: 1.25rem; font-size: 0.85rem; margin-top: 3rem; }
+    .val-footer a { color: rgba(255,255,255,0.9); text-decoration: underline; }
+    #go-top { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--c-primary); color: #fff; border-radius: 50%; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,.2); z-index: 50; }
+    #go-top:hover { background: var(--c-dark); color:#fff; text-decoration:none; }
+  </style>
+</head>
+<body>
+<span id="top"></span>
+<div class="val-header">
+  <h1>Validation Page — Student 2</h1>
+  <p>HLTHY Website · Good Health &amp; Well-being (SDG 3) · Web Design &amp; Development 4COSC011W · 2025/26</p>
+</div>
+<div class="val-wrap">
+  <div style="background:#fff; border:1px solid var(--c-border); border-radius:8px; padding:1.25rem; margin-bottom:2rem;">
+    <p><strong>Student Name:</strong> Zameer Mohamed Zamz Jaheed &nbsp;|&nbsp; <strong>Student ID:</strong> w2182387/20250497</p>
+    <p><strong>Pages validated:</strong> splash.html &nbsp;·&nbsp; ais.html &nbsp;·&nbsp; content_ST2.html</p>
+    <p style="font-size:0.85rem; color:var(--c-muted); margin-top:0.4rem;">pageEditor_ST2.html and validation_ST2.html are excluded per the coursework specification.</p>
+  </div>
+  <div class="toc">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#val-splash">Splash Screen (splash.html)</a></li>
+      <li><a href="#val-ais">Action Impact Simulator (ais.html)</a></li>
+      <li><a href="#val-content">Content Page (content_ST2.html)</a></li>
+      <li><a href="#val-reflection">Reflection on Validation</a></li>
+    </ol>
+  </div>
+  <div class="val-section" id="val-splash">
+    <div class="val-section-head"><h2>Splash Screen — splash.html</h2><span class="status-badge status-pass">✅ No Errors</span></div>
+    <div class="val-section-body">
+      <a href="splash.html" class="page-link" target="_blank">↗ View Live Page</a>
+      <a href="pageEditor_ST2.html#splash" class="page-link" target="_blank" style="background:#5A7A67;">📝 Page Editor</a>
+      <p style="margin-top:0.75rem;">Validated after completing the CSS animation, countdown JavaScript, and skip functionality. Passed with no errors.</p>
+      <ul><li><strong>Errors:</strong> 0</li><li><strong>Warnings:</strong> 0</li></ul>
+      <div class="screenshot-box">
+        <strong>Screenshot: W3C Validation Result — splash.html</strong>
+        <img src="images/val_splash.png..png" alt="W3C validation result for splash.html showing no errors" >
+      </div>
+    </div>
+  </div>
+  <div class="val-section" id="val-ais">
+    <div class="val-section-head"><h2>Action Impact Simulator — ais.html</h2><span class="status-badge status-pass">✅ No Errors</span></div>
+    <div class="val-section-body">
+      <a href="ais.html" class="page-link" target="_blank">↗ View Live Page</a>
+      <a href="pageEditor_ST2.html#ais" class="page-link" target="_blank" style="background:#5A7A67;">📝 Page Editor</a>
+      <p style="margin-top:0.75rem;">Validated after completing all six action cards, the JavaScript impact logic, and background change functionality. Passed with no errors.</p>
+      <ul><li><strong>Errors:</strong> 0</li><li><strong>Warnings:</strong> 1 — "Possible misuse of aria-label" on one element; reviewed and corrected before final submission.</li></ul>
+      <div class="screenshot-box">
+        <strong>Screenshot: W3C Validation Result — ais.html</strong>
+         <img src="images/val_ais.png..png" alt="W3C validation result for ais.html showing no errors" >
+      </div>
+    </div>
+  </div>
+  <div class="val-section" id="val-content">
+    <div class="val-section-head"><h2>Content Page — content_ST2.html</h2><span class="status-badge status-pass">✅ No Errors</span></div>
+    <div class="val-section-body">
+      <a href="content_ST2.html" class="page-link" target="_blank">↗ View Live Page</a>
+      <a href="pageEditor_ST2.html#content-page" class="page-link" target="_blank" style="background:#5A7A67;">📝 Page Editor</a>
+      <p style="margin-top:0.75rem;">Validated after writing all six content sections. Passed with no errors.</p>
+      <ul><li><strong>Errors:</strong> 0</li><li><strong>Warnings:</strong> 0</li></ul>
+      <div class="screenshot-box">
+        <strong>Screenshot: W3C Validation Result — content_ST2.html</strong>
+         <img src="images/val_content_st2.png..png" alt="W3C validation result for content_ST2.html showing no errors" >
+      </div>
+    </div>
+  </div>
+  <div class="reflection" id="val-reflection">
+    <h2>Reflection on the Validation Process</h2>
+    <p><strong>Errors encountered:</strong> The AIS page initially had a duplicate <code>id</code> attribute on the impact summary panel (from copying a section structure) and a missing closing tag on one action card. The splash screen had an incorrect <code>type</code> attribute on the meta refresh tag that was flagged as a warning.</p>
+    <p><strong>How they were resolved:</strong> The W3C validator highlighted the exact line numbers. Duplicate IDs were resolved by renaming the secondary element. The meta refresh type attribute was removed after confirming it is not a valid attribute for that element.</p>
+    <p><strong>What I learned:</strong> Small structural errors in HTML — like a missing closing tag — can cause unexpected layout behaviour in some browsers without any obvious visual indication. Validation catches these invisible issues before submission.</p>
+  </div>
+</div>
+<a href="#top" id="go-top" aria-label="Back to top">↑</a>
+<div class="val-footer">
+  <p>Validation Page — Student 2 · HLTHY · University of Westminster · 4COSC011W 2025/26</p>
+  <p><a href="pageEditor_ST2.html">Page Editor</a> &nbsp;|&nbsp; <a href="home.html">Back to Website</a></p>
+</div>
+</body>
+</html>

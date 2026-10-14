@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <title>S.Shanheeshan | Page Editor</title>
+  <link rel="stylesheet" href="style.css" >
+  <style>
+    /* ── Page Editor specific styles ── */
+
+    /* Table of contents box */
+    .toc-box {
+      background: var(--clr-white);
+      border: 1px solid var(--clr-neutral-200);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .toc-box h2 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--clr-neutral-700);
+      margin-bottom: 0.75rem;
+    }
+    .toc-box ol { padding-left: 1.4rem; }
+    .toc-box ol li { margin-bottom: 0.35rem; }
+    .toc-box a { font-size: 0.92rem; color: var(--clr-primary); }
+    .toc-box a:hover { color: var(--clr-primary-dark); text-decoration: underline; }
+
+    /* Student identity card */
+    .student-card {
+      background: var(--clr-white);
+      border-left: 5px solid var(--clr-primary);
+      border-radius: var(--radius-md);
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .student-card p { margin-bottom: 0.4rem; font-size: 0.93rem; }
+
+    /* Section headings */
+    .pe-section { margin-bottom: 3rem; scroll-margin-top: 100px; }
+    .pe-section > h2 {
+      font-size: 1.25rem;
+      border-left: 4px solid var(--clr-primary);
+      padding-left: 0.75rem;
+      margin-bottom: 1rem;
+      color: var(--clr-primary-dark);
+    }
+    .pe-section h3 { font-size: 1rem; margin: 1.2rem 0 0.5rem; color: var(--clr-primary-dark); }
+    .pe-section p  { font-size: 0.93rem; margin-bottom: 0.9rem; }
+    .pe-section ul, .pe-section ol { padding-left: 1.4rem; margin-bottom: 0.9rem; font-size: 0.93rem; }
+    .pe-section li { margin-bottom: 0.35rem; }
+
+    /* Page link buttons */
+    .page-link {
+      display: inline-block;
+      background: var(--clr-primary);
+      color: #fff;
+      padding: 0.4rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      margin: 0.25rem 0.25rem 0.75rem 0;
+      transition: background var(--transition);
+    }
+    .page-link:hover { background: var(--clr-primary-dark); color: #fff; text-decoration: none; }
+    .page-link.val   { background: #5A7A67; }
+    .page-link.val:hover { background: #3D5C4A; }
+
+    /* Code tag style */
+    code {
+      background: var(--clr-neutral-200);
+      padding: 0.1em 0.4em;
+      border-radius: 4px;
+      font-size: 0.88em;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* Meeting table */
+    .meeting-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.87rem;
+      margin-top: 0.75rem;
+    }
+    .meeting-table th {
+      background: var(--clr-primary-dark);
+      color: #fff;
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-weight: 600;
+    }
+    .meeting-table td {
+      padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid var(--clr-neutral-200);
+      vertical-align: top;
+    }
+    .meeting-table tr:nth-child(even) td { background: var(--clr-neutral-100); }
+
+    /* References list */
+    .ref-list { list-style: decimal; padding-left: 1.4rem; }
+    .ref-list li { font-size: 0.88rem; margin-bottom: 0.55rem; }
+
+    /* Highlight / note box */
+    .note-box {
+      background: #E8F5F0;
+      border-left: 4px solid var(--clr-primary-light);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 0.75rem 1.1rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+
+    /* Back to top */
+    #go-top {
+      position: fixed;
+      bottom: 2rem; right: 1.5rem;
+      background: var(--clr-primary);
+      color: #fff;
+      border-radius: 50%;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      text-decoration: none;
+      box-shadow: var(--shadow-md);
+      z-index: 50;
+      transition: background var(--transition), transform var(--transition);
+    }
+    #go-top:hover { background: var(--clr-primary-dark); transform: translateY(-3px); color: #fff; text-decoration: none; }
+  </style>
+</head>
+<body>
+<span id="top"></span>
+
+<!-- ════════════════════════════════════════════════════
+     HEADER — same as all HLTHY pages
+════════════════════════════════════════════════════ -->
+<!--Header part with navigation[common]-->
+  <header>
+    <div class="header-inner">
+      <a class="site-identity" href="home.html">
+        <img src="images/logo.png" alt="HLTHY website logo - Simple black line icon showing two hands supporting a heart symbol" >
+        <div>
+          <span class="site-title">HLTHY</span>
+          <span class="site-tagline">Good Health &amp; Well-being · SDG 3</span>
+        </div>
+      </a>
+    </div>
+	
+	  <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="home.html"               >Home</a></li>
+        <li><a href="gallery.html"            >Gallery</a></li>
+        <li><a href="ais.html"                >Impact Simulator</a></li>
+        <li><a href="feedback.html"           >Feedback</a></li>
+        <li><a href="team.html"               >Team</a></li>
+        <li><a href="profile.html"            >User Profile</a></li>
+        <li><a href="sitemap.html"            >Sitemap</a></li>
+      </ul>
+	  </nav>
+  </header>
+
+<!-- ════════════════════════════════════════════════════
+     MAIN CONTENT
+════════════════════════════════════════════════════ -->
+<main>
+  <div class="container">
+
+    <h1 style="margin-bottom:0.2rem;">Page Editor — Student 4</h1>
+    <p style="color:var(--clr-neutral-700); font-size:0.9rem; margin-bottom:2rem;">
+      HLTHY · Good Health &amp; Well-being (SDG 3) · Web Design &amp; Development 4COSC011W · 2025/26
+    </p>
+
+    <!-- ── Student identity card ── -->
+    <div class="student-card">
+      <p><strong>Student Name:</strong> S. Shanheeshan</p>
+      <p><strong>Student ID:</strong> w2182082 / 20241978</p>
+      <p><strong>Role:</strong> Student 4 — User Profile &amp; Sitemap Lead</p>
+      <p><strong>Pages implemented:</strong>
+        <a href="profile.html" target="_blank" rel="noopener">profile.html</a>,
+        <a href="sitemap.html" target="_blank" rel="noopener">sitemap.html</a>,
+        <a href="content_ST4.html" target="_blank" rel="noopener">content_ST4.html</a>
+      </p>
+    </div>
+
+    <!-- ── Table of contents ── -->
+    <div class="toc-box">
+      <h2>Contents</h2>
+      <ol>
+        <li><a href="#profile">User Profile Page</a></li>
+        <li><a href="#sitemap">Sitemap</a></li>
+        <li><a href="#content-page">Content Page — Sleep &amp; Daily Lifestyle</a></li>
+        <li><a href="#challenges">Challenges &amp; Lessons Learned</a></li>
+        <li><a href="#accessibility">Accessibility Considerations</a></li>
+        <li><a href="#janet">JANET Compliance</a></li>
+        <li><a href="#meetings">Group Meetings Log</a></li>
+        <li><a href="#references">References</a></li>
+      </ol>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         SECTION 1 — USER PROFILE
+    ══════════════════════════════════════════ -->
+    <section class="pe-section" id="profile">
+      <h2>1. User Profile Page</h2>
+
+      <a href="profile.html" class="page-link" target="_blank" rel="noopener">↗ View User Profile</a>
+      <a href="validation_ST4.html#val-profile" class="page-link val" target="_blank" rel="noopener">✅ Validation Evidence</a>
+
+      <h3>HTML Structure</h3>
+      <p>
+        The User Profile page (<code>profile.html</code>) is built on the shared HLTHY template, using the group's
+        global <code>style.css</code> for the header, navigation bar, and footer. The <code>&lt;main&gt;</code> section
+        uses a two-column CSS Grid (<code>.profile-layout</code>) — a controls panel on the left and a live profile
+        output area on the right. The key HTML elements are:
+      </p>
+      <ul>
+        <li><code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code> — standard site template structure</li>
+        <li><code>&lt;div class="steps-row"&gt;</code> — contains three step indicator buttons using <code>role="tab"</code> and <code>aria-selected</code> for screen reader compatibility</li>
+        <li><code>&lt;div class="progress-wrap"&gt;</code> — holds the visual progress bar; the inner bar element uses <code>role="progressbar"</code> with <code>aria-valuenow</code>, <code>aria-valuemin</code>, and <code>aria-valuemax</code> attributes updated dynamically by JavaScript</li>
+        <li><code>&lt;div id="status-msg" aria-live="polite"&gt;</code> — a live region that announces step updates to assistive technology without interrupting the user</li>
+        <li>Three <code>&lt;div class="profile-section"&gt;</code> elements inside the output area — one per step — hidden by default and revealed progressively as steps are completed</li>
+      </ul>
+
+      <h3>CSS Techniques</h3>
+      <p>Page-specific styles are embedded in a <code>&lt;style&gt;</code> block in the <code>&lt;head&gt;</code> and do not conflict with the global CSS:</p>
+      <ul>
+        <li><strong>CSS Grid</strong> (<code>grid-template-columns: 1fr 1.4fr</code>) creates the side-by-side controls and output layout; a media query collapses this to a single column on screens narrower than 680 px</li>
+        <li><strong>Custom step buttons</strong> use <code>border-radius: 20px</code> pill shapes with three visual states — <code>.active</code> (filled green), <code>.done</code> (light border), <code>.skipped</code> (grey) — applied dynamically by JavaScript</li>
+        <li><strong>Progress bar</strong> uses a background track (<code>.progress-bar-bg</code>) with an inner fill (<code>.progress-bar-fill</code>) whose <code>width</code> is updated in JavaScript; a CSS <code>transition: width 0.4s ease</code> animates the fill smoothly</li>
+        <li><strong>Reveal animation</strong> — the <code>@keyframes fadeSlide</code> animation fades and translates profile sections upward when the <code>.revealed</code> class is added</li>
+        <li><strong>Action buttons</strong> — three distinct buttons (Start, Skip, Reset) each have their own colour scheme defined using CSS variables from the global stylesheet</li>
+      </ul>
+
+      <h3>JavaScript Implementation</h3>
+      <p>All interactivity on the User Profile page is driven by JavaScript. The implementation meets all coursework requirements:</p>
+      <ul>
+        <li><strong>Variables and objects:</strong> A <code>profileData</code> object stores collected answers keyed by step and field name. A <code>completed</code> object (with keys <code>s1</code>, <code>s2</code>, <code>s3</code>, each an array of three booleans) tracks which individual prompts have been answered</li>
+        <li><strong>Functions:</strong>
+          <ul>
+            <li><code>runStep(stepIndex)</code> — runs the three <code>prompt()</code> dialogs for a given step, stores answers in <code>profileData</code>, updates the DOM output spans, and reveals the corresponding profile section</li>
+            <li><code>updateProgress()</code> — counts completed prompts, calculates percentage, updates the progress bar width, the text label, and the ARIA attribute; also applies the correct CSS class to each step button</li>
+            <li><code>revisitStep(n)</code> — calls <code>runStep(n-1)</code> to allow the user to return to any previously skipped or completed step</li>
+            <li><code>setStatus(msg)</code> — utility function that updates the <code>aria-live</code> status message element</li>
+          </ul>
+        </li>
+        <li><strong>Conditional logic:</strong> The <code>start-btn</code> click handler uses <code>Array.findIndex()</code> to find the first incomplete step and runs it; if all steps are complete, a status message is shown instead. Step button classes are set inside <code>updateProgress()</code> using <code>if/else</code> checks on the <code>completed</code> object</li>
+        <li><strong>DOM manipulation:</strong> JavaScript updates <code>textContent</code> of nine output <code>&lt;span&gt;</code> elements, adds/removes the <code>.revealed</code> class on profile sections, updates <code>style.width</code> on the progress bar fill, and shows/hides the revisit button row and completion message</li>
+        <li><strong>User control:</strong> Users can skip individual prompts by pressing Cancel on any <code>prompt()</code> dialog. The Skip Step button advances past an entire step. The Reset button clears all data and hides all profile sections. The Revisit buttons (shown after the first run) allow users to return to any step and fill in previously skipped answers</li>
+      </ul>
+
+      <h3>Design and Implementation Rationale</h3>
+      <p>
+        The two-column grid layout was chosen to show the controls and the live profile simultaneously, so users can see their profile building in real time without scrolling. The <code>profileData</code> object was used instead of a simple array because named keys (e.g. <code>profileData.step1.name</code>) make the code more readable and easier to extend. Native <code>prompt()</code> dialogs were used as required by the coursework specification; they are browser-managed, inherently keyboard-accessible, and require no additional HTML form elements.
+      </p>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SECTION 2 — SITEMAP
+    ══════════════════════════════════════════ -->
+    <section class="pe-section" id="sitemap">
+      <h2>2. Sitemap</h2>
+
+      <a href="sitemap.html" class="page-link" target="_blank" rel="noopener">↗ View Sitemap</a>
+      <a href="validation_ST4.html#val-sitemap" class="page-link val" target="_blank" rel="noopener">✅ Validation Evidence</a>
+
+      <h3>HTML Structure</h3>
+      <p>
+        The sitemap page (<code>sitemap.html</code>) uses the shared HLTHY template. Inside the <code>&lt;main&gt;</code>
+        section, a <code>&lt;div class="sitemap-wrap"&gt;</code> with <code>overflow-x: auto</code> ensures the SVG
+        scrolls horizontally on small screens without breaking the page layout. The SVG itself is placed directly
+        in the HTML — it is not an image file. Key structural choices:
+      </p>
+      <ul>
+        <li>The <code>&lt;svg&gt;</code> element uses <code>width="100%"</code> and <code>viewBox="0 0 860 540"</code> to make it fully responsive — it scales proportionally to any screen width</li>
+        <li><code>role="img"</code> and <code>aria-label</code> on the <code>&lt;svg&gt;</code> describe the diagram as a whole for screen readers</li>
+        <li>Each clickable node is an <code>&lt;a href="..."&gt;</code> wrapping a <code>&lt;g class="smap-node"&gt;</code> group containing a <code>&lt;rect&gt;</code>, two <code>&lt;text&gt;</code> elements, and a <code>&lt;title&gt;</code></li>
+        <li>All nodes have <code>tabindex="0"</code> to enable keyboard Tab navigation between them</li>
+        <li>A <code>&lt;defs&gt;</code> block defines a reusable arrowhead marker (<code>id="arr"</code>) applied to connector lines using <code>marker-end="url(#arr)"</code></li>
+      </ul>
+
+      <h3>SVG Hierarchy and Layout</h3>
+      <p>The sitemap represents four levels of hierarchy:</p>
+      <ul>
+        <li><strong>Level 1 — Splash Screen:</strong> entry point at the top, connected by a solid arrow to the Home page</li>
+        <li><strong>Level 2 — Home Page:</strong> central hub, connected by light-green lines to six main pages (Gallery, AIS, Feedback, Team, User Profile, Sitemap)</li>
+        <li><strong>Level 3 — Content Pages:</strong> four individual content pages shown below, connected from Home by dashed grey lines to indicate they are secondary content rather than primary navigation destinations</li>
+        <li><strong>Level 4 — Page Editors:</strong> grey boxes below each content page, connected by fine lines, representing the footer-linked editor pages</li>
+      </ul>
+      <p>A colour legend at the bottom of the SVG explains the colour coding: dark green for core pages, medium green for secondary pages, muted green for content pages, grey for editor/validation pages, and orange for the current (Sitemap) page node.</p>
+
+      <h3>CSS Techniques</h3>
+      <ul>
+        <li><strong>Hover effects:</strong> The <code>.smap-node:hover rect</code> rule increases <code>stroke-width</code> to 2.5 and applies <code>filter: brightness(1.08)</code>, giving a subtle lightening effect on mouse-over without requiring JavaScript</li>
+        <li><strong>Focus states:</strong> <code>.smap-node:focus rect</code> applies an orange stroke (<code>#F4A261</code> — the site's secondary colour) so keyboard users can see which node is focused</li>
+        <li><code>cursor: pointer</code> on <code>.smap-node</code> confirms to the user that each node is interactive</li>
+      </ul>
+
+      <h3>Design and Implementation Rationale</h3>
+      <p>
+        The sitemap hierarchy was planned on paper before any code was written, labelling each node's approximate x/y coordinates within the 860×540 viewBox. <code>&lt;polyline&gt;</code> elements with explicit waypoints (rather than straight <code>&lt;line&gt;</code> elements) were used for the Home-to-child connectors so that lines could be routed with L-shaped paths, avoiding overlap with neighbouring nodes. Dashed lines (<code>stroke-dasharray="5 4"</code>) distinguish content page connections from primary navigation connections, improving readability of the hierarchy.
+      </p>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SECTION 3 — CONTENT PAGE
+    ══════════════════════════════════════════ -->
+    <section class="pe-section" id="content-page">
+      <h2>3. Content Page — Sleep &amp; Daily Lifestyle</h2>
+
+      <a href="content_ST4.html" class="page-link" target="_blank" rel="noopener">↗ View Content Page</a>
+      <a href="validation_ST4.html#val-content" class="page-link val" target="_blank" rel="noopener">✅ Validation Evidence</a>
+
+      <h3>HTML Structure</h3>
+      <p>
+        The content page (<code>content_ST4.html</code>) uses the shared HLTHY template. Inside <code>&lt;main&gt;</code>,
+        a <code>.content-layout</code> CSS Grid creates a two-column layout: a sticky sidebar navigation on the left
+        and an <code>&lt;article&gt;</code> containing the main content on the right. The page is divided into five
+        clearly labelled <code>&lt;section&gt;</code> elements, each with a unique <code>id</code> attribute for
+        internal anchor linking:
+      </p>
+      <ul>
+        <li><code>#intro</code> — Overview of sleep and its connection to SDG 3</li>
+        <li><code>#the-science-of-sleep</code> — Circadian rhythm and sleep pressure</li>
+        <li><code>#health-benefits</code> — Ten key health benefits of adequate sleep</li>
+        <li><code>#sleepingtime</code> — Recommended sleep durations by age group</li>
+        <li><code>#tips-for-sleep</code> — Practical tips for improving sleep hygiene</li>
+        <li><code>#references</code> — Cited academic and NHS sources</li>
+      </ul>
+      <p>
+        A correct heading hierarchy is maintained throughout: one <code>&lt;h1&gt;</code> for the page title,
+        <code>&lt;h2&gt;</code> for section headings, and <code>&lt;h3&gt;</code> for sub-sections (e.g. Circadian
+        Rhythm and Sleep Pressure within the science section). All five images include descriptive <code>alt</code>
+        text. A fixed-position "Back to Top" button (<code>#go-top</code>) is implemented using
+        <code>position: fixed</code> in CSS with an <code>href="#top"</code> anchor — no JavaScript required.
+      </p>
+
+      <h3>CSS Techniques</h3>
+      <p>Page-specific styles are defined in an embedded <code>&lt;style&gt;</code> block and include more than five CSS rules as required:</p>
+      <ul>
+        <li><strong>CSS Grid</strong> (<code>grid-template-columns: 220px 1fr</code>) for the sidebar + article layout, with a media query for single-column on mobile</li>
+        <li><strong>Sticky sidebar</strong> (<code>position: sticky; top: 80px</code>) keeps the contents navigation visible as the user scrolls through long sections</li>
+        <li><strong>Hover effect on sidebar links</strong> — background and text colour change on hover using CSS variables</li>
+        <li><strong>Content section images</strong> — <code>width: 100%; max-height: 360px; object-fit: cover</code> ensures all images are consistently sized regardless of the original image dimensions</li>
+        <li><strong>Go-to-top button</strong> — circular, fixed-position button using <code>border-radius: 50%</code> with a hover lift effect (<code>transform: translateY(-3px)</code>)</li>
+        <li><code>scroll-margin-top: 100px</code> on each <code>.content-section</code> prevents the sticky header from obscuring section headings when an anchor link is clicked</li>
+      </ul>
+
+      <h3>Internal Navigation</h3>
+      <p>
+        The sticky sidebar acts as the internal navigation menu. Each list item links to a section using
+        <code>href="#section-id"</code> anchor syntax. The <code>html { scroll-behavior: smooth; }</code> rule
+        in the global CSS ensures smooth scrolling when these links are clicked. This satisfies the coursework
+        requirement for internal navigation on long content pages.
+      </p>
+
+      <h3>Content and SDG Relevance</h3>
+      <p>
+        The page topic — sleep and daily lifestyle — is directly relevant to SDG 3 (Good Health and Well-being).
+        Sleep deprivation is a significant but often overlooked contributor to poor health outcomes. The page
+        covers the biological mechanisms behind sleep (circadian rhythm and adenosine build-up), evidence-based
+        health benefits, recommended durations, and actionable tips. All content is original, written by
+        Student 4, and supported by cited academic sources (UpToDate, CDC, PubMed). No content has been
+        reproduced from the UN SDG website.
+      </p>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SECTION 4 — CHALLENGES
+    ══════════════════════════════════════════ -->
+    <section class="pe-section" id="challenges">
+      <h2>4. Challenges &amp; Lessons Learned</h2>
+
+      <h3>Challenge 1 — SVG Connector Routing</h3>
+      <p>
+        Drawing connector lines between nodes across four hierarchy levels without them crossing unrelated
+        boxes required careful coordinate planning. Straight <code>&lt;line&gt;</code> elements would have
+        passed through other nodes. The solution was to use <code>&lt;polyline&gt;</code> elements with explicit
+        waypoints — an L-shaped route that moves vertically first, then horizontally, reaching the target node
+        cleanly. Each waypoint coordinate was calculated manually by referencing the node positions in the
+        860×540 viewBox.
+      </p>
+
+      <h3>Challenge 2 — JavaScript prompt() Behaviour</h3>
+      <p>
+        The native <code>prompt()</code> function is blocked by default in some mobile browsers when a page is
+        served inside an iframe. It also behaves slightly differently across browsers (some trim whitespace,
+        some do not). This was noted as a known limitation and documented in code comments. The page includes
+        a clear status message after each step confirming what has been saved, so users always have feedback
+        even if a prompt behaves unexpectedly.
+      </p>
+
+      <h3>Challenge 3 — Reveal Animation Retrigger on Revisit</h3>
+      <p>
+        The CSS <code>@keyframes fadeSlide</code> animation on profile sections only plays when the
+        <code>.revealed</code> class is first added. When a user revisits a step that is already revealed,
+        the class is already present and the animation does not retrigger. Solving this required removing
+        the class, waiting one browser paint cycle using <code>setTimeout(fn, 10)</code>, then re-adding
+        it — allowing the browser to register the class removal before re-applying the animation.
+      </p>
+
+      <h3>Lessons Learned</h3>
+      <p>
+        Planning SVG layouts on paper before writing any code saved significant time. Sketching the four-level
+        hierarchy, estimating node sizes, and labelling approximate coordinates meant that the SVG code could
+        be written with confidence rather than through trial and error. For future projects, I would also
+        consider using CSS custom properties to define the node colours centrally, making theme changes easier.
+      </p>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SECTION 5 — ACCESSIBILITY
+    ══════════════════════════════════════════ -->
+    <section class="pe-section" id="accessibility">
+      <h2>5. Accessibility Considerations</h2>
+
+      <ul>
+        <li>
+          <strong>SVG accessibility:</strong> The entire <code>&lt;svg&gt;</code> element on the sitemap uses
+          <code>role="img"</code> and a descriptive <code>aria-label</code>. Every clickable node group
+          contains a <code>&lt;title&gt;</code> child element that provides an accessible name for screen
+          readers. All nodes have <code>tabindex="0"</code> so keyboard users can navigate between them using
+          the Tab key, and a visible focus style (orange stroke) is applied via CSS.
+        </li>
+        <li>
+          <strong>ARIA live region:</strong> The profile status message area uses <code>aria-live="polite"</code>,
+          ensuring that assistive technology announces step updates without interrupting whatever the user
+          is currently reading.
+        </li>
+        <li>
+          <strong>Progress bar ARIA:</strong> The profile progress bar element carries the full set of
+          progressbar ARIA attributes — <code>role="progressbar"</code>, <code>aria-valuenow</code>,
+          <code>aria-valuemin="0"</code>, and <code>aria-valuemax="100"</code> — all updated dynamically
+          as the user completes steps.
+        </li>
+        <li>
+          <strong>Alternative text:</strong> Every image on all three pages includes a descriptive
+          <code>alt</code> attribute explaining the image content in context. Purely decorative elements
+          use <code>alt=""</code> where appropriate.
+        </li>
+        <li>
+          <strong>Semantic HTML:</strong> Landmark elements (<code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>,
+          <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;article&gt;</code>,
+          <code>&lt;section&gt;</code>, <code>&lt;aside&gt;</code>) are used throughout to give the page
+          a clear, navigable structure for screen reader users.
+        </li>
+        <li>
+          <strong>Colour contrast:</strong> The sitemap uses white text on the green and orange node fills
+          throughout. The global colour palette defined in <code>style.css</code> was checked to ensure
+          sufficient contrast between text and background colours across all pages.
+        </li>
+        <li>
+          <strong>Keyboard navigation:</strong> All interactive elements (navigation links, buttons, profile
+          step buttons, sitemap nodes, sidebar links) are reachable and operable using the keyboard alone.
+        </li>
+      </ul>
+
+      <div class="note-box">
+        Native browser <code>prompt()</code> dialogs (used on the profile page) are inherently accessible
+        as they are managed by the browser, not custom HTML. They support keyboard input and are announced
+        correctly by screen readers. The Cancel option is always available to skip any prompt without penalty.
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SECTION 6 — JANET COMPLIANCE
+    ══════════════════════════════════════════ -->
+    <section class="pe-section" id="janet">
+      <h2>6. JANET Compliance</h2>
+      <p>
+        JANET (the Joint Academic Network) sets regulations for the responsible and ethical publication of
+        web pages within UK higher education institutions. The pages I implemented comply with these
+        requirements in the following ways:
+      </p>
+      <ul>
+        <li>
+          <strong>Original content:</strong> All text on my three pages is original and written by me.
+          Where external sources are referenced (e.g. CDC, UpToDate, NHS), they are cited in the References
+          section and linked to the original source. No content has been reproduced verbatim from the UN SDG
+          website or any other source.
+        </li>
+        <li>
+          <strong>Responsible use of images:</strong> All images used are royalty-free, sourced from
+          iStockPhoto as permitted by the coursework brief. References to image sources are included in
+          the Page Editor references list.
+        </li>
+        <li>
+          <strong>No data collection:</strong> The User Profile page uses native browser <code>prompt()</code>
+          dialogs — no data is stored server-side, transmitted, or persisted beyond the current browser
+          session. This ensures compliance with data protection principles.
+        </li>
+        <li>
+          <strong>No third-party templates:</strong> The SVG sitemap was written entirely from scratch by
+          me. No pre-made navigation templates, JavaScript libraries, or downloaded CSS frameworks were
+          used, in line with the coursework requirements.
+        </li>
+        <li>
+          <strong>Academic integrity:</strong> All code is my own work. Where techniques were learned from
+          lecture notes or MDN Web Docs, this is acknowledged in the References section.
+        </li>
+        <li>
+          <strong>Appropriate content:</strong> All page content is relevant, professional, and appropriate
+          for an academic web development project. There is no offensive, discriminatory, or misleading
+          material on any of my pages.
+        </li>
+      </ul>
+    </section>
+        <section class="pe-section" id="meetings">
+        <h2>7. Group Meetings Log</h2>
+        <table class="meeting-table">
+          <thead>
+            <tr>
+              <th>#</th><th>Date &amp; Time</th><th>Format</th><th>Objective</th><th>Attended</th><th>My Individual Contribution</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td><td>20 Feb 2026, 14:00</td><td>Face-to-face</td><td>Choose SDG, assign roles</td><td>Yes</td>
+              <td>Agreed to take the user profile and sitemap pages..</td>
+            </tr>
+            <tr>
+              <td>2</td><td>23 Feb 2026, 15:00</td><td>Online (Teams)</td><td>Agree visual design and layout</td><td>Yes</td>
+              <td>Reviewed wireframes and agreed on the card-based layout for the programme directory. Raised the question of how form validation would be handled across the site.</td>
+            </tr>
+            <tr>
+              <td>3</td><td>29 Feb 2026, 14:00</td><td>Face-to-face</td><td>Receive shared template &amp; CSS</td><td>Yes</td>
+              <td>Received the global CSS and template from Student 1. Began planning the user profile page structure, including fields such as name, age, sleep goals, and health information, based on the brief requirements.</td>
+            </tr>
+            <tr>
+              <td>4</td><td>13 Mar 2026, 15:30</td><td>Online (Teams)</td><td>Progress check</td><td>Yes</td>
+              <td>Demonstrated the scrollable programme cards and the partially complete user profile page, including fields such as name, age, and sleep preferences. Discussed the JavaScript validation approach for user input fields with the group.</td>
+            </tr>
+            <tr>
+              <td>5</td><td>20 Mar 2026, 14:00</td><td>Face-to-face</td><td>Peer review and cross-page testing</td><td>Yes</td>
+              <td>Tested the user profile page functionality and reviewed the sitemap structure. Making adjustments on errors and layout issues after the meeting.</td>
+            </tr>
+            <tr>
+              <td>6</td><td>29 Mar 2026, 16:00</td><td>Online (Teams)</td><td>Final review and submission prep</td><td>Yes</td>
+              <td>Verified all navigation links work correctly from my pages. Completed alt text for team page images and ran W3C validation on all my pages.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section> 
+    
+    
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         SECTION 8 — REFERENCES
+    ══════════════════════════════════════════ -->
+    <section class="pe-section" id="references">
+      <h2>8. References</h2>
+      <ol class="ref-list">
+        <li>
+          Economou, D. (2026) <em>4COSC011W Web Design and Development — Lecture Notes</em>. University of Westminster.
+          [Accessed via Blackboard, February–March 2026].
+        </li>
+        <li>
+          MDN Web Docs (2024) <em>SVG Tutorial</em>. Mozilla.
+          Available at: <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial" target="_blank" rel="noopener">developer.mozilla.org/SVG/Tutorial</a>
+          [Accessed: February 2026].
+        </li>
+        <li>
+          MDN Web Docs (2024) <em>Window.prompt()</em>. Mozilla.
+          Available at: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt" target="_blank" rel="noopener">developer.mozilla.org/Window/prompt</a>
+          [Accessed: March 2026].
+        </li>
+        <li>
+          MDN Web Docs (2024) <em>CSS Grid Layout</em>. Mozilla.
+          Available at: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout" target="_blank" rel="noopener">developer.mozilla.org/CSS_grid_layout</a>
+          [Accessed: February 2026].
+        </li>
+        <li>
+          Kirsch, D. (2023) <em>Stages and architecture of normal sleep</em>. UpToDate.
+          Available at: <a href="https://www.uptodate.com/contents/stages-and-architecture-of-normal-sleep" target="_blank" rel="noopener">uptodate.com</a>
+          [Accessed: February 2026].
+        </li>
+        <li>
+          Blackwelder, A., Hoskins, M., &amp; Huber, L. (2021) Effect of inadequate sleep on frequent mental distress.
+          <em>Preventing Chronic Disease</em>, 18.
+          Available at: <a href="https://www.cdc.gov/pcd/issues/2021/20_0573.htm" target="_blank" rel="noopener">cdc.gov</a>
+          [Accessed: February 2026].
+        </li>
+        <li>
+          Patel, A. K., Reddy, V., Shumway, K. R., &amp; Araujo, J. F. (2024) Physiology, sleep stages. <em>StatPearls</em>.
+          Available at: <a href="https://www.ncbi.nlm.nih.gov/books/NBK526132/" target="_blank" rel="noopener">ncbi.nlm.nih.gov</a>
+          [Accessed: February 2026].
+        </li>
+        <li>
+          iStockPhoto (2026) <em>Royalty-free images used on profile.html, sitemap.html, content_ST4.html</em>.
+          Available at: <a href="https://www.istockphoto.com" target="_blank" rel="noopener">istockphoto.com</a>
+          [Accessed: February–March 2026].
+        </li>
+      </ol>
+    </section>
+
+  </div><!-- /.container -->
+</main>
+
+<!-- Back to top -->
+<a href="#top" id="go-top" aria-label="Go back to the top of the page" title="Back to top">↑</a>
+
+<!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Student 4</h4>
+        <p style="font-size:0.85rem; color:rgba(255,255,255,0.7);">
+          S.Shanheeshan · 20241978/w2182082<br >
+          Web Design &amp; Development · 4COSC011C
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Editor &amp; Validation:</h4>
+        <li><a href="home.html">Back to Website</a></li>
+        <li><a href="validation_ST4.html"> Validation</a></li>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 HLTHY Team</p>
+    </div>
+  </footer>
+
+</body>
+</html>

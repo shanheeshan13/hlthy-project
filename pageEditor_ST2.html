@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohamed Zamz Jaheed | Page Editor</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --c-primary: #2E7D6E; --c-dark: #1B5E50; --c-accent: #F4A261;
+      --c-bg: #F8F9FA; --c-white: #FFFFFF; --c-text: #212529;
+      --c-muted: #6C757D; --c-border: #DEE2E6;
+    }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--c-bg); color: var(--c-text); line-height: 1.7; }
+    .pe-header { background: var(--c-dark); color: #fff; padding: 1.5rem 2rem; }
+    .pe-header h1 { font-size: 1.6rem; margin-bottom: 0.2rem; }
+    .pe-header p  { font-size: 0.9rem; opacity: 0.8; }
+    .pe-wrap { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+    .toc { background: var(--c-white); border: 1px solid var(--c-border); border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem; }
+    .toc h2 { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--c-muted); margin-bottom: 0.75rem; }
+    .toc ol  { padding-left: 1.4rem; }
+    .toc ol li { margin-bottom: 0.35rem; }
+    .toc a   { color: var(--c-primary); font-size: 0.92rem; }
+    .pe-section { margin-bottom: 3rem; scroll-margin-top: 80px; }
+    .pe-section h2 { font-size: 1.3rem; border-left: 4px solid var(--c-primary); padding-left: 0.75rem; margin-bottom: 1rem; color: var(--c-dark); }
+    .pe-section h3 { font-size: 1.05rem; margin: 1.2rem 0 0.5rem; color: var(--c-dark); }
+    .pe-section p  { margin-bottom: 0.9rem; font-size: 0.93rem; }
+    .pe-section ul, .pe-section ol { padding-left: 1.4rem; margin-bottom: 0.9rem; font-size: 0.93rem; }
+    .pe-section li { margin-bottom: 0.3rem; }
+    .page-link { display: inline-block; background: var(--c-primary); color: #fff; padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; text-decoration: none; margin: 0.25rem 0.25rem 0.25rem 0; transition: background 0.2s ease; }
+    .page-link:hover { background: var(--c-dark); text-decoration: none; color:#fff; }
+    .page-link.val { background: #5A7A67; }
+    .page-link.val:hover { background: #3D5C4A; }
+    .meeting-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: 0.75rem; }
+    .meeting-table th { background: var(--c-dark); color: #fff; padding: 0.6rem 0.75rem; text-align: left; font-weight: 600; }
+    .meeting-table td { padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--c-border); vertical-align: top; }
+    .meeting-table tr:nth-child(even) td { background: #F1F3F5; }
+    .ref-list { list-style: decimal; padding-left: 1.4rem; }
+    .ref-list li { font-size: 0.88rem; margin-bottom: 0.5rem; }
+    .pe-footer { background: var(--c-dark); color: rgba(255,255,255,0.8); text-align: center; padding: 1.25rem; font-size: 0.85rem; margin-top: 3rem; }
+    .pe-footer a { color: rgba(255,255,255,0.9); text-decoration: underline; }
+    #go-top { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--c-primary); color: #fff; border-radius: 50%; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,.2); z-index: 50; transition: background 0.2s ease; }
+    #go-top:hover { background: var(--c-dark); color:#fff; text-decoration:none; }
+  </style>
+</head>
+<body>
+<span id="top"></span>
+
+<div class="pe-header">
+  <h1>Page Editor — Student 2</h1>
+  <p>HLTHY Website · Good Health &amp; Well-being (SDG 3) · Web Design &amp; Development 4COSC011W · 2025/26</p>
+</div>
+
+<div class="pe-wrap">
+
+  <div style="background:#fff; border:1px solid var(--c-border); border-radius:8px; padding:1.25rem; margin-bottom:2rem;">
+    <p><strong>Student Name:</strong> Mohamed Zamz Jaheed</p>
+    <p><strong>Student ID:</strong> 20250497/w2182387</p>
+    <p><strong>Role:</strong> Student 2</p>
+    <p><strong>Pages implemented:</strong> Splash Screen, Action Impact Simulator , Content Page</p>
+  </div>
+
+  <div class="toc">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#splash">Splash Screen</a></li>
+      <li><a href="#ais">Action Impact Simulator (AIS)</a></li>
+      <li><a href="#content-page">Content Page — Nutrition</a></li>
+      <li><a href="#challenges">Challenges &amp; Lessons Learned</a></li>
+      <li><a href="#accessibility">Accessibility Considerations</a></li>
+      <li><a href="#janet">JANET Compliance</a></li>
+      <li><a href="#meetings">Group Meetings Log</a></li>
+      <li><a href="#references">References</a></li>
+    </ol>
+  </div>
+
+  <section class="pe-section" id="splash">
+    <h2>1. Splash Screen</h2>
+    <a href="splash.html" class="page-link" target="_blank">↗ View Splash Screen</a>
+    <a href="validation_ST2.html#val-splash" class="page-link val" target="_blank">✅ Validation Evidence</a>
+
+    <h3>HTML Structure</h3>
+    <p>The splash screen (<code>splash.html</code>) is the only page that does not use the shared template, as specified in the brief. It is a full-screen, self-contained page with its own CSS. Key structural elements include:</p>
+    <ul>
+      <li>A <code>&lt;div class="bg"&gt;</code> with a CSS <code>::after</code> pseudo-element overlay, creating a dark tint over the background image to ensure text readability without requiring a separate HTML element</li>
+      <li>A <code>&lt;div class="splash-content"&gt;</code> container using Flexbox to centre all content vertically and horizontally</li>
+      <li>The auto-redirect is implemented using <code>&lt;meta http-equiv="refresh" content="4;url=home.html"&gt;</code> as specified in the brief</li>
+      <li>The group member names are displayed as styled <code>&lt;span&gt;</code> pill elements within a flex container</li>
+    </ul>
+
+    <h3>CSS Techniques</h3>
+    <ul>
+      <li><strong>Full-screen background:</strong> <code>background-size: cover; background-position: center</code> on the <code>.bg</code> element ensures the image always fills the viewport regardless of screen size</li>
+      <li><strong>CSS loader animation:</strong> Three <code>.loader-dot</code> elements use a <code>@keyframes bounce</code> animation with staggered <code>animation-delay</code> values (0s, 0.15s, 0.3s) to create a pulsing loading indicator without any images or JavaScript</li>
+      <li><strong>Z-index layering:</strong> The background overlay uses <code>z-index: 0</code> and the content uses <code>z-index: 1</code> to ensure correct stacking</li>
+    </ul>
+
+    <h3>JavaScript Implementation</h3>
+    <ul>
+      <li><strong>Countdown timer:</strong> A <code>setInterval</code> function decrements a <code>timeLeft</code> variable every 1000ms and updates the visible <code>#countdown-num</code> span via <code>textContent</code></li>
+      <li><strong>Skip button:</strong> The skip button's click handler sets a <code>skipped</code> flag to <code>true</code>, calls <code>clearInterval()</code> to stop the countdown, removes the <code>&lt;meta&gt;</code> refresh tag from the DOM to cancel the auto-redirect, and then manually navigates to <code>home.html</code></li>
+    </ul>
+  </section>
+
+  <section class="pe-section" id="ais">
+    <h2>2. Action Impact Simulator (AIS)</h2>
+    <a href="ais.html" class="page-link" target="_blank">↗ View AIS Page</a>
+    <a href="validation_ST2.html#val-ais" class="page-link val" target="_blank">✅ Validation Evidence</a>
+
+    <h3>HTML Structure</h3>
+    <p>The AIS page (<code>ais.html</code>) presents six action cards within a CSS Grid. Each <code>&lt;article class="action-card"&gt;</code> contains a thumbnail image, heading, description, points badge, and a select/deselect button. A separate <code>&lt;div id="impact-summary"&gt;</code> with <code>aria-live="polite"</code> displays the dynamically updated impact score and feedback message.</p>
+
+    <h3>CSS Techniques</h3>
+    <ul>
+      <li>The <code>.action-card.selected</code> class provides visual distinction between selected and unselected cards using a contrasting border colour and background tint</li>
+      <li>The full-page background image is applied to <code>.ais-bg</code> and changed dynamically by JavaScript — a <code>::before</code> pseudo-element adds a white semi-transparent overlay to keep content readable over any background image</li>
+      <li>Embedded CSS includes at least five clearly commented rules as required by the specification</li>
+    </ul>
+
+    <h3>JavaScript Implementation</h3>
+    <p>The impact tracking logic uses a <code>selectedState</code> boolean array to track which of the six cards are selected. The <code>updateSummary()</code> function iterates over this array, sums the <code>data-points</code> attribute values, and applies threshold logic:</p>
+    <ul>
+      <li><strong>Low impact:</strong> 0–7 points → orange border, low-impact message, background image A</li>
+      <li><strong>Medium impact:</strong> 8–14 points → primary green border, encouragement message, background image B</li>
+      <li><strong>High impact:</strong> 15–21 points → dark green border, congratulatory message, background image C</li>
+    </ul>
+    <p>Background changes are controlled entirely by JavaScript via <code>element.style.backgroundImage</code>, as required. Cards respond to both mouse click and keyboard (Enter/Space) events. A reset button clears all selections and restores the default state.</p>
+  </section>
+
+  <section class="pe-section" id="content-page">
+    <h2>3. Content Page — Nutrition &amp; Diet</h2>
+    <a href="content_ST2.html" class="page-link" target="_blank">↗ View Content Page</a>
+    <a href="validation_ST2.html#val-content" class="page-link val" target="_blank">✅ Validation Evidence</a>
+
+    <h3>HTML Structure</h3>
+    <p>The content page follows the same two-column layout as the other content pages, using CSS Grid with a sticky side navigation and a main <code>&lt;article&gt;</code> element. Six sections cover: introduction, the global nutrition picture, student diet challenges, budget eating strategies, SDG 3 actions, and further resources.</p>
+
+    <h3>Content Approach</h3>
+    <p>All content is original and written by Student 2. The page addresses nutrition through a student lens — acknowledging real barriers of cost, time, and skill — while connecting these practical concerns to the broader SDG 3 framework. An info-box component (styled with a left border accent) is used to highlight the direct SDG 3 target reference, creating visual hierarchy without disrupting the flow.</p>
+  </section>
+
+  <section class="pe-section" id="challenges">
+    <h2>4. Challenges &amp; Lessons Learned</h2>
+    <p><strong>Challenge 1 — Meta refresh cancellation:</strong> The specification required both an automatic meta refresh redirect AND a skip button that cancels it. The <code>&lt;meta&gt;</code> refresh cannot be paused or stopped through normal JavaScript once the page has loaded — the solution was to remove the <code>&lt;meta&gt;</code> element from the DOM using <code>document.getElementById('meta-refresh').remove()</code> before the browser processes the redirect. This required research and experimentation.</p>
+    <p><strong>Challenge 2 — AIS background readability:</strong> Setting a full-page background image behind card content created contrast issues. The solution was a <code>::before</code> pseudo-element on <code>.ais-bg</code> with <code>position: fixed; inset: 0; background: rgba(255,255,255,0.82)</code>, which provides a consistent overlay regardless of which background image is shown.</p>
+    <p><strong>Lesson learned:</strong> Always plan the JavaScript data structure before writing the UI. The <code>selectedState</code> array and <code>galleryData</code> object made the logic clean and easy to extend. Starting with the data model first would have saved time.</p>
+  </section>
+
+  <section class="pe-section" id="accessibility">
+    <h2>5. Accessibility Considerations</h2>
+    <ul>
+      <li><strong>Splash screen background:</strong> The background image div uses <code>role="img"</code> and <code>aria-label</code> to describe the decorative background for screen reader users</li>
+      <li><strong>AIS cards:</strong> Each card uses <code>aria-pressed</code> (updated by JavaScript on selection) so screen readers announce the selected state to users navigating by keyboard</li>
+      <li><strong>Live region:</strong> The impact summary uses <code>aria-live="polite"</code> and <code>aria-atomic="true"</code> so changes are announced without interrupting ongoing screen reader output</li>
+      <li><strong>Reduced motion:</strong> The CSS bounce animation on the splash screen should ideally be wrapped in a <code>@media (prefers-reduced-motion: no-preference)</code> query — this is noted as a future improvement</li>
+      <li><strong>Alt text:</strong> All images on all my pages include contextual, descriptive alt text</li>
+    </ul>
+  </section>
+
+  <section class="pe-section" id="janet">
+    <h2>6. JANET Compliance</h2>
+    <p>All pages I implemented comply with JANET regulations. Specific measures taken include:</p>
+    <ul>
+      <li>All written content is original; no text has been reproduced from the UN SDG website or any other source without attribution</li>
+      <li>Background and card images are sourced from royalty-free providers and referenced in the References section below</li>
+      <li>The splash screen does not collect any user data; the countdown and skip functionality are purely client-side</li>
+      <li>No external scripts or libraries are loaded from third-party CDNs — all JavaScript is inline and self-contained</li>
+      <li>Content is appropriate for a university educational context and does not contain offensive, discriminatory, or misleading material</li>
+    </ul>
+  </section>
+
+  <section class="pe-section" id="meetings">
+    <h2>7. Group Meetings Log</h2>
+    <table class="meeting-table">
+      <thead>
+        <tr><th>#</th><th>Date &amp; Time</th><th>Format</th><th>Objective</th><th>Attended</th><th>My Individual Contribution</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td><td>20 Feb 2026, 14:00</td><td>Face-to-face</td><td>Choose SDG, assign roles</td><td>Yes</td>
+          <td>Agreed to take responsibility for the Splash Screen and Action Impact Simulator features.</td>
+        </tr>
+        <tr>
+          <td>2</td><td>23 Feb 2026, 15:00</td><td>Online (Teams)</td><td>Agree visual design and layout</td><td>Yes</td>
+          <td>Reviewed wireframes and proposed ideas for the Splash Screen design (intro visuals, loading effect) and discussed layout structure for the Action Impact Simulator.</td>
+        </tr>
+        <tr>
+          <td>3</td><td>29 Feb 2026, 14:00</td><td>Face-to-face</td><td>Receive shared template &amp; CSS</td><td>Yes</td>
+          <td>Received global CSS and template. Started designing the Splash Screen interface and planning the simulator input/output structure.</td>
+        </tr>
+        <tr>
+          <td>4</td><td>13 Mar 2026, 15:30</td><td>Online (Teams)</td><td>Progress check</td><td>Yes</td>
+          <td>Demonstrated progress on the Splash Screen animation/loading transition and initial working version of the Action Impact Simulator logic.</td>
+        </tr>
+        <tr>
+          <td>5</td><td>20 Mar 2026, 14:00</td><td>Face-to-face</td><td>Peer review and cross-page testing</td><td>Yes</td>
+          <td>Tested Splash Screen responsiveness and timing, and refined the Action Impact Simulator functionality, fixing calculation/display issues.</td>
+        </tr>
+        <tr>
+          <td>6</td><td>29 Mar 2026, 16:00</td><td>Online (Teams)</td><td>Final review and submission prep</td><td>Yes</td>
+          <td>Finalized Splash Screen behavior, ensured smooth navigation to main pages, validated Action Impact Simulator outputs, and checked overall site functionality.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="pe-section" id="references">
+    <h2>8. References</h2>
+    <ul class="ref-list">
+      <li>Economou, D. (2026) <em>4COSC011W Web Design and Development — Lecture Notes</em>. University of Westminster. [Accessed via Blackboard, February–March 2026].</li>
+      <li>MDN Web Docs (2024) <em>setInterval()</em>. Mozilla. Available at: <a href="https://developer.mozilla.org/en-US/docs/Web/API/setInterval" target="_blank" rel="noopener">developer.mozilla.org</a> [Accessed: February 2026].</li>
+      <li>MDN Web Docs (2024) <em>CSS Animations</em>. Mozilla. Available at: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations" target="_blank" rel="noopener">developer.mozilla.org</a> [Accessed: February 2026].</li>
+      <li>NHS (2024) <em>Eat Well Guide</em>. Available at: <a href="https://www.nhs.uk/live-well/eat-well/" target="_blank" rel="noopener">nhs.uk</a> [Accessed: February 2026].</li>
+      <li>WHO (2023) <em>Malnutrition</em>. Available at: <a href="https://www.who.int/news-room/fact-sheets/detail/malnutrition" target="_blank" rel="noopener">who.int</a> [Accessed: February 2026].</li>
+      <li>iStockPhoto (2026) <em>Royalty-free images used on splash.html and ais.html</em>. Available at: <a href="https://www.istockphoto.com" target="_blank" rel="noopener">istockphoto.com</a> [Accessed: February–March 2026].</li>
+    </ul>
+  </section>
+
+</div>
+
+<a href="#top" id="go-top" aria-label="Back to top">↑</a>
+
+<div class="pe-footer">
+  <p>Page Editor — Student 2 · HLTHY · University of Westminster · 4COSC011W 2025/26</p>
+  <p><a href="validation_ST2.html">Validation Page</a> &nbsp;|&nbsp; <a href="home.html">Back to Website</a></p>
+</div>
+</body>
+</html>

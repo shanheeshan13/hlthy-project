@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physical Fitness | HLTHY</title>
+
+  <!-- Linking common global style.css -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Embedded CSS -->
+  <style>
+    .content-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .side-nav {
+      position: sticky;
+      top: 80px;
+      background: var(--clr-white);
+      border: 1px solid var(--clr-neutral-200);
+      border-radius: var(--radius-md);
+      padding: 1.1rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .side-nav h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.75rem; color: var(--clr-neutral-700); }
+    .side-nav ul { list-style: none; padding: 0; }
+    .side-nav ul li { margin-bottom: 0.4rem; }
+    .side-nav ul li a {
+      font-size: 0.88rem;
+      color: var(--clr-neutral-700);
+      display: block;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .side-nav ul li a:hover { background: var(--clr-neutral-200); color: var(--clr-primary-dark); text-decoration: none; }
+
+    .content-section { margin-bottom: 3rem; scroll-margin-top: 100px; }
+    .content-section img {
+      width: 100%;
+      max-height: 360px;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      margin: 1.2rem 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .info-box {
+      background: #E8F5F0;
+      border-left: 4px solid var(--clr-primary);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.2rem 0;
+    }
+    .info-box p { margin: 0; font-size: 0.92rem; color: var(--clr-primary-dark); }
+
+    #go-top {
+      position: fixed;
+      bottom: 2rem; right: 1.5rem;
+      background: var(--clr-primary);
+      color: #fff;
+      border-radius: 50%;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      text-decoration: none;
+      box-shadow: var(--shadow-md);
+      z-index: 50;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    #go-top:hover { background: var(--clr-primary-dark); transform: translateY(-3px); color:#fff; text-decoration:none; }
+  </style>
+</head>
+
+<body>
+
+  <!-- Anchor for Go to Top -->
+  <span id="top"></span>
+
+  <!--Header part with navigation[common]-->
+  <header>
+    <div class="header-inner">
+      <a class="site-identity" href="home.html">
+        <img src="images/logo.png" alt="HLTHY website logo - Simple black line icon showing two hands supporting a heart symbol" />
+        <div>
+          <span class="site-title">HLTHY</span>
+          <span class="site-tagline">Good Health &amp; Well-being · SDG 3</span>
+        </div>
+      </a>
+    </div>
+	
+	  <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="home.html"               >Home</a></li>
+        <li><a href="gallery.html"            >Gallery</a></li>
+        <li><a href="ais.html"                >Impact Simulator</a></li>
+        <li><a href="feedback.html"           >Feedback</a></li>
+        <li><a href="team.html"               >Team</a></li>
+        <li><a href="profile.html"            >User Profile</a></li>
+        <li><a href="sitemap.html"            >Sitemap</a></li>
+        <li><a href="content.html" class="active">Content</a></li>
+
+      </ul>
+	  </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <h1 id="top-heading">Physical Fitness</h1>
+
+      <div class="content-layout">
+
+        <!-- Side Navigation -->
+        <aside aria-label="Page contents">
+          <nav class="side-nav">
+            <h2>Contents</h2>
+            <ul>
+              <li><a href="#intro">Introduction</a></li>
+              <li><a href="#why-it-matters">Why It Matters</a></li>
+              <li><a href="#impact-students">Impact on Students</a></li>
+              <li><a href="#actions">Actions You Can Take</a></li>
+              <li><a href="#resources">Further Resources</a></li>
+            </ul>
+          </nav>
+        </aside>
+
+        <!-- Article Sections -->
+        <article>
+          <section class="content-section" id="intro">
+            <h2>Introduction</h2>
+            <img src="images/image7.jpeg" alt="Students exercising outdoors">
+            <p>Physical fitness is essential for overall health and well-being. It involves regular exercise, strength training, flexibility, and cardiovascular endurance. Being active improves energy levels, mental clarity, and reduces the risk of many chronic diseases. This section introduces the importance of incorporating fitness into daily life.</p>
+          </section>
+
+          <section class="content-section" id="why-it-matters">
+            <h2>Why Physical Fitness Matters</h2>
+            <img src="images/image8.png" alt="Young person lifting weights in a gym">
+            <p>Maintaining physical fitness has both short-term and long-term benefits. Regular exercise:</p>
+            <ul>
+              <li>Strengthens the heart, lungs, and muscles</li>
+              <li>Enhances mental health, reducing stress and anxiety</li>
+              <li>Boosts immune function</li>
+              <li>Improves sleep quality and energy levels</li>
+              <li>Reduces the risk of chronic illnesses such as obesity, diabetes, and heart disease</li>
+            </ul>
+          </section>
+
+          <section class="content-section" id="impact-students">
+            <h2>Impact on Students</h2>
+            <img src="images/image9.jpg" alt="Students jogging in a park">
+            <p>For students, physical fitness is linked to both academic and personal success. Benefits include:</p>
+            <ul>
+              <li>Better concentration and cognitive performance</li>
+              <li>Reduced stress and anxiety levels during exams</li>
+              <li>Improved mood and social interaction</li>
+              <li>Prevention of sedentary lifestyle-related health issues</li>
+            </ul>
+            <p>Incorporating even moderate daily activity, such as walking or short workouts, can significantly improve student well-being.</p>
+          </section>
+
+          <section class="content-section" id="actions">
+            <h2>Actions You Can Take</h2>
+            <img src="images/image10.jpg" alt="Group of students exercising together">
+            <p>Students can take practical steps to improve physical fitness and encourage peers:</p>
+            <ul>
+              <li>Join campus sports clubs or fitness classes</li>
+              <li>Incorporate daily walking, cycling, or short exercise routines</li>
+              <li>Create group workout sessions to stay motivated</li>
+              <li>Track activity and set achievable fitness goals</li>
+              <li>Promote awareness about the benefits of physical activity on campus</li>
+            </ul>
+          </section>
+
+          <section class="content-section" id="resources">
+            <h2>Further Resources</h2>
+            <img src="images/image11.webp" alt="Fitness apps and equipment">
+            <ul>
+              <li><strong>NHS Get Active Guide:</strong> <a href="https://www.nhs.uk/live-well/exercise/" target="_blank">nhs.uk/live-well/exercise</a></li>
+              <li><strong>Student Fitness Tips:</strong> <a href="https://www.studenteats.co.uk" target="_blank">studenteats.co.uk</a></li>
+              <li><strong>WHO Physical Activity Guidelines:</strong> <a href="https://www.who.int/news-room/fact-sheets/detail/physical-activity" target="_blank">who.int/physical-activity</a></li>
+            </ul>
+
+            <p>
+              Return to the <a href="home.html">Home Page</a> to explore the other
+              SDG 3 topics our team has covered.
+            </p>
+          </section>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <a href="#top" id="go-top" aria-label="Go back to the top of the page" title="Back to top">↑</a>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h3>Student 2</h3>
+        <p style="font-size:0.85rem; color:rgba(255,255,255,0.7);">
+          Mohamed Zamz Jaheed · 20250497/w2182387<br >
+          Web Design &amp; Development · 4COSC011C
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Editor &amp; Validation:</h4>
+		<ul>
+        <li><a href="pageEditor_ST2.html"> Page Editor</a></li>
+        <li><a href="validation_ST2.html"> Validation</a></li>
+		</ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 HLTHY Team</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+
+  <title>Mohamed Anshaf | Validation Page</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --c-primary: #2E7D6E; --c-dark: #1B5E50; --c-bg: #F8F9FA; --c-white: #fff; --c-text: #212529; --c-muted: #6C757D; --c-border: #DEE2E6; --c-pass: #2E7D6E; --c-warn: #E07B00; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--c-bg); color: var(--c-text); line-height: 1.7; }
+    .val-header { background: var(--c-dark); color: #fff; padding: 1.5rem 2rem; }
+    .val-header h1 { font-size: 1.6rem; margin-bottom: 0.2rem; }
+    .val-header p  { font-size: 0.9rem; opacity: 0.8; }
+    .val-wrap { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+    /* TOC */
+    .toc { background: var(--c-white); border: 1px solid var(--c-border); border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem; }
+    .toc h2 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--c-muted); margin-bottom: 0.75rem; }
+    .toc ol { padding-left: 1.4rem; } .toc ol li { margin-bottom: 0.3rem; }
+    .toc a { color: var(--c-primary); font-size: 0.9rem; }
+
+    /* Validation section */
+    .val-section { margin-bottom: 3rem; scroll-margin-top: 80px; border: 1px solid var(--c-border); border-radius: 10px; overflow: hidden; }
+    .val-section-head {
+      background: var(--c-dark); color: #fff;
+      padding: 0.9rem 1.25rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .val-section-head h2 { font-size: 1.1rem; margin: 0; }
+    .status-badge {
+      font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.75rem;
+      border-radius: 20px; white-space: nowrap;
+    }
+    .status-pass { background: #C8E6C9; color: #1B5E20; }
+    .status-warn { background: #FFF3E0; color: #E65100; }
+
+    .val-section-body { padding: 1.25rem 1.5rem; background: var(--c-white); }
+    .val-section-body p { font-size: 0.92rem; margin-bottom: 0.75rem; }
+    .val-section-body ul { padding-left: 1.3rem; font-size: 0.9rem; margin-bottom: 0.75rem; }
+    .val-section-body li { margin-bottom: 0.3rem; }
+
+    /* Screenshot placeholder */
+    .screenshot-box {
+      border: 2px dashed var(--c-border);
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      color: var(--c-muted);
+      font-size: 0.88rem;
+      margin: 1rem 0;
+      background: #FAFAFA;
+    }
+    .screenshot-box strong { display: block; font-size: 1rem; margin-bottom: 0.4rem; color: var(--c-text); }
+
+    /* Actual screenshot if added */
+    .screenshot-box img { max-width: 100%; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+
+    /* Link to live page */
+    .page-link { display: inline-block; background: var(--c-primary); color: #fff; padding: 0.35rem 0.9rem; border-radius: 6px; font-size: 0.83rem; font-weight: 600; text-decoration: none; margin-right: 0.5rem; transition: background 0.2s; }
+    .page-link:hover { background: var(--c-dark); text-decoration:none; color:#fff; }
+
+    /* Reflection section */
+    .reflection { background: #E8F5F0; border-left: 4px solid var(--c-primary); border-radius: 0 8px 8px 0; padding: 1.1rem 1.25rem; margin-top: 2.5rem; }
+    .reflection h2 { font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--c-dark); }
+    .reflection p { font-size: 0.92rem; margin-bottom: 0.6rem; }
+
+    /* Footer */
+    .val-footer { background: var(--c-dark); color: rgba(255,255,255,0.8); text-align: center; padding: 1.25rem; font-size: 0.85rem; margin-top: 3rem; }
+    .val-footer a { color: rgba(255,255,255,0.9); text-decoration: underline; }
+
+    /* Back to top */
+    #go-top { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--c-primary); color: #fff; border-radius: 50%; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,.2); z-index: 50; transition: background 0.2s; }
+    #go-top:hover { background: var(--c-dark); color:#fff; text-decoration:none; }
+
+    /* Validation tool info banner */
+    .tool-info { background: #fff; border: 1px solid var(--c-border); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 2rem; font-size: 0.9rem; }
+    .tool-info strong { color: var(--c-dark); }
+  </style>
+</head>
+
+<body>
+<span id="top"></span>
+
+<div class="val-header">
+  <h1>Validation Page — Student 1</h1>
+</div>
+
+<div class="val-wrap">
+
+  <div style="background:#fff; border:1px solid var(--c-border); border-radius:8px; padding:1.25rem; margin-bottom:2rem;">
+    <p><strong>Student Name:</strong> Mohamed Anshaf &nbsp;|&nbsp; <strong>Student ID:</strong> 20242133/w2181969</p>
+    <p><strong>Pages validated:</strong> home.html &nbsp;·&nbsp; gallery.html &nbsp;·&nbsp; content_ST1.html</p>
+  </div>
+
+  <!-- Validation tool info -->
+  <div class="tool-info">
+    <strong>Validation tool used:</strong> W3C Markup Validation Service — <a href="https://validator.w3.org" target="_blank" rel="noopener">validator.w3.org</a><br />
+  </div>
+
+  <!-- Contents -->
+  <div class="toc">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#val-template">Home Page (home.html)</a></li>
+      <li><a href="#val-gallery">Gallery (gallery.html)</a></li>
+      <li><a href="#val-content">Content Page (content_ST1.html)</a></li>
+      <li><a href="#val-reflection">Reflection on Validation</a></li>
+    </ol>
+  </div>
+
+  <!-- ── Home Page ─────────────────────────────────────── -->
+  <div class="val-section" id="val-template">
+    <div class="val-section-head">
+      <h2>Home Page — home.html</h2>
+    </div>
+    <div class="val-section-body">
+      <a href="home.html" class="page-link" target="_blank">↗ View Live Page</a>
+      <a href="pageEditor_ST1.html#home-page" class="page-link" target="_blank" style="background:#5A7A67;">📝 Page Editor Section</a>
+      <p style="margin-top:0.75rem;">The home page was validated using the W3C Markup Validation Service. The final version passed with no errors.</p>
+      <!-- SCREENSHOT PLACEHOLDER-->
+      <div class="screenshot-box">
+        <strong>Screenshot: W3C Validation Result — home.html</strong>
+        <img src="images/val_home.png" alt="W3C validation result for home.html showing no errors" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Gallery  -->
+  <div class="val-section" id="val-gallery">
+    <div class="val-section-head">
+      <h2>Gallery — gallery.html</h2>
+    </div>
+    <div class="val-section-body">
+      <a href="gallery.html" class="page-link" target="_blank">↗ View Live Page</a>
+      <a href="pageEditor_ST1.html#gallery" class="page-link" target="_blank" style="background:#5A7A67;">📝 Page Editor Section</a>
+      <p style="margin-top:0.75rem;">The gallery page was validated after completing all JavaScript and CSS. The page passed with no errors.</p>
+      <div class="screenshot-box">
+        <strong>Screenshot: W3C Validation Result — gallery.html</strong>
+        <img src="images/val_gallery.png" alt="W3C validation result for gallery.html showing no errors" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Content Page  -->
+  <div class="val-section" id="val-content">
+    <div class="val-section-head">
+      <h2>Content Page — content_ST1.html</h2>
+    </div>
+    <div class="val-section-body">
+      <a href="content_ST1.html" class="page-link" target="_blank">↗ View Live Page</a>
+      <a href="pageEditor_ST1.html#content-page" class="page-link" target="_blank" style="background:#5A7A67;">📝 Page Editor Section</a>
+      <p style="margin-top:0.75rem;">The content page was validated after writing all five sections of original content and adding all four images. The page passed with no errors.</p>
+      <div class="screenshot-box">
+        <strong>Screenshot: W3C Validation Result — content_ST1.html</strong>
+        <img src="images/val_content_st1.png" alt="W3C validation result for content_ST1.html showing no errors" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Reflection  -->
+  <div class="reflection" id="val-reflection">
+    <h2>Reflection on the Validation Process</h2>
+    <p><strong>Errors encountered:</strong> During development, the most common validation errors encountered were: duplicate <code>id</code> attributes (occurring when copying card structures), missing <code>alt</code> attributes on images added late in development, and an unclosed <code>&lt;div&gt;</code> in the gallery modal structure. All were corrected before final submission.</p>
+    <p><strong>How they were resolved:</strong> Running the validator after each major addition to a page — rather than waiting until the page was complete — made errors much easier to locate and fix. The W3C validator's line-number references made it straightforward to identify the exact location of each issue.</p>
+    <p><strong>What I learned:</strong> HTML validation is not just a compliance exercise — it genuinely catches issues that affect both browser rendering and accessibility. The duplicate ID error, for example, would have caused JavaScript's <code>getElementById</code> to return unpredictable results. Validating early and often is a development best practice, not just a coursework requirement.</p>
+  </div>
+
+</div><!-- /.val-wrap -->
+
+<a href="#top" id="go-top" aria-label="Back to top">↑</a>
+
+<div class="val-footer">
+  <p>Validation Page — Student 1 · HLTHY · University of Westminster · 4COSC011W 2025/26</p>
+  <p><a href="pageEditor_ST1.html">Page Editor</a> &nbsp;|&nbsp; <a href="home.html">Back to Website</a></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Validation Page — Student 4 | HLTHY</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --c-primary: #2E7D6E; --c-dark: #1B5E50; --c-bg: #F8F9FA; --c-white: #fff; --c-text: #212529; --c-muted: #6C757D; --c-border: #DEE2E6; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--c-bg); color: var(--c-text); line-height: 1.7; }
+    .val-header { background: var(--c-dark); color: #fff; padding: 1.5rem 2rem; }
+    .val-header h1 { font-size: 1.6rem; margin-bottom: 0.2rem; }
+    .val-header p  { font-size: 0.9rem; opacity: 0.8; }
+    .val-wrap { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+    .toc { background: var(--c-white); border: 1px solid var(--c-border); border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem; }
+    .toc h2 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--c-muted); margin-bottom: 0.75rem; }
+    .toc ol { padding-left: 1.4rem; } .toc ol li { margin-bottom: 0.3rem; } .toc a { color: var(--c-primary); font-size: 0.9rem; }
+    .val-section { margin-bottom: 3rem; scroll-margin-top: 80px; border: 1px solid var(--c-border); border-radius: 10px; overflow: hidden; }
+    .val-section-head { background: var(--c-dark); color: #fff; padding: 0.9rem 1.25rem; display: flex; justify-content: space-between; align-items: center; }
+    .val-section-head h2 { font-size: 1.1rem; margin: 0; }
+    .status-badge { font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 20px; }
+    .status-pass { background: #C8E6C9; color: #1B5E20; }
+    .val-section-body { padding: 1.25rem 1.5rem; background: var(--c-white); }
+    .val-section-body p { font-size: 0.92rem; margin-bottom: 0.75rem; }
+    .val-section-body ul { padding-left: 1.3rem; font-size: 0.9rem; margin-bottom: 0.75rem; }
+    .val-section-body li { margin-bottom: 0.3rem; }
+    .screenshot-box { border: 2px dashed var(--c-border); border-radius: 8px; padding: 2rem; text-align: center; color: var(--c-muted); font-size: 0.88rem; margin: 1rem 0; background: #FAFAFA; }
+    .screenshot-box strong { display: block; font-size: 1rem; margin-bottom: 0.4rem; color: var(--c-text); }
+    .screenshot-box img { max-width: 100%; border-radius: 6px; }
+    .page-link { display: inline-block; background: var(--c-primary); color: #fff; padding: 0.35rem 0.9rem; border-radius: 6px; font-size: 0.83rem; font-weight: 600; text-decoration: none; margin-right: 0.5rem; transition: background 0.2s; }
+    .page-link:hover { background: var(--c-dark); text-decoration:none; color:#fff; }
+    .reflection { background: #E8F5F0; border-left: 4px solid var(--c-primary); border-radius: 0 8px 8px 0; padding: 1.1rem 1.25rem; margin-top: 2.5rem; }
+    .reflection h2 { font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--c-dark); }
+    .reflection p { font-size: 0.92rem; margin-bottom: 0.6rem; }
+    .val-footer { background: var(--c-dark); color: rgba(255,255,255,0.8); text-align: center; padding: 1.25rem; font-size: 0.85rem; margin-top: 3rem; }
+    .val-footer a { color: rgba(255,255,255,0.9); text-decoration: underline; }
+    #go-top { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--c-primary); color: #fff; border-radius: 50%; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,.2); z-index: 50; }
+    #go-top:hover { background: var(--c-dark); color:#fff; text-decoration:none; }
+  </style>
+</head>
+<body>
+<span id="top"></span>
+<div class="val-header">
+  <h1>Validation Page — Student 4</h1>
+  <p>HLTHY Website · Good Health &amp; Well-being (SDG 3) · Web Design &amp; Development 4COSC011W · 2025/26</p>
+</div>
+<div class="val-wrap">
+  <div style="background:#fff; border:1px solid var(--c-border); border-radius:8px; padding:1.25rem; margin-bottom:2rem;">
+    <p><strong>Student Name:</strong> Suthagan Shanheeshan &nbsp;|&nbsp; <strong>Student ID:</strong> w2182082  /  20241978</p>
+    <p><strong>Pages validated:</strong> profile.html &nbsp;·&nbsp; sitemap.html &nbsp;·&nbsp; content_ST4.html</p>
+    <p style="font-size:0.85rem; color:var(--c-muted); margin-top:0.4rem;">pageEditor_ST4.html and validation_ST4.html are excluded per the coursework specification.</p>
+  </div>
+  <div class="toc">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#val-profile">User Profile (profile.html)</a></li>
+      <li><a href="#val-sitemap">Sitemap (sitemap.html)</a></li>
+      <li><a href="#val-content">Content Page (content_ST4.html)</a></li>
+      <li><a href="#val-reflection">Reflection on Validation</a></li>
+    </ol>
+  </div>
+  <div class="val-section" id="val-profile">
+    <div class="val-section-head"><h2>User Profile — profile.html</h2><span class="status-badge status-pass">✅ No Errors</span></div>
+    <div class="val-section-body">
+      <a href="profile.html" class="page-link" target="_blank">↗ View Live Page</a>
+      <a href="pageEditor_ST4.html#profile" class="page-link" target="_blank" style="background:#5A7A67;">📝 Page Editor</a>
+      <p style="margin-top:0.75rem;">Validated after completing the full JavaScript profile-building logic, progress bar, and all step controls. Passed with no errors.</p>
+      <ul><li><strong>Errors:</strong> 0</li><li><strong>Warnings:</strong> 1 — "Possible misuse of aria-selected on a non-widget role" (resolved by reviewing ARIA spec and updating role attributes appropriately).</li></ul>
+      <div class="screenshot-box">
+        <strong>Screenshot: W3C Validation Result — profile.html</strong>
+        <img src="images/val_profile.png" alt="W3C validation result for profile.html showing no errors" />
+      </div>
+    </div>
+  </div>
+  <div class="val-section" id="val-sitemap">
+    <div class="val-section-head"><h2>Sitemap — sitemap.html</h2><span class="status-badge status-pass">✅ No Errors</span></div>
+    <div class="val-section-body">
+      <a href="sitemap.html" class="page-link" target="_blank">↗ View Live Page</a>
+      <a href="pageEditor_ST4.html#sitemap" class="page-link" target="_blank" style="background:#5A7A67;">📝 Page Editor</a>
+      <p style="margin-top:0.75rem;">Validated after completing all SVG nodes, connector lines, links, and the legend. SVG within HTML5 validates as a single document. Passed with no errors.</p>
+      <ul><li><strong>Errors:</strong> 0</li><li><strong>Warnings:</strong> 0</li></ul>
+      <div class="screenshot-box">
+        <strong>Screenshot: W3C Validation Result — sitemap.html</strong>
+        <img src="images/val_sitemap.png" alt="W3C validation result for sitemap.html showing no errors" />
+      </div>
+    </div>
+  </div>
+  <div class="val-section" id="val-content">
+    <div class="val-section-head"><h2>Content Page — content_ST4.html</h2><span class="status-badge status-pass">✅ No Errors</span></div>
+    <div class="val-section-body">
+      <a href="content_ST4.html" class="page-link" target="_blank">↗ View Live Page</a>
+      <a href="pageEditor_ST4.html#content-page" class="page-link" target="_blank" style="background:#5A7A67;">📝 Page Editor</a>
+      <p style="margin-top:0.75rem;">Validated after writing all seven sections and adding the pull-quote and comparison grid components. Passed with no errors.</p>
+      <ul><li><strong>Errors:</strong> 0</li><li><strong>Warnings:</strong> 0</li></ul>
+      <div class="screenshot-box">
+        <strong>Screenshot: W3C Validation Result — content_ST4.html</strong>
+        <img src="images/val_content_st4.png" alt="W3C validation result for content_ST4.html showing no errors" />
+      </div>
+    </div>
+  </div>
+  <div class="reflection" id="val-reflection">
+    <h2>Reflection on the Validation Process</h2>
+    <p><strong>Errors encountered:</strong> The SVG sitemap initially produced a validation error because one of the SVG <code>&lt;a&gt;</code> elements was missing the <code>href</code> attribute (it had been included as a structural placeholder without a destination yet). The validator also flagged a stray closing <code>&lt;/g&gt;</code> tag in the SVG from an early draft that was not removed. On the profile page, using <code>role="tab"</code> without a parent <code>role="tablist"</code> element produced a warning about incomplete ARIA widget patterns.</p>
+    <p><strong>How they were resolved:</strong> The missing href was added once all file names were confirmed. The stray closing tag was removed. The ARIA role issue was resolved by wrapping the step buttons in a containing element with <code>role="tablist"</code>, as required by the ARIA specification.</p>
+    <p><strong>What I learned:</strong> SVG embedded in HTML validates as part of the same document — you cannot validate an SVG in isolation if it lives inside an HTML page. Using the "Direct Input" method on the W3C validator is the correct approach for this coursework. ARIA roles have strict parent-child requirements that are not obvious without reading the specification.</p>
+  </div>
+</div>
+<a href="#top" id="go-top" aria-label="Back to top">↑</a>
+<div class="val-footer">
+  <p>Validation Page — Student 4 · HLTHY · University of Westminster · 4COSC011W 2025/26</p>
+  <p><a href="pageEditor_ST4.html">Page Editor</a> &nbsp;|&nbsp; <a href="home.html">Back to Website</a></p>
+</div>
+</body>
+</html>

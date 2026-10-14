@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page | HLTHY</title>
+
+  <!-- Linking common globle style.css -->
+  <link rel="stylesheet" href="style.css">
+
+  <!--Embedded CSS Part-->
+  <style>
+    .banner {      /*To style the main banner part*/
+      background: linear-gradient(135deg, var(--clr-primary) 0%, var(--clr-primary-dark) 100%);
+      color: #fff;
+      text-align: center;
+      padding: 4rem 1rem 3rem;
+    }
+    .banner h1 {   /*Styling the heading in the banner part*/
+      color: #fff; 
+      font-size: 2.6rem; 
+      margin-bottom: 0.5rem; 
+    }
+    .banner p  {   /*style of paragraph secetion in banner*/
+      font-size: 1.1rem; 
+      opacity: 0.9; 
+      max-width: 600px; 
+      margin: 0 auto 1.5rem; 
+    }
+
+    /*content page style*/
+    .cp-gallery { 
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+      margin: 2rem 0;
+    }
+    .cp-tile {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 4/3;
+      background: var(--clr-primary);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .cp-tile:hover { 
+      transform: translateY(-6px) scale(1.02); 
+      box-shadow: var(--shadow-md); 
+    }
+
+    .cp-tile-overlay {   /*To style the text coming over the image*/
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.72) 40%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1rem;
+      color: #fff;
+      transition: background 0.25s ease;
+    }
+    .cp-tile:hover .cp-tile-overlay { background: linear-gradient(to top, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0.1) 100%); }
+    .cp-tile-overlay h3 { 
+      font-size: 1rem; 
+      color: #fff; 
+      margin-bottom: 0.2rem; 
+    }
+    .cp-tile-overlay p  { 
+      font-size: 0.78rem; 
+      opacity: 0.85; 
+      margin: 0; 
+    }
+
+    /*Card list styling */
+    .card-body ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    .card-body ul li {
+      padding: 0.3rem 0 0.3rem 1.4rem;
+      position: relative;
+      font-size: 0.88rem;
+      color: var(--clr-neutral-700);
+    }
+    .card-body ul li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--clr-primary);
+      font-weight: 700;
+    }
+
+    /* 7. "Explore" button on tile (appears on hover) */
+    .cp-tile-btn {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.3rem 0.8rem;
+      background: var(--clr-secondary);
+      color: #fff;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      text-decoration: none;
+      width: fit-content;
+    }
+    .cp-tile:hover .cp-tile-btn { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  </style>
+</head>
+
+<body>
+  <!--Header part with navigation[common]-->
+  <header>
+    <div class="header-inner">
+      <a class="site-identity" href="home.html">
+        <img src="images/logo.png" alt="HLTHY website logo - Simple black line icon showing two hands supporting a heart symbol" >
+        <div>
+          <span class="site-title">HLTHY</span>
+          <span class="site-tagline">Good Health &amp; Well-being · SDG 3</span>
+        </div>
+      </a>
+    </div>
+	
+	  <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="home.html"     class="active">Home</a></li>
+        <li><a href="gallery.html"            >Gallery</a></li>
+        <li><a href="ais.html"                >Impact Simulator</a></li>
+        <li><a href="feedback.html"           >Feedback</a></li>
+        <li><a href="team.html"               >Team</a></li>
+        <li><a href="profile.html"            >User Profile</a></li>
+        <li><a href="sitemap.html"            >Sitemap</a></li>
+      </ul>
+	  </nav>
+  </header>
+
+  <main>    <!--Main content-->
+
+    <!-- Banner -->
+    <section class="banner" aria-labelledby="banner-heading">
+      <div class="container">
+        <h1 id="banner-heading">Welcome to Healthy Future</h1>
+        <p>Our mission is to empower students to build healthier routines through simple and
+            realistic habits that improve both physical and mental well-being.
+            According to our SDG section, we focus on small daily actions that create long-lasting
+            positive change.
+        </p>
+        <a href="#cards" class="btn btn-outline" style="border-color:#fff; color:#fff;">Explore ↓</a>
+      </div>
+    </section>
+
+    <section id="cards" class="container" aria-labelledby="mission-heading">
+		<h2 id="mission-heading">Parts of Healthy life</h2>
+      <div class="card-grid">
+
+        <!-- Card 1 -->
+        <article class="card">
+          <img src="images/home_mental_wellness.png"
+               alt="Person sitting on a rocky shore facing the ocean during sunrise" >
+          <div class="card-body">
+            <h3>Mental Wellness</h3>
+            <p>Mental wellness is the foundation of a healthy life. Our mission is to help students build emotional resilience, manage stress effectively, and develop mindful habits that support long-term well-being. In a fast-paced world, caring for the mind is essential for academic success and a balanced lifestyle.</p>
+            <p><strong>Actions Students Can Take:</strong></p>
+            <ul>
+              <li>Practice 5 minutes of daily mindful breathing</li>
+              <li>Reduce screen time before sleeping</li>
+              <li>Take short breaks to relax during study sessions</li>
+            </ul>
+            <a href="content_ST1.html" class="btn btn-primary mt-2">Learn More</a>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="card">
+          <img src="images/home_fitness.png"
+               alt="Person stretching an arm across the body while standing outdoors on a sunny pathway" >
+          <div class="card-body">
+            <h3>Body & Physical Health</h3>
+            <p>Physical activity helps improve strength, focus, and daily energy. Our goal is to motivate students to stay active through simple routines and to understand the long-term benefits of movement. Staying physically healthy today reduces future health risks and improves quality of life.</p>
+            <p><strong>Actions Students Can Take:</strong></p>
+            <ul>
+              <li>Add a 10 minute walk to your daily routine</li>
+              <li>Choose stairs instead of elevators</li>
+              <li>Stretch your body during study breaks</li>
+            </ul>
+            <a href="content_ST2.html" class="btn btn-primary mt-2">Learn More</a>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="card">
+          <img src="images/home_healthy.png"
+               alt="Person sitting indoors and holding a bowl of salad while using a fork">
+          <div class="card-body">
+            <h3>Nutrition & Healthy Eating</h3>
+            <p>Healthy eating supports brain performance, immunity, and long-term wellness. We aim to guide students toward better food choices and balanced meals that improve physical and mental health. Good nutrition doesn't need to be expensive or complicated. A small changes in our meal habbits create big results in future.</p>
+            <p><strong>Actions Students Can Take:</strong></p>
+            <ul>
+              <li>Include one fruit or vegetable to each meal</li>
+              <li>Reduce sugary drinks and drink more water</li>
+              <li>Avoid skipping meals</li>
+            </ul>
+            <a href="content_ST3.html" class="btn btn-primary mt-2">Learn More</a>
+          </div>
+        </article>
+
+        <!-- Card 4 (bonus) -->
+        <article class="card">
+          <img src="images/home_lifestyle.png"
+               alt="Person sitting on a bed and stretching arms toward a bright window in the morning">
+          <div class="card-body">
+            <h3>Sleep & Daily Lifestyle</h3>
+            <p>Good sleep and healthy daily habits improve concentration, mood, and overall well-being. Our mission is to help learners understand the importance of rest and routines. A balanced lifestyle empowers students to perform better in studies and everyday tasks.</p>
+            <p><strong>Actions Students Can Take:</strong></p>
+            <ul>
+              <li>Maintain a consistent sleep schedule</li>
+              <li>Avoid caffeine late in the day</li>
+              <li>Create a relaxing bedtime environment</li>
+            </ul>
+            <a href="content_ST4.html" class="btn btn-primary mt-2">Learn More</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Interactive Gallery part -->
+    <section class="container" aria-labelledby="gallery-heading">
+      <h2 class="section-title" id="gallery-heading">Explore Our Content</h2>
+
+      <div class="cp-gallery">
+        <a href="content_ST1.html" class="cp-tile" aria-label="Read about Mental Health — Student 1's content page">
+          <img src="images/home_mental_wellness.png" alt="Person sitting on a rocky shore facing the ocean during sunrise" style="width:100%;height:100%;object-fit:cover;">
+          <div class="cp-tile-overlay">
+            <h3>Mental Wellness</h3>
+            <p>Improve your well‑being with mindfulness, stress control, and emotional balance.</p>
+            <span class="cp-tile-btn">Explore →</span>
+          </div>
+        </a>
+
+        <a href="content_ST2.html" class="cp-tile" aria-label="Read about Nutrition — Student 2's content page">
+          <img src="images/home_fitness.png" alt="Person stretching an arm across the body while standing outdoors on a sunny pathway" style="width:100%;height:100%;object-fit:cover;" >
+          <div class="cp-tile-overlay">
+            <h3>Body & Physical Health</h3>
+            <p>Boost your strength and energy through simple workouts and daily movement.</p>
+            <span class="cp-tile-btn">Explore →</span>
+          </div>
+        </a>
+
+        <a href="content_ST3.html" class="cp-tile" aria-label="Read about Physical Activity — Student 3's content page">
+          <img src="images/home_healthy.png" alt="Person sitting indoors and holding a bowl of salad while using a fork" style="width:100%;height:100%;object-fit:cover;" >
+          <div class="cp-tile-overlay">
+            <h3>Nutrition & Healthy Eating</h3>
+            <p>Build a healthier diet with balanced meals, smart choices, and sustainable habits.</p>
+            <span class="cp-tile-btn">Explore →</span>
+          </div>
+        </a>
+
+        <a href="content_ST4.html" class="cp-tile" aria-label="Read about Healthcare Access — Student 4's content page">
+          <img src="images/home_lifestyle.png" alt="Person sitting on a bed and stretching arms toward a bright window in the morning" style="width:100%;height:100%;object-fit:cover;">
+          <div class="cp-tile-overlay">
+            <h3>Sleep & Daily Lifestyle</h3>
+            <p>Enhance your daily life with better sleep routines and positive lifestyle habits.</p>
+            <span class="cp-tile-btn">Explore →</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Student 1</h4>
+        <p style="font-size:0.85rem; color:rgba(255,255,255,0.7);">
+          Mohamed Anshaf · 20242133/w2181969<br>
+          Web Design &amp; Development · 4COSC011C
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Editor &amp; Validation:</h4>
+		<ul>
+        <li><a href="pageEditor_ST1.html"> Page Editor</a></li>
+        <li><a href="validation_ST1.html"> Validation</a></li>
+		</ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 HLTHY Team</p>
+    </div>
+  </footer>
+
+</body>
+</html>

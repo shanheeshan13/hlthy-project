@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <title>Mental Wellness | HLTHY</title>
+
+  <!-- Linking common globle style.css -->
+  <link rel="stylesheet" href="style.css" >
+
+  <!--Embedded CSS Part-->
+  <style>
+    /* Side navigation (internal page nav) */
+    .content-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .side-nav {
+      position: sticky;
+      top: 80px;
+      background: var(--clr-white);
+      border: 1px solid var(--clr-neutral-200);
+      border-radius: var(--radius-md);
+      padding: 1.1rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .side-nav h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.75rem; color: var(--clr-neutral-700); }
+    .side-nav ul { list-style: none; padding: 0; }
+    .side-nav ul li { margin-bottom: 0.4rem; }
+    .side-nav ul li a {
+      font-size: 0.88rem;
+      color: var(--clr-neutral-700);
+      display: block;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .side-nav ul li a:hover { background: var(--clr-neutral-200); color: var(--clr-primary-dark); text-decoration: none; }
+
+    /* Article sections */
+    .content-section { margin-bottom: 3rem; scroll-margin-top: 100px; }
+    .content-section img {
+      width: 100%;
+      max-height: 380px;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      margin: 1.2rem 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Go to Top button — CSS positioning only, no JS */
+    #go-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 1.5rem;
+      background: var(--clr-primary);
+      color: #fff;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      text-decoration: none;
+      box-shadow: var(--shadow-md);
+      z-index: 50;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    #go-top:hover { background: var(--clr-primary-dark); transform: translateY(-3px); text-decoration: none; color:#fff; }
+  </style>
+</head>
+
+<body>
+
+  <!-- Anchor for Go to Top -->
+  <span id="top"></span>
+
+  <!--Header part with navigation[common]-->
+  <header>
+    <div class="header-inner">
+      <a class="site-identity" href="home.html">
+        <img src="images/logo.png" alt="HLTHY website logo - Simple black line icon showing two hands supporting a heart symbol" >
+        <div>
+          <span class="site-title">HLTHY</span>
+          <span class="site-tagline">Good Health &amp; Well-being · SDG 3</span>
+        </div>
+      </a>
+    </div>
+	
+	  <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="home.html"               >Home</a></li>
+        <li><a href="gallery.html"            >Gallery</a></li>
+        <li><a href="ais.html"                >Impact Simulator</a></li>
+        <li><a href="feedback.html"           >Feedback</a></li>
+        <li><a href="team.html"               >Team</a></li>
+        <li><a href="profile.html"            >User Profile</a></li>
+        <li><a href="sitemap.html"            >Sitemap</a></li>
+        <li><a href="content.html" class="active">Content</a></li>
+
+      </ul>
+	  </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <div class="container">
+
+      <!-- Page title -->
+      <h1 id="top-heading">Mental Wellness</h1>
+
+      <div class="content-layout">
+
+        <!-- Side navigation (internal links — required for long pages) -->
+        <aside aria-label="Page contents">
+          <nav class="side-nav">
+            <h2>Contents</h2>
+            <ul>
+              <li><a href="#intro">Introduction</a></li>
+              <li><a href="#why-it-matters">Why It Matters</a></li>
+              <li><a href="#student-impact">Impact on Students</a></li>
+              <li><a href="#actions">Actions You Can Take</a></li>
+              <li><a href="#resources">Further Resources</a></li>
+            </ul>
+          </nav>
+        </aside>
+
+        <!-- Article body -->
+        <article>
+
+          <section class="content-section" id="intro">
+            <h2>Introduction</h2>
+            <img src="images/ct1_intro.png"
+                 alt="Calm outdoor bench in a green park — representing peace and mental space for reflection" >
+            <p>Mental wellness is the state of maintaining a healthy and balanced mind. It influences how clearly we think, how well we cope with stress, and how effectively we handle responsibilities. It is more than the absence of illness. it is the presence of strong emotional resilience, positive habits, and supportive environments.</p>
+
+            <p>Mental health plays a crucial role in the United Nations Sustainable Development Goal 3: Good Health and Well-being. SDG 3 highlights mental health as a global priority because millions experience stress, anxiety, and burnout every year. For students, academic pressure, lifestyle changes, and social expectations make mental wellness especially important.</p>
+          </section>
+
+          <section class="content-section" id="why-it-matters">
+            <h2>Why Mental Health Matters</h2>
+            <img src="images/ct1_why.png"
+                 alt="Illustration of a human brain made of colourful connections representing neural pathways and mental health" >
+            
+            <p>Mental wellness supports nearly every aspect of daily life from decision-making and memory, to relationships and academic performance. When mental health is ignored, it can lead to long-term consequences such as chronic stress, burnout, and reduced motivation.</p>
+
+            <p>SDG 3 recognises that a healthy society requires both physical and mental well-being. Without investment in mental health education, services, and awareness, communities face higher risks of illness, stigma, and inequality. Strengthening mental wellness promotes stability, productivity, and a healthier future for everyone.</p>
+
+            <p>Mental wellness is also deeply connected to other SDGs, including quality education, reduced inequalities, and sustainable communities. Supporting mental well-being helps build fairer and more resilient societies.</p>
+
+          </section>
+
+          <section class="content-section" id="student-impact">
+            <h2>How Poor Mental Health Affects Students</h2>
+            <img src="images/ct1_students.png"
+                 alt="Student sitting alone at a desk looking overwhelmed — representing academic stress and mental health challenges" >
+            
+            <p>Students often face unique challenges such as academic workload, financial stress, and social transitions. These pressures can affect concentration, sleep, motivation, and confidence. Without support, mental strain can lead to academic difficulties and reduced well-being.</p>
+
+            <p>Common challenges for students include:</p>
+            <ul>
+              <li>Stress from deadlines, exams, and coursework</li>
+              <li>Isolation from being away from familiar environments</li>
+              <li>Difficulty balancing responsibilities with self-care</li>
+              <li>Feeling overwhelmed by expectations or uncertainty</li>
+            </ul><br>
+            <p>Understanding these challenges helps students recognise early signs of stress and encourages them to seek support when needed.</p>
+          </section>
+
+          <section class="content-section" id="actions">
+            <h2>Actions You Can Take</h2>
+            <img src="images/ct1_actions.png"
+                 alt="Group of students in a circle having a supportive conversation outdoors" >
+            
+            <p>You don't need special training to improve your mental wellness. Small, everyday habits can make a real difference. Here are simple actions you can start today:</p>
+
+            <h3>1. Practise Mindfulness</h3>
+            <p>Mindfulness techniques like breathing exercises, journaling, or short meditations help reduce stress and improve focus. Just a few minutes a day can improve clarity and emotional balance.</p>
+
+            <h3>2. Build Healthy Routines</h3>
+            <p>Regular sleep, structured study time, and scheduled breaks help stabilise mood and energy levels. Routines support a balanced lifestyle during busy periods.</p>
+
+            <h3>3. Stay Physically Active</h3>
+            <p>Exercise boosts concentration, reduces tension, and improves overall mood. Activities such as walking, stretching, or sports are easy ways to support mental health.</p>
+
+            <h3>4. Talk to Someone You Trust</h3>
+            <p>Sharing your thoughts with a friend, family member, or mentor helps relieve stress. Conversations provide comfort, new perspectives, and emotional support.</p>
+          </section>
+
+
+          <section class="content-section" id="resources">
+            <h2>Further Resources</h2>
+            
+            <p>These organisations and services offer reliable support and information about mental wellness:</p>
+
+            <ul>
+              <li><strong>Student Minds</strong> – student mental health charity: <a href="https://www.studentminds.org.uk" target="_blank">studentminds.org.uk</a></li>
+              <li><strong>Mind</strong> – mental health education and support: <a href="https://www.mind.org.uk" target="_blank">mind.org.uk</a></li>
+              <li><strong>Samaritans</strong> – 24/7 support (Call 116 123): <a href="https://www.samaritans.org" target="_blank">samaritans.org</a></li>
+              <li><strong>SDG 3 Overview</strong>: <a href="https://sdgs.un.org/goals/goal3" target="_blank">UN SDG 3</a></li>
+            </ul><br>
+
+            <p>Explore the other health topics on our website or return to the <a href="home.html">Home Page</a> for more wellbeing resources.</p>
+          </section>
+
+
+        </article>
+      </div><!-- /.content-layout -->
+    </div>
+  </main>
+
+  <!-- Go to Top button -->
+  <a href="#top" id="go-top" aria-label="Go back to the top of the page" title="Back to top">↑</a>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h3>Student 1</h3>
+        <p style="font-size:0.85rem; color:rgba(255,255,255,0.7);">
+          Mohamed Anshaf · 20242133/w2181969<br >
+          Web Design &amp; Development · 4COSC011C
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Editor &amp; Validation:</h4>
+		<ul>
+        <li><a href="pageEditor_ST1.html"> Page Editor</a></li>
+        <li><a href="validation_ST1.html"> Validation</a></li>
+		</ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 HLTHY Team</p>
+    </div>
+  </footer>
+
+</body>
+</html>

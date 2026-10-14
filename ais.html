@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <title>Action Impact Simulator | HLTHY</title>
+
+  <!-- Linking common globle style.css -->
+  <link rel="stylesheet" href="style.css" >
+
+  <!--Embedded CSS Part-->
+  <style>
+    /* AIS page-specific embedded CSS — minimum 5 rules */
+
+    /* 1. Background section — changes via JS based on impact level */
+    .ais-bg {
+      min-height: 100%;
+      transition: background-image 0.6s ease;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .ais-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.82);
+      z-index: 0;
+      pointer-events: none;
+    }
+    main .container { position: relative; z-index: 1; }
+
+    /* 2. Action card grid */
+    .action-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.2rem;
+      margin: 1.5rem 0;
+    }
+
+    /* 3. Individual action card */
+    .action-card {
+      background: #fff;
+      border: 2px solid var(--clr-neutral-200);
+      border-radius: var(--radius-md);
+      padding: 1.1rem;
+      cursor: pointer;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .action-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+
+    /* 4. Selected state — highlighted with primary colour */
+    .action-card.selected {
+      border-color: var(--clr-primary);
+      background: #E8F5F0;
+      box-shadow: 0 0 0 3px rgba(46,125,110,0.2);
+    }
+    .action-card.selected .card-select-btn { background: var(--clr-primary); color: #fff; }
+
+    /* 5. Thumbnail inside each action card */
+    .action-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+    }
+    .action-card h3 { font-size: 1rem; margin: 0; }
+    .action-card p  { font-size: 0.85rem; color: var(--clr-neutral-700); margin: 0; }
+
+    /* 6. Points badge */
+    .points-badge {
+      display: inline-block;
+      background: var(--clr-secondary);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      width: fit-content;
+    }
+
+    /* 7. Select/deselect button within card */
+    .card-select-btn {
+      margin-top: auto;
+      padding: 0.4rem 0.9rem;
+      border: 2px solid var(--clr-primary);
+      background: transparent;
+      color: var(--clr-primary);
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+      width: 100%;
+    }
+    .card-select-btn:hover { background: var(--clr-primary); color: #fff; }
+
+    /* 8. Feedback summary panel */
+    #impact-summary {
+      background: #fff;
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md);
+      margin-top: 2rem;
+      border-left: 6px solid var(--clr-primary);
+      transition: border-color 0.4s ease;
+    }
+    #impact-summary h2 { margin-bottom: 0.5rem; }
+    #impact-level-label {
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    /* 9. Reset button */
+    #reset-btn {
+      margin-top: 1rem;
+      background: none;
+      border: 2px solid var(--clr-neutral-700);
+      color: var(--clr-neutral-700);
+      padding: 0.5rem 1.2rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    #reset-btn:hover { background: var(--clr-neutral-700); color: #fff; }
+  </style>
+</head>
+
+<body>
+  <!--Header part with navigation[common]-->
+  <header>
+    <div class="header-inner">
+      <a class="site-identity" href="home.html">
+        <img src="images/logo.png" alt="HLTHY website logo - Simple black line icon showing two hands supporting a heart symbol" >
+        <div>
+          <span class="site-title">HLTHY</span>
+          <span class="site-tagline">Good Health &amp; Well-being · SDG 3</span>
+        </div>
+      </a>
+    </div>
+	
+	  <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="home.html"               >Home</a></li>
+        <li><a href="gallery.html"            >Gallery</a></li>
+        <li><a href="ais.html"    class="active" >Impact Simulator</a></li>
+        <li><a href="feedback.html"           >Feedback</a></li>
+        <li><a href="team.html"               >Team</a></li>
+        <li><a href="profile.html"            >User Profile</a></li>
+        <li><a href="sitemap.html"            >Sitemap</a></li>
+      </ul>
+	  </nav>
+  </header>
+
+  <main>
+    <div class="ais-bg" id="ais-bg">
+      <div class="container">
+        <h1 class="section-title">SDG 3 Action Impact Simulator</h1>
+        <p class="section-subtitle">Select the health actions you take (or could take). See how your choices add up and what impact they could create.</p>
+
+        <div class="action-grid" role="list" id="action-grid">
+
+          <article class="action-card" data-points="4" tabindex="0" >
+            <img src="images/image1.jpg" alt="Person jogging outdoors representing regular physical exercise" >
+            <h2>Exercise Regularly</h2>
+            <p>Commit to 30 minutes of moderate physical activity at least 5 days a week.</p>
+            <span class="points-badge">4 points</span>
+            <button class="card-select-btn" aria-label="Select: Exercise Regularly">Select</button>
+          </article>
+
+          <article class="action-card" data-points="3" tabindex="0" >
+            <img src="images/image2.jpg" alt="Plate of balanced nutritious food" >
+            <h3>Eat a Balanced Diet</h3>
+            <p>Follow dietary guidelines: 5 portions of fruit/veg daily, reduce ultra-processed foods.</p>
+            <span class="points-badge">3 points</span>
+            <button class="card-select-btn" aria-label="Select: Eat a Balanced Diet">Select</button>
+          </article>
+
+          <article class="action-card" data-points="5" tabindex="0" >
+            <img src="images/image3.jpg" alt="Person talking to a counsellor representing mental health support" >
+            <h3>Prioritise Mental Health</h3>
+            <p>Access counselling, practise mindfulness, and check in regularly on your emotional well-being.</p>
+            <span class="points-badge">5 points</span>
+            <button class="card-select-btn" aria-label="Select: Prioritise Mental Health">Select</button>
+          </article>
+
+          <article class="action-card" data-points="3" tabindex="0" >
+            <img src="images/image4.jpg" alt="Alarm clock next to a bed representing consistent sleep routine" >
+            <h3>Maintain Sleep Hygiene</h3>
+            <p>Aim for 7–9 hours of sleep per night with a consistent routine and no screens before bed.</p>
+            <span class="points-badge">3 points</span>
+            <button class="card-select-btn" aria-label="Select: Maintain Sleep Hygiene">Select</button>
+          </article>
+
+          <article class="action-card" data-points="4" tabindex="0">
+            <img src="images/image5.avif" alt="Volunteers at a health outreach event" >
+            <h3>Volunteer for Health Causes</h3>
+            <p>Give time to health charities, community clinics, or awareness campaigns related to SDG 3.</p>
+            <span class="points-badge">4 points</span>
+            <button class="card-select-btn" aria-label="Select: Volunteer for Health Causes">Select</button>
+          </article>
+
+          <article class="action-card" data-points="2" tabindex="0" >
+            <img src="images/image6.jpg" alt="Person sharing health information on a smartphone" >
+            <h3>Share Accurate Health Information</h3>
+            <p>Counter misinformation by sharing verified health advice from trusted sources online.</p>
+            <span class="points-badge">2 points</span>
+            <button class="card-select-btn" aria-label="Select: Share Accurate Health Information">Select</button>
+          </article>
+
+        </div><!-- /.action-grid -->
+
+        <!-- Impact summary — updated dynamically -->
+        <div id="impact-summary" aria-live="polite" aria-atomic="true">
+          <h2>Your Impact Score</h2>
+          <p>Selected actions: <strong id="selected-count">0</strong></p>
+          <p>Total impact score: <strong id="total-score">0</strong> / 21</p>
+          <p id="impact-level-label" style="color: var(--clr-neutral-700);">Start selecting actions above to see your impact level.</p>
+          <p id="impact-message" style="font-size:0.9rem; color: var(--clr-neutral-700); margin-top:0.5rem;"></p>
+          <button id="reset-btn" aria-label="Reset all selections">Reset</button>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h3>Student 2</h3>
+        <p style="font-size:0.85rem; color:rgba(255,255,255,0.7);">
+          Mohamed Zamz Jaheed · 20250497/w2182387<br >
+          Web Design &amp; Development · 4COSC011C
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Editor &amp; Validation:</h4>
+		<ul>
+        <li><a href="pageEditor_ST2.html"> Page Editor</a></li>
+        <li><a href="validation_ST2.html"> Validation</a></li>
+		</ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 HLTHY Team</p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════
+       AIS JAVASCRIPT
+       Impact thresholds (clearly stated in comments):
+         Low:    0–7  points
+         Medium: 8–14 points
+         High:  15–21 points
+  ═══════════════════════════════════════════ -->
+  <script>
+    const cards         = document.querySelectorAll('.action-card');
+    const selectedCount = document.getElementById('selected-count');
+    const totalScore    = document.getElementById('total-score');
+    const levelLabel    = document.getElementById('impact-level-label');
+    const impactMsg     = document.getElementById('impact-message');
+    const impactSummary = document.getElementById('impact-summary');
+    const aisBg         = document.getElementById('ais-bg');
+    const resetBtn      = document.getElementById('reset-btn');
+
+    // Track selected state per card
+    const selectedState = new Array(cards.length).fill(false);
+
+    /* ── Toggle card selection ───────────────────────────── */
+    cards.forEach((card, i) => {
+      const btn = card.querySelector('.card-select-btn');
+
+      function toggleCard() {
+        selectedState[i] = !selectedState[i];
+        card.classList.toggle('selected', selectedState[i]);
+        card.setAttribute('aria-pressed', selectedState[i].toString());
+        btn.textContent = selectedState[i] ? 'Deselect' : 'Select';
+        updateSummary();
+      }
+
+      // Click on the card OR the button triggers toggle
+      card.addEventListener('click', toggleCard);
+
+      // Keyboard: Enter or Space
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleCard(); }
+      });
+    });
+
+    /* ── Calculate and display impact summary ──────────── */
+    function updateSummary() {
+      let count = 0;
+      let score = 0;
+
+      cards.forEach((card, i) => {
+        if (selectedState[i]) {
+          count++;
+          score += parseInt(card.dataset.points);
+        }
+      });
+
+      selectedCount.textContent = count;
+      totalScore.textContent    = score;
+
+      // Impact thresholds:
+      // Low:    0–7  points
+      // Medium: 8–14 points
+      // High:  15–21 points
+
+      if (score === 0) {
+        levelLabel.textContent  = 'No actions selected yet.';
+        levelLabel.style.color  = 'var(--clr-neutral-700)';
+        impactMsg.textContent   = '';
+        impactSummary.style.borderLeftColor = 'var(--clr-neutral-200)';
+        setBackground('none');
+
+      } else if (score <= 7) {
+        levelLabel.textContent  = '🌱 Low Impact';
+        levelLabel.style.color  = '#E65100';
+        impactMsg.textContent   = 'Every action counts! Try adding a few more to increase your impact.';
+        impactSummary.style.borderLeftColor = '#F4A261';
+        setBackground('images/bg_low.jpg');
+
+      } else if (score <= 14) {
+        levelLabel.textContent  = '🌿 Medium Impact';
+        levelLabel.style.color  = '#2E7D6E';
+        impactMsg.textContent   = 'Great progress! You\'re making a meaningful contribution to SDG 3. Keep it up!';
+        impactSummary.style.borderLeftColor = '#2E7D6E';
+        setBackground('images/bg_medium.jpg');
+
+      } else {
+        levelLabel.textContent  = '🌍 High Impact';
+        levelLabel.style.color  = '#1B5E50';
+        impactMsg.textContent   = 'Excellent commitment! Your actions could inspire others and create real community-level change.';
+        impactSummary.style.borderLeftColor = '#1B5E50';
+        setBackground('images/bg_high.jpg');
+      }
+    }
+
+    /* ── Background image change (JS-controlled) ────────── */
+    function setBackground(imagePath) {
+      if (imagePath === 'none') {
+        aisBg.style.backgroundImage = 'none';
+      } else {
+        aisBg.style.backgroundImage = `url('${imagePath}')`;
+      }
+    }
+
+    /* ── Reset button ─────────────────────────────────── */
+    resetBtn.addEventListener('click', () => {
+      cards.forEach((card, i) => {
+        selectedState[i] = false;
+        card.classList.remove('selected');
+        card.setAttribute('aria-pressed', 'false');
+        card.querySelector('.card-select-btn').textContent = 'Select';
+      });
+      updateSummary();
+    });
+  </script>
+
+</body>
+</html>
+     
